@@ -1,0 +1,37 @@
+.custom-theme-color {
+  overflow: auto;
+
+  .color-item {
+    position: relative;
+
+    &:hover {
+      .delete-btn {
+        display: block;
+      }
+    }
+
+    .delete-btn {
+      display: none;
+      position: absolute;
+      top: 0px;
+      right: 30px;
+    }
+  }
+
+  .add-btn {
+    float: right; 
+    overflow: hidden;
+  }
+    // 重写 手风琴样式
+  &.ant-collapse > .ant-collapse-item {
+    border-bottom: 0px;
+    & > .ant-collapse-header {
+      padding-left: 0px;
+
+      & > .ant-collapse-arrow {
+        right: 0px;
+        left: unset;
+      }
+    }
+  }
+}
