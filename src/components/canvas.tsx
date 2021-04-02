@@ -60,6 +60,7 @@ export const Canvas: React.FC<Props> = props => {
       },
       isStack: false,
       theme,
+      label: {},
     };
   }, [data, theme]);
 
