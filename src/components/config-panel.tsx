@@ -3,6 +3,9 @@ import { Button, Radio, Collapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { copyToClipboard } from '../utils/copy-to-board';
 import Palette from '../theme/palette.json';
+import { ColorPicker } from './colorPicker';
+import { ValueInput } from './valueInput';
+import { CustomThemeColor } from './customThemeColor';
 import './config-panel.less';
 
 const { Panel } = Collapse;
@@ -68,20 +71,18 @@ export const ConfigPanel: FC<Props> = props => {
         )}
       >
         <Panel header="基础配置" key="1" className="custom-panel">
-          <div>
-            <span>背景色</span>
-          </div>
-          <div>
-            <span>标签文字</span>
-          </div>
+          <ColorPicker title='背景色' color={config.background} onChange={(color) => onThemeChange({background: color})}/>
+          <ValueInput title='图表内边距' value={config?.padding} onChange={(value) => onThemeChange({padding: value})}/>
+          <ColorPicker title='标签填充色' color={config?.labels?.style?.fill} onChange={(color) => onThemeChange({labels: { style: {fill: color}}})}/>
+          <ValueInput title='标签字体大小' value={config?.labels?.style?.fontSize} onChange={(value) => onThemeChange({labels: { style: {fontSize: value}}})}/>
+          <ValueInput title='标签描边宽度' value={config?.labels?.style?.lineWidth} onChange={(value) => onThemeChange({labels: { style: {lineWidth: value}}})}/>
+          <ColorPicker title='标签描边色' color={config?.labels?.style?.stroke || '#fff'} onChange={(color) => onThemeChange({labels: { style: {stroke: color}}})}/>
+          <CustomThemeColor title='自定义主题10色' colors={config.colors10} onChange={(colors) => onThemeChange({ colors10: colors })}/>
+          <CustomThemeColor title='自定义主题20色' colors={config.colors20} onChange={(colors) => onThemeChange({ colors20: colors })}/>
         </Panel>
         <Panel header="语义色" key="2" className="custom-panel">
-          <div>
-            <span>上涨色</span>
-          </div>
-          <div>
-            <span>下降色</span>
-          </div>
+          <ColorPicker title='上涨色' color={config.background} onChange={(color) => onThemeChange({background: color})}/>
+          <ColorPicker title='下降色' color={config.background} onChange={(color) => onThemeChange({background: color})}/>
         </Panel>
         <Panel header="图例" key="3" className="custom-panel">
           <div>
