@@ -65,7 +65,7 @@ export const ConfigPanel: React.FC<Props> = props => {
       {/* 颜色色板区 END */}
       <hr />
       <AttributeTree
-        attributes={config}
+        attributes={config.theme}
         config={{
           type: 'collapse',
           children: [
@@ -950,36 +950,28 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'input-number',
                       displayName: '内容框圆角',
-                      initialValue: 3,
                       attributeId:
-                        'components.tooltip.domStyles."g2-tooltip".borderRadius',
+                        'components.tooltip.domStyles["g2-tooltip"].borderRadius',
                     },
                     {
                       type: 'input',
                       displayName: '内容框阴影',
                       initialValue: '0px 2px 4px rgba(0,0,0,.5)',
                       attributeId:
-                        'components.tooltip.domStyles."g2-tooltip".boxShadow',
+                        'components.tooltip.domStyles["g2-tooltip"]boxShadow',
                     },
                     {
                       type: 'color-picker',
                       displayName: '文本颜色',
                       attributeId:
-                        'components.tooltip.domStyles."g2-tooltip".color',
+                        'components.tooltip.domStyles["g2-tooltip"]color',
                     },
                     {
                       type: 'input-number',
                       displayName: '文本字体大小',
                       initialValue: 12,
                       attributeId:
-                        'components.tooltip.domStyles."g2-tooltip".fontSize',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '文本行高',
-                      initialValue: 12,
-                      attributeId:
-                        'components.tooltip.domStyles."g2-tooltip".lineHeight',
+                        'components.tooltip.domStyles["g2-tooltip"]fontSize',
                     },
                   ],
                 },
