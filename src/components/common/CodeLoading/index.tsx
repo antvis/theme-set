@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.less';
 
-const CodeLoading: React.FC = () => (
+export const CodeLoading: React.FC = () => (
   <div className={styles.full}>
     <div className={styles.codeLoading}>
       <div>
@@ -42,5 +42,3 @@ const CodeLoading: React.FC = () => (
     </div>
   </div>
 );
-
-export default CodeLoading;
