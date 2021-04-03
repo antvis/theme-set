@@ -7,6 +7,7 @@ import { Input } from './Input';
 import { InputNumber } from './InputNumber';
 import { Select } from './Select';
 import { Group } from './Group';
+import { CustomStyle } from './CustomStyle';
 
 export default {
   Collapse,
@@ -15,6 +16,7 @@ export default {
   Checkbox,
   ColorPicker,
   CustomThemeColor,
+  CustomStyle,
   Input,
   InputNumber,
   Select,

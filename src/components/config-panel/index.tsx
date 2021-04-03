@@ -1174,20 +1174,17 @@ export const ConfigPanel: React.FC<Props> = props => {
                 },
                 {
                   type: 'group',
-                  displayName: '内容框',
+                  displayName: '内容框样式',
                   children: [
                     {
-                      type: 'input-number',
-                      displayName: '内容框圆角',
-                      attributeId:
-                        'components.tooltip.domStyles["g2-tooltip"].borderRadius',
+                      type: 'custom-style',
+                      attributeId: 'components.tooltip.domStyles["g2-tooltip"]',
                     },
                     {
-                      type: 'input',
-                      displayName: '内容框阴影',
-                      initialValue: '0px 2px 4px rgba(0,0,0,.5)',
+                      type: 'input-number',
+                      displayName: '圆角',
                       attributeId:
-                        'components.tooltip.domStyles["g2-tooltip"]boxShadow',
+                        'components.tooltip.domStyles["g2-tooltip"].borderRadius',
                     },
                     {
                       type: 'color-picker',
@@ -1195,12 +1192,49 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId:
                         'components.tooltip.domStyles["g2-tooltip"]color',
                     },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: 'Tooltip title 样式',
+                  children: [
                     {
-                      type: 'input-number',
-                      displayName: '文本字体大小',
-                      initialValue: 12,
+                      type: 'custom-style',
                       attributeId:
-                        'components.tooltip.domStyles["g2-tooltip"]fontSize',
+                        'components.tooltip.domStyles["g2-tooltip-title"]',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: 'Tooltip list item 样式',
+                  children: [
+                    {
+                      type: 'custom-style',
+                      attributeId:
+                        'components.tooltip.domStyles["g2-tooltip-list-item"]',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: 'Tooltip marker 样式',
+                  children: [
+                    {
+                      type: 'custom-style',
+                      attributeId:
+                        'components.tooltip.domStyles["g2-tooltip-marker"]',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: 'Tooltip value 样式',
+                  children: [
+                    {
+                      type: 'custom-style',
+                      attributeId:
+                        'components.tooltip.domStyles["g2-tooltip-value"]',
                     },
                   ],
                 },
