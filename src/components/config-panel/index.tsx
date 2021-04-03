@@ -977,6 +977,154 @@ export const ConfigPanel: React.FC<Props> = props => {
                 },
               ],
             },
+            {
+              type: 'collapse-panel',
+              displayName: '缩略轴',
+              children: [
+                {
+                  type: 'group',
+                  displayName: '标签文字',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '标签字体颜色',
+                      initialValue: '#F7F7F7',
+                      attributeId: 'components.slider.common.textStyle.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '标签颜色透明度',
+                      initialValue: 0.45,
+                      attributeId:
+                        'components.slider.common.textStyle.opacity',
+                    },
+                  ]
+                },
+                {
+                  type: 'group',
+                  displayName: '手柄',
+                  children: [
+                    {
+                      type: 'input-number',
+                      displayName: '手柄宽度',
+                      initialValue: 10,
+                      attributeId:
+                        'components.slider.common.handlerStyle.width',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '手柄高度',
+                      initialValue: 24,
+                      attributeId:
+                        'components.slider.common.handlerStyle.height',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '手柄填充色',
+                      initialValue: '#F7F7F7',
+                      attributeId: 'components.slider.common.handlerStyle.fill',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '手柄高亮色',
+                      initialValue: '#fff',
+                      attributeId:
+                        'components.slider.common.handlerStyle.highLightFill',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '手柄描边色',
+                      initialValue: '#BFBFBF',
+                      attributeId:
+                        'components.slider.common.handlerStyle.stroke',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '手柄圆角',
+                      initialValue: 2,
+                      attributeId:
+                        'components.slider.common.handlerStyle.radius',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '缩略轴前景',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '前景填充色',
+                      initialValue: '#5B8FF9',
+                      attributeId:
+                        'components.slider.common.foregroundStyle.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '前景填充色透明度',
+                      initialValue: 0.15,
+                      attributeId:
+                        'components.slider.common.foregroundStyle.opacity',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '缩略轴背景',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '背景填充色',
+                      initialValue: '#416180',
+                      attributeId:
+                        'components.slider.common.backgroundStyle.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '背景填充色透明度',
+                      initialValue: 0.05,
+                      attributeId:
+                        'components.slider.common.backgroundStyle.opacity',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'collapse-panel',
+              displayName: '滚动条',
+              children: [
+                {
+                  type: 'group',
+                  displayName: '滑块',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '滑块颜色',
+                      attributeId:
+                        'components.scrollbar.default.style.thumbColor',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '滑块 hover 高亮色',
+                      attributeId:
+                        'components.scrollbar.hover.style.thumbColor',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '滑道',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '滑道颜色',
+                      attributeId:
+                        'components.scrollbar.default.style.trackColor',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         }}
         onChange={attrs => {

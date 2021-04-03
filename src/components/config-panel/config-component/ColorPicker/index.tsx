@@ -13,7 +13,7 @@ export const ColorPicker: React.FC<
   const { config, attributes, onChange } = props;
   const { displayName } = config;
 
-  const color = _.get(attributes, config.attributeId) || 'transparent';
+  const color = _.get(attributes, config.attributeId, config.initialValue) || 'transparent';
 
   const overlay = useMemo(() => {
     return (

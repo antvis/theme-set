@@ -13,6 +13,8 @@ import {
   TreemapOptions,
   Treemap,
   PieOptions,
+  BarOptions,
+  ColumnOptions,
 } from '@antv/g2plot';
 import { UseG2Plot } from '../../hooks/use-g2plot';
 import { ConfigProps } from '../../types';
@@ -24,6 +26,34 @@ export const Canvas: React.FC<ConfigProps> = props => {
   /** 图表数据 */
   const data = useMemo(() => {
     const months = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun'];
+    const result = [];
+    months.forEach(month => {
+      for (let i = 0; i < seriesCount; i += 1) {
+        result.push({
+          month,
+          category: `分类 ${i + 1}`,
+          value: Math.floor(Math.random() * 920 + 40),
+        });
+      }
+    });
+    return result;
+  }, [seriesCount]);
+
+  const barData = useMemo(() => {
+    const months = [
+      'Jan',
+      'Feb',
+      'March',
+      'Apr',
+      'May',
+      'Jun',
+      'July',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
     const result = [];
     months.forEach(month => {
       for (let i = 0; i < seriesCount; i += 1) {
@@ -52,6 +82,36 @@ export const Canvas: React.FC<ConfigProps> = props => {
       label: {},
     };
   }, [data, theme]);
+
+  /** 适用于：柱状图 */
+  const columnOptions = useMemo((): ColumnOptions => {
+    return {
+      data: barData,
+      xField: 'month',
+      yField: 'value',
+      seriesField: 'category',
+      meta: {
+        month: { type: 'cat' },
+      },
+      theme,
+      label: {},
+    };
+  }, [barData, theme]);
+
+  /** 适用于：条形图 */
+  const barOptions = useMemo((): BarOptions => {
+    return {
+      data: barData,
+      yField: 'month',
+      xField: 'value',
+      seriesField: 'category',
+      meta: {
+        month: { type: 'cat' },
+      },
+      theme,
+      label: {},
+    };
+  }, [barData, theme]);
 
   /** 饼图数据 */
   const pieData = useMemo(() => {
@@ -169,28 +229,30 @@ export const Canvas: React.FC<ConfigProps> = props => {
         Ctor={Column}
         title="Stacked Column Chart"
         options={{
-          ...options1,
+          ...columnOptions,
           isStack: true,
+          slider: {},
         }}
       />
       <UseG2Plot
         Ctor={Column}
         title="Group Column Chart"
-        options={{ ...options1, isGroup: true }}
+        options={{
+          ...columnOptions,
+          isGroup: true,
+          scrollbar: { type: 'horizontal', categorySize: 100 },
+        }}
       />
-      <UseG2Plot
-        Ctor={Bar}
-        title="Bar Chart"
-        options={{ ...options1, xField: 'value', yField: 'month' }}
-      />
+      <UseG2Plot Ctor={Bar} title="Bar Chart" options={barOptions} />
       <UseG2Plot
         Ctor={Bar}
         title="Group Bar Chart"
         options={{
-          ...options1,
-          xField: 'value',
-          yField: 'month',
+          ...barOptions,
           isGroup: true,
+          scrollbar: {
+            type: 'vertical',
+          },
         }}
       />
       <UseG2Plot Ctor={Radar} title="Radar Chart" options={radarOptions} />
