@@ -907,6 +907,7 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'checkbox',
                       displayName: '展示 marker',
+                      //  todo G2 配置 showMarkers 不生效
                       attributeId: 'components.tooltip.showMarkers',
                     },
                     {

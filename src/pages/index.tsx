@@ -60,10 +60,10 @@ const Page = () => {
 
   /**
    * 处理主题变化
-   * todo 类型定义
    * @param value
    */
   const onThemeChange = value => {
+    // todo 类型定义
     setTheme(_.merge({}, theme, value));
   };
 
