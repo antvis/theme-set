@@ -1,22 +1,23 @@
-import React, { FC } from 'react';
-import { Button, Radio } from 'antd';
+import React from 'react';
+import { Button, InputNumber, Radio } from 'antd';
 import * as _ from 'lodash';
 import { copyToClipboard } from '../../utils/copy-to-board';
 import Palette from '../../theme/palette.json';
+import { ConfigProps } from '../../types';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
 
 type Props = {
-  config: any;
+  config: ConfigProps;
   /** 配置变化，含：seriesCount 等 🤔 */
-  onChange: (config: any) => void;
+  onChange: (config: Partial<ConfigProps>) => void;
   /** 主题配置变化，含：🤔 */
   onThemeChange: (theme: object) => void;
   style?: React.CSSProperties;
 };
 
-export const ConfigPanel: FC<Props> = props => {
-  const { style = {}, config, onThemeChange } = props;
+export const ConfigPanel: React.FC<Props> = props => {
+  const { style = {}, config, onThemeChange, onChange } = props;
 
   const copyConfig = () => {
     copyToClipboard(JSON.stringify(config || null));
@@ -55,6 +56,12 @@ export const ConfigPanel: FC<Props> = props => {
           );
         })}
       </Radio.Group>
+      <h4 style={{ marginTop: '8px' }}>系列数量</h4>
+      <InputNumber
+        size="small"
+        value={config.seriesCount}
+        onChange={v => onChange({ seriesCount: Number(v) })}
+      />
       {/* 颜色色板区 END */}
       <hr />
       <AttributeTree
@@ -982,9 +989,7 @@ export const ConfigPanel: FC<Props> = props => {
         }}
         onChange={attrs => {
           const actualValue = {};
-          _.each(attrs, (v, k) => {
-            _.set(actualValue, k, v);
-          });
+          _.each(attrs, (v, k) => _.set(actualValue, k, v));
           onThemeChange(actualValue);
         }}
       />
