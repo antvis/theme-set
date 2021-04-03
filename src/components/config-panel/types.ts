@@ -4,6 +4,14 @@ export type AttributeTreeProps<
   onChange: (attrs: object) => void;
   attributes: any;
   config: AttributeComponentProps & C;
+  relations?: {
+    fromAttributeId: string;
+    value: string | number | boolean | object; // field 比较 length，其他的配置比较 form 表单的 value
+    operator: '='; // 支持 =, 待支持: >, < & in
+    toAttributeId: string;
+    // 支持 hidden, 待支持: disable
+    action: 'hidden';
+  }[];
 };
 
 type AttributeComponentProps = {

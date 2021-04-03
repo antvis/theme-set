@@ -17,8 +17,6 @@ export class Collapse extends PureComponent<Props> {
   renderPanel = childrenConfig => {
     if (!childrenConfig) return null;
 
-    const { onChange, attributes } = this.props;
-
     return childrenConfig.map((config, index) => {
       if (_.size(config.children) > 0) {
         return (
@@ -30,9 +28,8 @@ export class Collapse extends PureComponent<Props> {
             {_.map(config.children, (childConfig, idx) => {
               return (
                 <AttributeTree
+                  {...this.props}
                   config={childConfig}
-                  onChange={onChange}
-                  attributes={attributes}
                   key={idx.toString()}
                 />
               );

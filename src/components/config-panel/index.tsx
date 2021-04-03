@@ -66,6 +66,15 @@ export const ConfigPanel: React.FC<Props> = props => {
       <hr />
       <AttributeTree
         attributes={config.theme}
+        relations={[
+          {
+            fromAttributeId: 'components.tooltip.showMarkers',
+            toAttributeId: 'marker-setting',
+            value: false,
+            operator: '=',
+            action: 'hidden',
+          },
+        ]}
         config={{
           type: 'collapse',
           children: [
@@ -896,50 +905,64 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     // todo 增加 “辅助线虚线间隔”, lineDash
                     {
-                      type: 'input-number',
-                      displayName: 'marker 大小',
-                      attributeId: 'components.tooltip.marker.r',
+                      type: 'checkbox',
+                      displayName: '展示 marker',
+                      attributeId: 'components.tooltip.showMarkers',
                     },
                     {
-                      type: 'select',
-                      displayName: 'marker 形状',
-                      options: [
-                        { value: 'circle', label: 'circle' },
-                        { value: 'triangle', label: 'triangle' },
-                        { value: 'square', label: 'square' },
-                        { value: 'diamond', label: 'diamond' },
+                      type: 'group',
+                      displayType: 'inline',
+                      attributeId: 'marker-setting',
+                      children: [
+                        {
+                          type: 'input-number',
+                          displayName: 'marker 大小',
+                          attributeId: 'components.tooltip.marker.r',
+                        },
+                        {
+                          type: 'select',
+                          displayName: 'marker 形状',
+                          options: [
+                            { value: 'circle', label: 'circle' },
+                            { value: 'triangle', label: 'triangle' },
+                            { value: 'square', label: 'square' },
+                            { value: 'diamond', label: 'diamond' },
+                          ],
+                          attributeId: 'components.tooltip.marker.symbol',
+                        },
+                        {
+                          type: 'input-number',
+                          displayName: 'marker 描边粗细',
+                          attributeId: 'components.tooltip.marker.lineWidth',
+                        },
+                        {
+                          type: 'color-picker',
+                          displayName: 'marker 描边色',
+                          attributeId: 'components.tooltip.marker.stroke',
+                        },
+                        {
+                          type: 'color-picker',
+                          displayName: 'marker 阴影色',
+                          attributeId: 'components.tooltip.marker.shadowColor',
+                        },
+                        {
+                          type: 'color-picker',
+                          displayName: 'marker 阴影模糊度',
+                          attributeId: 'components.tooltip.marker.shadowBlur',
+                        },
+                        {
+                          type: 'input-number',
+                          displayName: 'marker shadowOffsetX',
+                          attributeId:
+                            'components.tooltip.marker.shadowOffsetX',
+                        },
+                        {
+                          type: 'input-number',
+                          displayName: 'marker shadowOffsetY',
+                          attributeId:
+                            'components.tooltip.marker.shadowOffsetY',
+                        },
                       ],
-                      attributeId: 'components.tooltip.marker.symbol',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: 'marker 描边粗细',
-                      attributeId: 'components.tooltip.marker.lineWidth',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: 'marker 描边色',
-                      attributeId: 'components.tooltip.marker.stroke',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: 'marker 阴影色',
-                      attributeId: 'components.tooltip.marker.shadowColor',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: 'marker 阴影模糊度',
-                      attributeId: 'components.tooltip.marker.shadowBlur',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: 'marker shadowOffsetX',
-                      attributeId: 'components.tooltip.marker.shadowOffsetX',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: 'marker shadowOffsetY',
-                      attributeId: 'components.tooltip.marker.shadowOffsetY',
                     },
                   ],
                 },
@@ -995,10 +1018,9 @@ export const ConfigPanel: React.FC<Props> = props => {
                       type: 'input-number',
                       displayName: '标签颜色透明度',
                       initialValue: 0.45,
-                      attributeId:
-                        'components.slider.common.textStyle.opacity',
+                      attributeId: 'components.slider.common.textStyle.opacity',
                     },
-                  ]
+                  ],
                 },
                 {
                   type: 'group',

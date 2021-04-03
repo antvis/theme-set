@@ -15,7 +15,7 @@ export const Checkbox: React.FC<AttributeTreeProps> = props => {
       <span>{displayName}</span>
       <AntdCheckbox
         checked={value}
-        onChange={e => onChange({ [config.attributeId]: e.target.value})}
+        onChange={e => onChange({ [config.attributeId]: e.target.checked })}
       />
     </div>
   );
