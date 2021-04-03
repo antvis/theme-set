@@ -15,8 +15,8 @@ import {
   Treemap,
   PieOptions,
 } from '@antv/g2plot';
-import { UseG2Plot } from '../hooks/use-g2plot';
-import './canvas.less';
+import { UseG2Plot } from '../../hooks/use-g2plot';
+import styles from './index.module.less';
 
 type Props = {
   /** 分类数量，默认：3 */
@@ -60,6 +60,7 @@ export const Canvas: React.FC<Props> = props => {
       },
       isStack: false,
       theme,
+      label: {},
     };
   }, [data, theme]);
 
@@ -172,7 +173,7 @@ export const Canvas: React.FC<Props> = props => {
   }, [theme]);
 
   return (
-    <div className="canvas-container" style={containerStyle}>
+    <div className={styles.canvasContainer} style={containerStyle}>
       <UseG2Plot Ctor={Line} title="Line Chart" options={options1} />
       <UseG2Plot Ctor={Area} title="Area Chart" options={options1} />
       <UseG2Plot

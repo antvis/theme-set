@@ -1,0 +1,30 @@
+.custom-theme-color {
+  overflow: auto;
+  .color-group {
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 4px;
+    border: 1px solid #eee;
+    background-color: #fff;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+
+    .color-item {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+
+      & + .color-item {
+        margin-left: 4px;
+      }
+
+      .color-block {
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    }
+  }
+}

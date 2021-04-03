@@ -7,13 +7,13 @@
     "@antv/g2plot": "^2.3.9",
     "antd": "^4.10.3",
     "lodash": "^4.17.20",
+    "react-color": "^2.19.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.0",
-    "axios": "^0.21.1",
     "gatsby": "^2.26.1",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-less": "^4.6.0",

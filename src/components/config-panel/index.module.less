@@ -4,10 +4,19 @@
   padding: 12px 24px;
   background-color: #f2f4f7;
 
+  overflow-y: auto;
+
+  * {
+    font-size: 12px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
   .config-panel-title {
     font-size: 18px;
     font-weight: bold;
     margin: 8px 0;
+    color: rgba(0, 0, 0, 0.85);
   }
 
   hr {
@@ -33,32 +42,6 @@
         & + .color-item {
           margin-left: 4px;
         }
-      }
-    }
-  }
-}
-
-// 复写 antd
-.ant-collapse.custom-collapse {
-  > .ant-collapse-item.custom-panel {
-    overflow: hidden;
-    background: #f7f7f7;
-    border-radius: 0px;
-
-    &:not(.ant-collapse-item-active),
-    &.ant-collapse-item-active:last-child {
-      border: 0px;
-    }
-
-    > .ant-collapse-header {
-      line-height: 1;
-      border-bottom: 1px solid #dfdfdf;
-      padding-left: 24px;
-      background-color: rgba(0, 0, 0, 0.04);
-
-      .ant-collapse-arrow {
-        top: 0px;
-        left: 8px;
       }
     }
   }

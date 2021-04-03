@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Spin, Layout as AntdLayout } from 'antd';
 import * as _ from 'lodash';
 import Layout from '../layouts/layout';
-import CodeLoading from '../components/code-loading';
+import CodeLoading from '../components/common/CodeLoading';
 import { ConfigPanel } from '../components/config-panel';
 import { Canvas } from '../components/canvas';
 import { DARK_THEME, LIGHT_THEME } from '../theme/default';
@@ -48,7 +48,7 @@ const Page = () => {
    * @param args
    */
   const onConfigChange = (...args) => {
-    console.log('config change', ...args);
+    console.info('config change', ...args);
   };
 
   /**
