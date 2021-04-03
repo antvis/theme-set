@@ -74,6 +74,13 @@ export const ConfigPanel: React.FC<Props> = props => {
             operator: '=',
             action: 'hidden',
           },
+          {
+            fromAttributeId: 'components.axis.bottom.subTickLine',
+            toAttributeId: 'subTickLine-setting',
+            value: false,
+            operator: '=',
+            action: 'hidden',
+          },
         ]}
         config={{
           type: 'collapse',
@@ -136,145 +143,114 @@ export const ConfigPanel: React.FC<Props> = props => {
               children: [
                 {
                   type: 'group',
-                  displayName: '坐标轴(上)',
-                  children: [
-                    {
-                      type: 'color-picker',
-                      displayName: '坐标轴标题颜色',
-                      attributeId: 'components.axis.top.title.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '坐标轴标题字体大小',
-                      attributeId: 'components.axis.top.title.style.fontSize',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '坐标轴标签颜色',
-                      attributeId: 'components.axis.top.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '坐标轴标签字体大小',
-                      attributeId: 'components.axis.top.label.style.fontSize',
-                    },
-                    {
-                      type: 'checkbox',
-                      displayName: '坐标轴标签 自动旋转',
-                      attributeId: 'components.axis.top.label.autoRotate',
-                    },
-                    {
-                      type: 'checkbox',
-                      displayName: '坐标轴标签-自动省略',
-                      attributeId: 'components.axis.top.label.autoEllipsis',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '坐标轴轴线宽度',
-                      attributeId: 'components.axis.top.line.style.lineWidth',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '坐标轴轴线颜色',
-                      attributeId: 'components.axis.top.line.style.stroke',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '坐标轴网格线宽度',
-                      attributeId:
-                        'components.axis.top.grid.line.style.lineWidth',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '坐标轴网格线颜色',
-                      attributeId: 'components.axis.top.grid.line.style.stroke',
-                    },
-                    // todo 新增 grid.line.lineDash & grid.alignTick
-                    {
-                      type: 'input-number',
-                      displayName: '坐标轴刻度线宽度',
-                      attributeId:
-                        'components.axis.top.tickLine.style.lineWidth',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '坐标轴刻度线颜色',
-                      attributeId: 'components.axis.top.tickLine.style.stroke',
-                    },
-                    // todo subTickLine
-                  ],
-                },
-                {
-                  type: 'group',
                   displayName: '坐标轴(下)',
                   children: [
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标题颜色',
+                      displayName: '轴标题颜色',
                       attributeId: 'components.axis.bottom.title.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标题字体大小',
+                      displayName: '轴标题字体大小',
                       attributeId:
                         'components.axis.bottom.title.style.fontSize',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标签颜色',
+                      displayName: '轴标签颜色',
                       attributeId: 'components.axis.bottom.label.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标签字体大小',
+                      displayName: '轴标签字体大小',
                       attributeId:
                         'components.axis.bottom.label.style.fontSize',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签 自动旋转',
+                      displayName: '轴标签-自动旋转',
                       attributeId: 'components.axis.bottom.label.autoRotate',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签-自动省略',
+                      displayName: '轴标签-自动省略',
                       attributeId: 'components.axis.bottom.label.autoEllipsis',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴轴线宽度',
+                      displayName: '轴线宽度',
                       attributeId:
                         'components.axis.bottom.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴轴线颜色',
+                      displayName: '轴线颜色',
                       attributeId: 'components.axis.bottom.line.style.stroke',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴网格线宽度',
+                      displayName: '网格线宽度',
                       attributeId:
                         'components.axis.bottom.grid.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴网格线颜色',
+                      displayName: '网格线颜色',
                       attributeId:
                         'components.axis.bottom.grid.line.style.stroke',
                     },
-
+                    {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.bottom.grid.alignTick',
+                    },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴刻度线宽度',
+                      displayName: '刻度线长度',
+                      attributeId: 'components.axis.bottom.tickLine.length',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '刻度线宽度',
                       attributeId:
                         'components.axis.bottom.tickLine.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴刻度线颜色',
+                      displayName: '刻度线颜色',
                       attributeId:
                         'components.axis.bottom.tickLine.style.stroke',
+                    },
+                    {
+                      type: 'checkbox',
+                      displayName: '开启子刻度线',
+                      attributeId: 'components.axis.bottom.subTickLine',
+                    },
+                    {
+                      type: 'group',
+                      displayType: 'inline',
+                      attributeId: 'subTickLine-setting',
+                      children: [
+                        {
+                          type: 'input-number',
+                          displayName: '子刻度线长度',
+                          attributeId:
+                            'components.axis.bottom.subTickLine.length',
+                        },
+                        {
+                          type: 'input-number',
+                          displayName: '子刻度线宽度',
+                          attributeId:
+                            'components.axis.bottom.subTickLine.style.lineWidth',
+                        },
+                        {
+                          type: 'color-picker',
+                          displayName: '子刻度线颜色',
+                          attributeId:
+                            'components.axis.bottom.subTickLine.style.stroke',
+                        },
+                      ],
                     },
                   ],
                 },
@@ -284,67 +260,145 @@ export const ConfigPanel: React.FC<Props> = props => {
                   children: [
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标题颜色',
+                      displayName: '轴标题颜色',
                       attributeId: 'components.axis.left.title.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标题字体大小',
+                      displayName: '轴标题字体大小',
                       attributeId: 'components.axis.left.title.style.fontSize',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标签颜色',
+                      displayName: '轴标签颜色',
                       attributeId: 'components.axis.left.label.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标签字体大小',
+                      displayName: '轴标签字体大小',
                       attributeId: 'components.axis.left.label.style.fontSize',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签 自动旋转',
+                      displayName: '轴标签-自动旋转',
                       attributeId: 'components.axis.left.label.autoRotate',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签-自动省略',
+                      displayName: '轴标签-自动省略',
                       attributeId: 'components.axis.left.label.autoEllipsis',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴轴线宽度',
+                      displayName: '轴线宽度',
                       attributeId: 'components.axis.left.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴轴线颜色',
+                      displayName: '轴线颜色',
                       attributeId: 'components.axis.left.line.style.stroke',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴网格线宽度',
+                      displayName: '网格线宽度',
                       attributeId:
                         'components.axis.left.grid.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴网格线颜色',
+                      displayName: '网格线颜色',
                       attributeId:
                         'components.axis.left.grid.line.style.stroke',
                     },
-
+                    {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.left.grid.alignTick',
+                    },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴刻度线宽度',
+                      displayName: '刻度线宽度',
                       attributeId:
                         'components.axis.left.tickLine.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴刻度线颜色',
+                      displayName: '刻度线颜色',
                       attributeId: 'components.axis.left.tickLine.style.stroke',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '坐标轴(上)',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标题颜色',
+                      attributeId: 'components.axis.top.title.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标题字体大小',
+                      attributeId: 'components.axis.top.title.style.fontSize',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标签颜色',
+                      attributeId: 'components.axis.top.label.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标签字体大小',
+                      attributeId: 'components.axis.top.label.style.fontSize',
+                    },
+                    {
+                      type: 'checkbox',
+                      displayName: '轴标签-自动旋转',
+                      attributeId: 'components.axis.top.label.autoRotate',
+                    },
+                    {
+                      type: 'checkbox',
+                      displayName: '轴标签-自动省略',
+                      attributeId: 'components.axis.top.label.autoEllipsis',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴线宽度',
+                      attributeId: 'components.axis.top.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴线颜色',
+                      attributeId: 'components.axis.top.line.style.stroke',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '网格线宽度',
+                      attributeId:
+                        'components.axis.top.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '网格线颜色',
+                      attributeId: 'components.axis.top.grid.line.style.stroke',
+                    },
+                    // todo 新增 grid.line.lineDash
+                    {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.top.grid.alignTick',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '刻度线宽度',
+                      attributeId:
+                        'components.axis.top.tickLine.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '刻度线颜色',
+                      attributeId: 'components.axis.top.tickLine.style.stroke',
                     },
                   ],
                 },
@@ -354,67 +408,217 @@ export const ConfigPanel: React.FC<Props> = props => {
                   children: [
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标题颜色',
+                      displayName: '轴标题颜色',
                       attributeId: 'components.axis.right.title.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标题字体大小',
+                      displayName: '轴标题字体大小',
                       attributeId: 'components.axis.right.title.style.fontSize',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴标签颜色',
+                      displayName: '轴标签颜色',
                       attributeId: 'components.axis.right.label.style.fill',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴标签字体大小',
+                      displayName: '轴标签字体大小',
                       attributeId: 'components.axis.right.label.style.fontSize',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签 自动旋转',
+                      displayName: '轴标签-自动旋转',
                       attributeId: 'components.axis.right.label.autoRotate',
                     },
                     {
                       type: 'checkbox',
-                      displayName: '坐标轴标签-自动省略',
+                      displayName: '轴标签-自动省略',
                       attributeId: 'components.axis.right.label.autoEllipsis',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴轴线宽度',
+                      displayName: '轴线宽度',
                       attributeId: 'components.axis.right.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴轴线颜色',
+                      displayName: '轴线颜色',
                       attributeId: 'components.axis.right.line.style.stroke',
                     },
                     {
                       type: 'input-number',
-                      displayName: '坐标轴网格线宽度',
+                      displayName: '网格线宽度',
                       attributeId:
                         'components.axis.right.grid.line.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴网格线颜色',
+                      displayName: '网格线颜色',
                       attributeId:
                         'components.axis.right.grid.line.style.stroke',
                     },
                     {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.right.grid.alignTick',
+                    },
+                    {
                       type: 'input-number',
-                      displayName: '坐标轴刻度线宽度',
+                      displayName: '刻度线宽度',
                       attributeId:
                         'components.axis.right.tickLine.style.lineWidth',
                     },
                     {
                       type: 'color-picker',
-                      displayName: '坐标轴刻度线颜色',
+                      displayName: '刻度线颜色',
                       attributeId:
                         'components.axis.right.tickLine.style.stroke',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '坐标轴(circle - 适用于雷达图)',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标题颜色',
+                      attributeId: 'components.axis.circle.title.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标题字体大小',
+                      attributeId:
+                        'components.axis.circle.title.style.fontSize',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标签颜色',
+                      attributeId: 'components.axis.circle.label.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标签字体大小',
+                      attributeId:
+                        'components.axis.circle.label.style.fontSize',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴线宽度',
+                      attributeId:
+                        'components.axis.circle.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴线颜色',
+                      attributeId: 'components.axis.circle.line.style.stroke',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '网格线类型',
+                      options: [
+                        { type: 'line', label: 'line' },
+                        { type: 'circle', label: 'circle' },
+                      ],
+                      attributeId: 'components.axis.circle.grid.line.type',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '网格线宽度',
+                      attributeId:
+                        'components.axis.circle.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '网格线颜色',
+                      attributeId:
+                        'components.axis.circle.grid.line.style.stroke',
+                    },
+                    {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.circle.grid.alignTick',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '刻度线宽度',
+                      attributeId:
+                        'components.axis.circle.tickLine.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '刻度线颜色',
+                      attributeId:
+                        'components.axis.circle.tickLine.style.stroke',
+                    },
+                  ],
+                },
+                {
+                  type: 'group',
+                  displayName: '坐标轴(radius 径向轴 - 适用于雷达图)',
+                  children: [
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标题颜色',
+                      attributeId: 'components.axis.radius.title.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标题字体大小',
+                      attributeId:
+                        'components.axis.radius.title.style.fontSize',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴标签颜色',
+                      attributeId: 'components.axis.radius.label.style.fill',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴标签字体大小',
+                      attributeId:
+                        'components.axis.radius.label.style.fontSize',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '轴线宽度',
+                      attributeId:
+                        'components.axis.radius.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '轴线颜色',
+                      attributeId: 'components.axis.radius.line.style.stroke',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '网格线宽度',
+                      attributeId:
+                        'components.axis.radius.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '网格线颜色',
+                      attributeId:
+                        'components.axis.radius.grid.line.style.stroke',
+                    },
+                    {
+                      type: 'checkbox',
+                      displayName: '网格线对齐刻度线',
+                      attributeId: 'components.axis.radius.grid.alignTick',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '刻度线宽度',
+                      attributeId:
+                        'components.axis.radius.tickLine.style.lineWidth',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '刻度线颜色',
+                      attributeId:
+                        'components.axis.radius.tickLine.style.stroke',
                     },
                   ],
                 },
@@ -478,6 +682,7 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'input-number',
                       displayName: 'marker 非激活态填充透明度',
+                      step: 0.05,
                       attributeId:
                         'components.legend.common.pageNavigator.marker.style.inactiveOpacity',
                       initialValue: 0.45,
@@ -1018,6 +1223,7 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'input-number',
                       displayName: '标签颜色透明度',
+                      step: 0.05,
                       initialValue: 0.45,
                       attributeId: 'components.slider.common.textStyle.opacity',
                     },
@@ -1084,6 +1290,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'input-number',
                       displayName: '前景填充色透明度',
+                      step: 0.05,
+
                       initialValue: 0.15,
                       attributeId:
                         'components.slider.common.foregroundStyle.opacity',
@@ -1104,6 +1312,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'input-number',
                       displayName: '背景填充色透明度',
+                      step: 0.05,
+
                       initialValue: 0.05,
                       attributeId:
                         'components.slider.common.backgroundStyle.opacity',
