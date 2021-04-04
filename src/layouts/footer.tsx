@@ -23,14 +23,19 @@ const Footer: React.FC<Props> = props => {
           For G2Plot
         </a>
       </div>
-      <div className="actio</div>ns" style={{ position: 'absolute', right: '24px' }}>
-        <Tooltip title="客人，来个 star 呗 😉"><a
-          href={props.githubUrl}
-          style={{ textDecoration: 'none' }}
-          target="_blank"
-        >
-          <GithubFilled className="github-icon action-link" />
-        </a></Tooltip>
+      <div
+        className="actio</div>ns"
+        style={{ position: 'absolute', right: '24px' }}
+      >
+        <Tooltip title="客人，来个 star 呗 😉" color="#873bf4" placement="topRight">
+          <a
+            href={props.githubUrl}
+            style={{ textDecoration: 'none' }}
+            target="_blank"
+          >
+            <GithubFilled className="github-icon action-link" />
+          </a>
+        </Tooltip>
       </div>
     </footer>
   );

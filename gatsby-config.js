@@ -1,7 +1,7 @@
 module.exports = {
   pathPrefix: '/g2plot-theme-builder',
   siteMetadata: {
-    title: `👋 G2Plot theme builder`,
+    title: `📈 G2Plot theme builder 💄`,
     githubUrl: 'https://github.com/visiky/g2plot-theme-builder.git',
     author: 'visiky',
     contact: 'https://github.com/visiky',

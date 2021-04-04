@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ siteTitle, themeSwitcher }) => {
     <header className="site-header">
       <div className="site-title">
         <h1 style={{ margin: 0 }}>{siteTitle}</h1>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           {themeSwitcher !== false && (
             <Switch
               className="theme-switcher"
@@ -25,8 +25,14 @@ const Header: React.FC<Props> = ({ siteTitle, themeSwitcher }) => {
               onChange={changeTheme}
             />
           )}
-          <Popover content="Ideas 或 Q & A 前往 [Discussions](https://github.com/visiky/g2plot-theme-builder/discussions)" placement="bottomRight">
-            <QuestionCircleOutlined style={{ marginLeft: '4px' }} />
+          <Popover
+            content={<div>Ideas 或 Q & A 前往 <a href="https://github.com/visiky/g2plot-theme-builder/discussions" target="_blank">Discussions</a></div>}
+            placement="rightBottom"
+            overlayStyle={{ maxWidth: '180px' }}
+          >
+            <QuestionCircleOutlined
+              style={{ marginLeft: '8px', cursor: 'pointer' }}
+            />
           </Popover>
         </div>
       </div>
