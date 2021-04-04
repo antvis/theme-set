@@ -112,6 +112,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
         month: { type: 'cat' },
       },
       theme,
+      isStack: true,
       label: {},
     };
   }, [barData, theme]);

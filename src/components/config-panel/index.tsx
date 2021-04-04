@@ -1089,8 +1089,7 @@ export const ConfigPanel: React.FC<Props> = props => {
                     // todo 增加 “辅助线虚线间隔”, lineDash
                     {
                       type: 'checkbox',
-                      displayName: '展示 marker',
-                      //  todo G2 配置 showMarkers 不生效
+                      displayName: 'showMarkers',
                       attributeId: 'components.tooltip.showMarkers',
                     },
                     {
