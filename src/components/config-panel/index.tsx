@@ -701,12 +701,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     {
                       type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.top.marker.style.r',
-                    },
-                    {
-                      type: 'input-number',
                       displayName: '图例项之间的水平间距',
                       initialValue: 8,
                       attributeId: 'components.legend.top.marker.spacing',
@@ -769,12 +763,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   type: 'group',
                   displayName: '图例(下)',
                   children: [
-                    {
-                      type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.bottom.marker.style.r',
-                    },
                     {
                       type: 'input-number',
                       displayName: 'marker 默认半径大小',
@@ -854,12 +842,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     {
                       type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.left.marker.style.r',
-                    },
-                    {
-                      type: 'input-number',
                       displayName: '图例项之间的水平间距',
                       initialValue: 8,
                       attributeId: 'components.legend.left.marker.spacing',
@@ -922,12 +904,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   type: 'group',
                   displayName: '图例(右)',
                   children: [
-                    {
-                      type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.right.marker.style.r',
-                    },
                     {
                       type: 'input-number',
                       displayName: 'marker 默认半径大小',
