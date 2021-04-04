@@ -15,7 +15,7 @@ export const Input: React.FC<AttributeTreeProps> = props => {
       <AttrLabel config={config} />
       <AntdInput
         value={value}
-        onChange={e => onChange({ [config.attributeId]: e.target.value})}
+        onChange={e => onChange({ [config.attributeId]: e.target.value })}
         style={{ width: 78 }}
         size="small"
       />

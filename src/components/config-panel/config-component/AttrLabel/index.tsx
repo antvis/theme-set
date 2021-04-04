@@ -4,7 +4,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { AttributeTreeProps } from '../../types';
 import styles from './index.module.less';
 
-export const AttrLabel = (props: AttributeTreeProps) => {
+export const AttrLabel = (props: Pick<AttributeTreeProps, 'config'>) => {
   const { displayName, info } = props.config;
 
   return displayName ? (
