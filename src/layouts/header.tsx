@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch } from 'antd';
+import { Popover, Switch } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 type Props = {
   siteTitle: string;
@@ -15,12 +16,19 @@ const Header: React.FC<Props> = ({ siteTitle, themeSwitcher }) => {
     <header className="site-header">
       <div className="site-title">
         <h1 style={{ margin: 0 }}>{siteTitle}</h1>
-        {themeSwitcher !== false && <Switch
-          className="theme-switcher"
-          unCheckedChildren="日间"
-          checkedChildren="夜间"
-          onChange={changeTheme}
-        />}
+        <div>
+          {themeSwitcher !== false && (
+            <Switch
+              className="theme-switcher"
+              unCheckedChildren="日间"
+              checkedChildren="夜间"
+              onChange={changeTheme}
+            />
+          )}
+          <Popover content="Ideas 或 Q & A 前往 [Discussions](https://github.com/visiky/g2plot-theme-builder/discussions)" placement="bottomRight">
+            <QuestionCircleOutlined style={{ marginLeft: '4px' }} />
+          </Popover>
+        </div>
       </div>
     </header>
   );
