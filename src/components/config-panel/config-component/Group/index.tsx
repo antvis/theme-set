@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AttributeTreeProps } from '../../types';
+import { AttrLabel } from '../AttrLabel';
 import styles from './index.module.less';
 
 type GroupConfig = {
@@ -11,9 +12,7 @@ export class Group extends PureComponent<AttributeTreeProps<GroupConfig>> {
     const { config, children } = this.props;
     return (
       <div className={`${styles.group} ${styles[config.displayType] || ''}`}>
-        {config.displayName && (
-          <div className={styles.title}>{config.displayName}</div>
-        )}
+        <AttrLabel config={config} />
         <div className={styles.content}>{children}</div>
       </div>
     );

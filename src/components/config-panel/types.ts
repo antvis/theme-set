@@ -16,8 +16,12 @@ export type AttributeTreeProps<
 
 type AttributeComponentProps = {
   type?: string;
+  /** 属性组件 id */
   attributeId?: string;
+  /** 属性组件 展示名 */
   displayName?: string;
+  /** 属性组件 描述信息 */
+  info?: string;
   initialValue?: string | number | object;
   children?: AttributeComponentProps[];
 

@@ -97,6 +97,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                 {
                   type: 'color-picker',
                   displayName: '标签填充色',
+                  description:
+                    '1. 柱条形图内置了 "adjust-color" 的标签布局，故标签填充色设置对其无效',
                   attributeId: 'labels.style.fill',
                 },
                 {
