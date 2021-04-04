@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tooltip } from 'antd';
 import { GithubFilled } from '@ant-design/icons';
 
 type Props = {
@@ -19,17 +20,22 @@ const Footer: React.FC<Props> = props => {
           target="_blank"
           style={{ marginLeft: '4px' }}
         >
-          G2Plot
+          For G2Plot
         </a>
       </div>
-      <div className="actions" style={{ position: 'absolute', right: '24px' }}>
-        <a
-          href={props.githubUrl}
-          style={{ textDecoration: 'none' }}
-          target="_blank"
-        >
-          <GithubFilled className="github-icon action-link" />
-        </a>
+      <div
+        className="actio</div>ns"
+        style={{ position: 'absolute', right: '24px' }}
+      >
+        <Tooltip title="客人，来个 star 呗 😉" color="#873bf4" placement="topRight">
+          <a
+            href={props.githubUrl}
+            style={{ textDecoration: 'none' }}
+            target="_blank"
+          >
+            <GithubFilled className="github-icon action-link" />
+          </a>
+        </Tooltip>
       </div>
     </footer>
   );

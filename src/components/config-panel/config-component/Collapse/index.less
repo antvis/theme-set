@@ -1,0 +1,26 @@
+// 复写 antd
+.custom-collapse.ant-collapse {
+  > .custom-panel.ant-collapse-item {
+    overflow: hidden;
+    background: #f7f7f7;
+    border-radius: 0px;
+
+    &:not(.ant-collapse-item-active),
+    &.ant-collapse-item-active:last-child {
+      border: 0px;
+    }
+
+    > .ant-collapse-header {
+      line-height: 1;
+      border-bottom: 1px solid #dfdfdf;
+      padding-left: 24px;
+      background-color: rgba(0, 0, 0, 0.03);
+      font-size: 14px;
+
+      .ant-collapse-arrow {
+        top: 0px;
+        left: 8px;
+      }
+    }
+  }
+}

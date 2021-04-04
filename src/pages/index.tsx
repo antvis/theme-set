@@ -2,19 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Spin, Layout as AntdLayout } from 'antd';
 import * as _ from 'lodash';
 import Layout from '../layouts/layout';
-import CodeLoading from '../components/code-loading';
+import { CodeLoading } from '../components/common/CodeLoading';
 import { ConfigPanel } from '../components/config-panel';
 import { Canvas } from '../components/canvas';
 import { DARK_THEME, LIGHT_THEME } from '../theme/default';
+import { ConfigProps } from '../types';
 import './index.less';
 
 Spin.setDefaultIndicator(<CodeLoading />);
+
+const DEFAULT_CONFIG: Omit<ConfigProps, 'theme'> = {
+  seriesCount: 3,
+};
 
 const Page = () => {
   /** 加载状态 */
   const [loading, setLoading] = useState(true);
   /** 主题 */
   const [theme, setTheme] = useState(LIGHT_THEME);
+  /** 其他和主题无关的配置项 */
+  const [config, setConfig] = useState(DEFAULT_CONFIG);
 
   // 初始化加载 先 loading 一下
   useEffect(() => {
@@ -47,16 +54,16 @@ const Page = () => {
    * 处理配置变化, 如：seriesCount
    * @param args
    */
-  const onConfigChange = (...args) => {
-    console.log('config change', ...args);
+  const onConfigChange = (value: Partial<ConfigProps>) => {
+    setConfig(_.merge({}, config, value));
   };
 
   /**
    * 处理主题变化
-   * todo 类型定义
    * @param value
    */
   const onThemeChange = value => {
+    // todo 类型定义
     setTheme(_.merge({}, theme, value));
   };
 
@@ -65,12 +72,12 @@ const Page = () => {
       <Layout mainStyle={{ display: 'flex', width: '100%', margin: '0 auto' }}>
         <AntdLayout.Sider collapsed={false} theme="light" width={320}>
           <ConfigPanel
-            config={theme}
+            config={{ ...config, theme }}
             onChange={onConfigChange}
             onThemeChange={onThemeChange}
           />
         </AntdLayout.Sider>
-        <Canvas theme={theme} />
+        <Canvas theme={theme} {...config} />
       </Layout>
     </Spin>
   );

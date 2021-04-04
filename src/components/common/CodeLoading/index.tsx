@@ -1,11 +1,11 @@
 import React from 'react';
-import './code-loading.less';
+import styles from './index.module.less';
 
-const CodeLoading: React.FC = () => (
-  <div className="full">
-    <div className="code-loading">
+export const CodeLoading: React.FC = () => (
+  <div className={styles.full}>
+    <div className={styles.codeLoading}>
       <div>
-        <div className="loader">
+        <div className={styles.loader}>
           <svg viewBox="0 0 80 80">
             <defs>
               <linearGradient
@@ -25,22 +25,20 @@ const CodeLoading: React.FC = () => (
             <circle id="test" cx="40" cy="40" r="32" stroke="url(#gradient)" />
           </svg>
         </div>
-        <div className="loader triangle">
+        <div className={`${styles.loader} ${styles.triangle}`}>
           <svg viewBox="0 0 86 80">
             <polygon points="43 8 79 72 7 72" stroke="url(#gradient)" />
           </svg>
         </div>
-        <div className="loader">
+        <div className={styles.loader}>
           <svg viewBox="0 0 80 80">
             <rect x="8" y="8" width="64" height="64" stroke="url(#gradient)" />
           </svg>
         </div>
-        <div className="loading-text">
+        <div className={styles.loadingText}>
           <p>Loading...</p>
         </div>
       </div>
     </div>
   </div>
 );
-
-export default CodeLoading;

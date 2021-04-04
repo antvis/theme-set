@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import * as _ from 'lodash';
 import {
-  G2,
   Area,
   Bar,
   Column,
@@ -14,27 +13,47 @@ import {
   TreemapOptions,
   Treemap,
   PieOptions,
+  BarOptions,
+  ColumnOptions,
 } from '@antv/g2plot';
-import { UseG2Plot } from '../hooks/use-g2plot';
-import './canvas.less';
+import { UseG2Plot } from '../../hooks/use-g2plot';
+import { ConfigProps } from '../../types';
+import styles from './index.module.less';
 
-type Props = {
-  /** 分类数量，默认：3 */
-  seriesCount?: number;
-  /** 主题 */
-  theme: any;
-};
-
-const DEFAULT_OPTIONS: Partial<Props> = {
-  seriesCount: 3,
-};
-
-export const Canvas: React.FC<Props> = props => {
-  const { seriesCount = 3, theme } = _.merge({}, DEFAULT_OPTIONS, props);
+export const Canvas: React.FC<ConfigProps> = props => {
+  const { seriesCount = 3, theme } = props;
 
   /** 图表数据 */
   const data = useMemo(() => {
     const months = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun'];
+    const result = [];
+    months.forEach(month => {
+      for (let i = 0; i < seriesCount; i += 1) {
+        result.push({
+          month,
+          category: `分类 ${i + 1}`,
+          value: Math.floor(Math.random() * 920 + 40),
+        });
+      }
+    });
+    return result;
+  }, [seriesCount]);
+
+  const barData = useMemo(() => {
+    const months = [
+      'Jan',
+      'Feb',
+      'March',
+      'Apr',
+      'May',
+      'Jun',
+      'July',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
     const result = [];
     months.forEach(month => {
       for (let i = 0; i < seriesCount; i += 1) {
@@ -60,8 +79,39 @@ export const Canvas: React.FC<Props> = props => {
       },
       isStack: false,
       theme,
+      label: {},
     };
   }, [data, theme]);
+
+  /** 适用于：柱状图 */
+  const columnOptions = useMemo((): ColumnOptions => {
+    return {
+      data: barData,
+      xField: 'month',
+      yField: 'value',
+      seriesField: 'category',
+      meta: {
+        month: { type: 'cat' },
+      },
+      theme,
+      label: {},
+    };
+  }, [barData, theme]);
+
+  /** 适用于：条形图 */
+  const barOptions = useMemo((): BarOptions => {
+    return {
+      data: barData,
+      yField: 'month',
+      xField: 'value',
+      seriesField: 'category',
+      meta: {
+        month: { type: 'cat' },
+      },
+      theme,
+      label: {},
+    };
+  }, [barData, theme]);
 
   /** 饼图数据 */
   const pieData = useMemo(() => {
@@ -172,35 +222,37 @@ export const Canvas: React.FC<Props> = props => {
   }, [theme]);
 
   return (
-    <div className="canvas-container" style={containerStyle}>
+    <div className={styles.canvasContainer} style={containerStyle}>
       <UseG2Plot Ctor={Line} title="Line Chart" options={options1} />
       <UseG2Plot Ctor={Area} title="Area Chart" options={options1} />
       <UseG2Plot
         Ctor={Column}
         title="Stacked Column Chart"
         options={{
-          ...options1,
+          ...columnOptions,
           isStack: true,
+          slider: {},
         }}
       />
       <UseG2Plot
         Ctor={Column}
         title="Group Column Chart"
-        options={{ ...options1, isGroup: true }}
+        options={{
+          ...columnOptions,
+          isGroup: true,
+          scrollbar: { type: 'horizontal', categorySize: 100 },
+        }}
       />
-      <UseG2Plot
-        Ctor={Bar}
-        title="Bar Chart"
-        options={{ ...options1, xField: 'value', yField: 'month' }}
-      />
+      <UseG2Plot Ctor={Bar} title="Bar Chart" options={barOptions} />
       <UseG2Plot
         Ctor={Bar}
         title="Group Bar Chart"
         options={{
-          ...options1,
-          xField: 'value',
-          yField: 'month',
+          ...barOptions,
           isGroup: true,
+          scrollbar: {
+            type: 'vertical',
+          },
         }}
       />
       <UseG2Plot Ctor={Radar} title="Radar Chart" options={radarOptions} />
