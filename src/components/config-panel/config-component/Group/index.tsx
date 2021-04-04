@@ -12,7 +12,10 @@ export class Group extends PureComponent<AttributeTreeProps<GroupConfig>> {
     const { config, children } = this.props;
     return (
       <div className={`${styles.group} ${styles[config.displayType] || ''}`}>
-        <AttrLabel config={config} />
+        <AttrLabel
+          config={config}
+          style={{ color: 'rgba(0,0,0,0.85)', padding: '4px 0' }}
+        />
         <div className={styles.content}>{children}</div>
       </div>
     );

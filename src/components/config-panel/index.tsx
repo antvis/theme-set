@@ -95,28 +95,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   attributeId: 'background',
                 },
                 {
-                  type: 'color-picker',
-                  displayName: '标签填充色',
-                  description:
-                    '1. 柱条形图内置了 "adjust-color" 的标签布局，故标签填充色设置对其无效',
-                  attributeId: 'labels.style.fill',
-                },
-                {
-                  type: 'input-number',
-                  displayName: '标签字体大小',
-                  attributeId: 'labels.style.fontSize',
-                },
-                {
-                  type: 'input-number',
-                  displayName: '标签描边宽度',
-                  attributeId: 'labels.style.lineWidth',
-                },
-                {
-                  type: 'color-picker',
-                  displayName: '标签描边色',
-                  attributeId: 'labels.style.stroke',
-                },
-                {
                   type: 'custom-theme-color',
                   displayName: '主题色',
                   attributeId: 'theme-color',
@@ -139,6 +117,60 @@ export const ConfigPanel: React.FC<Props> = props => {
             //     },
             //   ],
             // },
+            {
+              type: 'collapse-panel',
+              displayName: '标签',
+              children: [
+                {
+                  type: 'color-picker',
+                  displayName: '标签字体颜色',
+                  info:
+                    '1. 柱条形图内置了 "adjust-color" 的标签布局，故标签填充色设置对其无效',
+                  attributeId: 'labels.style.fill',
+                },
+                {
+                  type: 'input-number',
+                  displayName: '标签字体大小',
+                  attributeId: 'labels.style.fontSize',
+                },
+                {
+                  type: 'color-picker',
+                  displayName: '标签字体描边色',
+                  attributeId: 'labels.style.stroke',
+                },
+                {
+                  type: 'input-number',
+                  displayName: '标签字体描边粗细',
+                  attributeId: 'labels.style.lineWidth',
+                },
+                {
+                  type: 'group',
+                  displayName: '饼图标签',
+                  children: [
+                    {
+                      type: 'input-number',
+                      displayName: '标签高度',
+                      attributeId: 'pieLabels.labelHeight',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '标签偏移量',
+                      attributeId: 'pieLabels.offset',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '标签牵引线颜色',
+                      attributeId: 'pieLabels.labelLine.style.stroke',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '标签牵引线粗细',
+                      attributeId: 'pieLabels.labelLine.style.lineWidth',
+                    },
+                  ],
+                },
+              ],
+            },
             {
               type: 'collapse-panel',
               displayName: '坐标轴',

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Popover } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { AttributeTreeProps } from '../../types';
 import styles from './index.module.less';
 
-export const AttrLabel = (props: Pick<AttributeTreeProps, 'config'>) => {
-  const { displayName, info } = props.config;
+export const AttrLabel = (
+  props: Pick<AttributeTreeProps, 'config'> & { style?: CSSProperties }
+) => {
+  const { config, style = {} } = props;
+  const { displayName, info } = config;
 
   return displayName ? (
-    <div className={styles.attrLabel}>
+    <div className={styles.attrLabel} style={style}>
       {displayName}
       {info && (
         <Popover
