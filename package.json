@@ -2,6 +2,13 @@
   "name": "g2plot-theme-builder",
   "version": "0.1.0",
   "author": "visiky <736929286@qq.com>",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "clean": "gatsby clean",
+    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@antv/g2plot": "^2.3.9",
@@ -26,16 +33,12 @@
     "g2plot",
     "theme"
   ],
-  "license": "MIT",
-  "scripts": {
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "clean": "gatsby clean",
-    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/visiky/g2plot-theme-builder.git"
-  }
+  },
+  "resolutions": {
+    "@babel/plugin-transform-spread": "7.12.1"
+  },
+  "license": "MIT"
 }
