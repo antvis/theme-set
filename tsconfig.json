@@ -5,7 +5,9 @@
       "dom",
       "es7"
     ],
-    "skipLibCheck": true
+    "jsx": "react",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": [
