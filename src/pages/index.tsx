@@ -25,7 +25,7 @@ const Page = () => {
 
   // 初始化加载 先 loading 一下
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 100);
   }, []);
 
   // 监听 黑暗主题切换
