@@ -2,6 +2,7 @@ import { Input as AntdInput } from 'antd';
 import React, { useEffect, useState } from 'react';
 import * as _ from 'lodash';
 import { AttributeTreeProps } from '../../types';
+import { AttrLabel } from '../AttrLabel';
 import styles from './index.module.less';
 
 const { TextArea } = AntdInput;
@@ -14,7 +15,6 @@ export const CustomStyle: React.FC<
   AttributeTreeProps<SelectConfig>
 > = props => {
   const { config, attributes, onChange } = props;
-  const { displayName } = config;
 
   const [value, setValue] = useState('');
 
@@ -35,7 +35,7 @@ export const CustomStyle: React.FC<
 
   return (
     <div className={styles.customStyle}>
-      {displayName && <div>{displayName}</div>}
+      <AttrLabel config={config} />
       <TextArea
         value={value}
         onPressEnter={onPressEnter}

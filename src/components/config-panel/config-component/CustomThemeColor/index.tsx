@@ -3,6 +3,7 @@ import { Dropdown } from 'antd';
 import { SketchPicker } from 'react-color';
 import * as _ from 'lodash';
 import { AttributeTreeProps } from '../../types';
+import { AttrLabel } from '../AttrLabel';
 import styles from './index.module.less';
 
 export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
@@ -38,7 +39,7 @@ export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
 
   return (
     <div className={styles.customThemeColor}>
-      <span>{config.displayName}</span>
+      <AttrLabel config={config} />
       <div className={styles.colorGroup}>
         {_.map(colors, (color, idx) => {
           return (

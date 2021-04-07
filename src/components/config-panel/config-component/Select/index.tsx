@@ -2,6 +2,7 @@ import { Select as AntdSelect } from 'antd';
 import React from 'react';
 import * as _ from 'lodash';
 import { AttributeTreeProps } from '../../types';
+import { AttrLabel } from '../AttrLabel';
 import styles from './index.module.less';
 
 const { Option } = AntdSelect;
@@ -12,13 +13,12 @@ type SelectConfig = {
 
 export const Select: React.FC<AttributeTreeProps<SelectConfig>> = props => {
   const { config, attributes, onChange } = props;
-  const { displayName } = config;
 
   const value = _.get(attributes, config.attributeId);
 
   return (
     <div className={styles.select}>
-      <span>{displayName}</span>
+      <AttrLabel config={config} />
       <AntdSelect
         value={value}
         onChange={v => onChange({ [config.attributeId]: v })}

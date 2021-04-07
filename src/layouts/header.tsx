@@ -26,7 +26,18 @@ const Header: React.FC<Props> = ({ siteTitle, themeSwitcher }) => {
             />
           )}
           <Popover
-            content={<div>Ideas 或 Q & A 前往 <a href="https://github.com/visiky/g2plot-theme-builder/discussions" target="_blank">Discussions</a></div>}
+            content={
+              <div>
+                Ideas 或 Q & A 前往
+                <a
+                  href="https://github.com/visiky/g2plot-theme-builder/discussions"
+                  target="_blank"
+                  style={{ marginLeft: '4px' }}
+                >
+                  Discussions
+                </a>
+              </div>
+            }
             placement="rightBottom"
             overlayStyle={{ maxWidth: '180px' }}
           >

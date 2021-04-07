@@ -79,6 +79,9 @@ export const Canvas: React.FC<ConfigProps> = props => {
       },
       isStack: false,
       theme,
+      tooltip: {
+        showMarkers: undefined,
+      },
       label: {},
     };
   }, [data, theme]);
@@ -109,6 +112,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
         month: { type: 'cat' },
       },
       theme,
+      isStack: true,
       label: {},
     };
   }, [barData, theme]);
@@ -167,6 +171,9 @@ export const Canvas: React.FC<ConfigProps> = props => {
       xField: 'name',
       yField: 'value',
       seriesField: 'category',
+      tooltip: {
+        showMarkers: undefined,
+      },
       theme,
     };
   }, [radarData, theme]);

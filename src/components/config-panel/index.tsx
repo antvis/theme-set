@@ -95,36 +95,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   attributeId: 'background',
                 },
                 {
-                  type: 'color-picker',
-                  displayName: '标签填充色',
-                  attributeId: 'labels.style.fill',
-                },
-                {
-                  type: 'input-number',
-                  displayName: '标签字体大小',
-                  attributeId: 'labels.style.fontSize',
-                },
-                {
-                  type: 'select',
-                  displayName: '标签字体粗细',
-                  options: [
-                    { value: 'normal', label: 'normal' },
-                    { value: 'bolder', label: 'bolder' },
-                    { value: 'lighter', label: 'lighter' },
-                  ],
-                  attributeId: 'labels.style.fontWeight',
-                },
-                {
-                  type: 'input-number',
-                  displayName: '标签描边宽度',
-                  attributeId: 'labels.style.lineWidth',
-                },
-                {
-                  type: 'color-picker',
-                  displayName: '标签描边色',
-                  attributeId: 'labels.style.stroke',
-                },
-                {
                   type: 'custom-theme-color',
                   displayName: '主题色',
                   attributeId: 'theme-color',
@@ -147,6 +117,60 @@ export const ConfigPanel: React.FC<Props> = props => {
             //     },
             //   ],
             // },
+            {
+              type: 'collapse-panel',
+              displayName: '标签',
+              children: [
+                {
+                  type: 'color-picker',
+                  displayName: '标签字体颜色',
+                  info:
+                    '1. 柱条形图内置了 "adjust-color" 的标签布局，故标签填充色设置对其无效',
+                  attributeId: 'labels.style.fill',
+                },
+                {
+                  type: 'input-number',
+                  displayName: '标签字体大小',
+                  attributeId: 'labels.style.fontSize',
+                },
+                {
+                  type: 'color-picker',
+                  displayName: '标签字体描边色',
+                  attributeId: 'labels.style.stroke',
+                },
+                {
+                  type: 'input-number',
+                  displayName: '标签字体描边粗细',
+                  attributeId: 'labels.style.lineWidth',
+                },
+                {
+                  type: 'group',
+                  displayName: '饼图标签',
+                  children: [
+                    {
+                      type: 'input-number',
+                      displayName: '标签高度',
+                      attributeId: 'pieLabels.labelHeight',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '标签偏移量',
+                      attributeId: 'pieLabels.offset',
+                    },
+                    {
+                      type: 'color-picker',
+                      displayName: '标签牵引线颜色',
+                      attributeId: 'pieLabels.labelLine.style.stroke',
+                    },
+                    {
+                      type: 'input-number',
+                      displayName: '标签牵引线粗细',
+                      attributeId: 'pieLabels.labelLine.style.lineWidth',
+                    },
+                  ],
+                },
+              ],
+            },
             {
               type: 'collapse-panel',
               displayName: '坐标轴',
@@ -871,12 +895,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     {
                       type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.top.marker.style.r',
-                    },
-                    {
-                      type: 'input-number',
                       displayName: '图例项之间的水平间距',
                       initialValue: 8,
                       attributeId: 'components.legend.top.marker.spacing',
@@ -949,12 +967,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   type: 'group',
                   displayName: '图例(下)',
                   children: [
-                    {
-                      type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.bottom.marker.style.r',
-                    },
                     {
                       type: 'input-number',
                       displayName: 'marker 默认半径大小',
@@ -1044,12 +1056,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     {
                       type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.left.marker.style.r',
-                    },
-                    {
-                      type: 'input-number',
                       displayName: '图例项之间的水平间距',
                       initialValue: 8,
                       attributeId: 'components.legend.left.marker.spacing',
@@ -1122,12 +1128,6 @@ export const ConfigPanel: React.FC<Props> = props => {
                   type: 'group',
                   displayName: '图例(右)',
                   children: [
-                    {
-                      type: 'input-number',
-                      displayName: 'marker 默认半径大小',
-                      initialValue: 4,
-                      attributeId: 'components.legend.right.marker.style.r',
-                    },
                     {
                       type: 'input-number',
                       displayName: 'marker 默认半径大小',
@@ -1331,8 +1331,7 @@ export const ConfigPanel: React.FC<Props> = props => {
                     // todo 增加 “辅助线虚线间隔”, lineDash
                     {
                       type: 'checkbox',
-                      displayName: '展示 marker',
-                      //  todo G2 配置 showMarkers 不生效
+                      displayName: 'showMarkers',
                       attributeId: 'components.tooltip.showMarkers',
                     },
                     {
