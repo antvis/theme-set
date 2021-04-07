@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Plot, Options, G2, TreemapOptions } from '@antv/g2plot';
+import { CopyOutlined } from '@ant-design/icons';
+import { copyToClipboard } from '../utils/copy-to-board';
 import './use-g2plot.less';
 
 type CommonOptions = Options | TreemapOptions;
@@ -53,9 +55,18 @@ export function UseG2Plot<O extends CommonOptions = CommonOptions>({
     }
   }, [options]);
 
+  const onCopy = () => {
+    if (plotRef.current) {
+      copyToClipboard(JSON.stringify(plotRef.current.options))
+    }
+  }
+
   return (
     <div className="plot-container" style={{ ...style, height: '300px' }}>
-      <div className="plot-title">{title}</div>
+      <div className="plot-title">
+        {title}
+        <CopyOutlined id='copy-icon' className='copy-icon' onClick={onCopy} />
+      </div>
       <div
         className={className}
         ref={container}

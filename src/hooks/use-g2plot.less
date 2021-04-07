@@ -2,4 +2,18 @@
   font-size: 18px;
   font-weight: bold;
   margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  
+
+  &:hover {
+    .copy-icon {
+      visibility: visible;
+    }
+  }
+
+  .copy-icon {
+    visibility: hidden;
+    cursor: pointer;
+  }
 }
