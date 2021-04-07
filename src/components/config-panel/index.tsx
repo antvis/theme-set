@@ -134,6 +134,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                   attributeId: 'labels.style.fontSize',
                 },
                 {
+                  type: 'select',
+                  displayName: '轴标题字体粗细',
+                  options: [
+                    { value: 'normal', label: 'normal' },
+                    { value: 'bolder', label: 'bolder' },
+                    { value: 'lighter', label: 'lighter' },
+                  ],
+                  attributeId: 'labels.style.fontWeight',
+                },
+                {
                   type: 'color-picker',
                   displayName: '标签字体描边色',
                   attributeId: 'labels.style.stroke',
