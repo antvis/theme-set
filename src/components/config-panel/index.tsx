@@ -105,6 +105,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                   attributeId: 'labels.style.fontSize',
                 },
                 {
+                  type: 'select',
+                  displayName: '标签字体粗细',
+                  options: [
+                    { value: 'normal', label: 'normal' },
+                    { value: 'bolder', label: 'bolder' },
+                    { value: 'lighter', label: 'lighter' },
+                  ],
+                  attributeId: 'labels.style.fontWeight',
+                },
+                {
                   type: 'input-number',
                   displayName: '标签描边宽度',
                   attributeId: 'labels.style.lineWidth',
@@ -157,6 +167,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                         'components.axis.bottom.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.bottom.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.bottom.label.style.fill',
@@ -166,6 +186,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '轴标签字体大小',
                       attributeId:
                         'components.axis.bottom.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.bottom.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -193,6 +223,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.bottom.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.bottom.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -269,6 +304,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.axis.left.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.left.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.left.label.style.fill',
@@ -277,6 +322,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       type: 'input-number',
                       displayName: '轴标签字体大小',
                       attributeId: 'components.axis.left.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.left.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -303,6 +358,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.left.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.left.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -343,6 +403,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.axis.top.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.top.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.top.label.style.fill',
@@ -351,6 +421,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       type: 'input-number',
                       displayName: '轴标签字体大小',
                       attributeId: 'components.axis.top.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.top.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -377,6 +457,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.top.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.top.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -417,6 +502,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.axis.right.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.right.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.right.label.style.fill',
@@ -425,6 +520,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       type: 'input-number',
                       displayName: '轴标签字体大小',
                       attributeId: 'components.axis.right.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.right.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -451,6 +556,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.right.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.right.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -493,6 +603,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                         'components.axis.circle.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.circle.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.circle.label.style.fill',
@@ -502,6 +622,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '轴标签字体大小',
                       attributeId:
                         'components.axis.circle.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.circle.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -518,8 +648,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                       type: 'select',
                       displayName: '网格线类型',
                       options: [
-                        { type: 'line', label: 'line' },
-                        { type: 'circle', label: 'circle' },
+                        { value: 'line', label: 'line' },
+                        { value: 'circle', label: 'circle' },
                       ],
                       attributeId: 'components.axis.circle.grid.line.type',
                     },
@@ -528,6 +658,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.circle.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.circle.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -570,6 +705,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                         'components.axis.radius.title.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '轴标题字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.radius.title.style.fontWeight',
+                    },
+                    {
                       type: 'color-picker',
                       displayName: '轴标签颜色',
                       attributeId: 'components.axis.radius.label.style.fill',
@@ -579,6 +724,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '轴标签字体大小',
                       attributeId:
                         'components.axis.radius.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '轴标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.axis.radius.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -596,6 +751,11 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '网格线宽度',
                       attributeId:
                         'components.axis.radius.grid.line.style.lineWidth',
+                    },
+                    {
+                      type: 'line-dash',
+                      displayName: '网格线虚线配置',
+                      AttributeId: 'components.axis.radius.grid.line.style.lineDash'
                     },
                     {
                       type: 'color-picker',
@@ -654,6 +814,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '标签字体大小',
                       attributeId:
                         'components.legend.common.pageNavigator.text.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '标签字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.common.pageNavigator.text.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -723,6 +893,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       initialValue: 12,
                       attributeId:
                         'components.legend.top.itemName.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '图例项文本字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.top.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -802,6 +982,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                         'components.legend.bottom.itemName.style.fontSize',
                     },
                     {
+                      type: 'select',
+                      displayName: '图例项文本字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.bottom.itemName.style.fontWeight',
+                    },
+                    {
                       type: 'input-number',
                       displayName: '图例项文本行高',
                       initialValue: 12,
@@ -876,6 +1066,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       initialValue: 12,
                       attributeId:
                         'components.legend.left.itemName.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '图例项文本字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.left.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -953,6 +1153,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       initialValue: 12,
                       attributeId:
                         'components.legend.right.itemName.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '图例项文本字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.right.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1044,6 +1254,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       initialValue: 12,
                       attributeId:
                         'components.legend.continuous.label.style.fontSize',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '连续图例标签字体大小',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.legend.continuous.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1191,6 +1411,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       displayName: '文本颜色',
                       attributeId:
                         'components.tooltip.domStyles["g2-tooltip"]color',
+                    },
+                    {
+                      type: 'select',
+                      displayName: '文本字体粗细',
+                      options: [
+                        { value: 'normal', label: 'normal' },
+                        { value: 'bolder', label: 'bolder' },
+                        { value: 'lighter', label: 'lighter' },
+                      ],
+                      attributeId: 'components.tooltip.domStyles["g2-tooltip"].fontWeight',
                     },
                   ],
                 },
