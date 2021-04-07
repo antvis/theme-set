@@ -4,14 +4,16 @@
     background: #efefef;
     border-radius: 2px;
     padding: 4px 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     .content-item {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
 
-      &:not(:first-child) {
-        margin-top: 4px;
+      .content-item-label {
+        margin-right: 4px;
       }
     }
   }

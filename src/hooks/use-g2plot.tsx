@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Plot, Options, G2, TreemapOptions } from '@antv/g2plot';
 import { CopyOutlined } from '@ant-design/icons';
+import { Popover } from 'antd';
 import { copyToClipboard } from '../utils/copy-to-board';
 import './use-g2plot.less';
 
@@ -57,15 +58,17 @@ export function UseG2Plot<O extends CommonOptions = CommonOptions>({
 
   const onCopy = () => {
     if (plotRef.current) {
-      copyToClipboard(JSON.stringify(plotRef.current.options))
+      copyToClipboard(JSON.stringify(plotRef.current.options));
     }
-  }
+  };
 
   return (
     <div className="plot-container" style={{ ...style, height: '300px' }}>
       <div className="plot-title">
         {title}
-        <CopyOutlined id='copy-icon' className='copy-icon' onClick={onCopy} />
+        <Popover content="复制当前图表配置项" overlayInnerStyle={{ color: 'rgba(0,0,0,0.65)', fontSize: '12px' }}>
+          <CopyOutlined id="copy-icon" className="copy-icon" onClick={onCopy} />
+        </Popover>
       </div>
       <div
         className={className}
