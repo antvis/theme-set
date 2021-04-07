@@ -8,6 +8,7 @@ import { InputNumber } from './InputNumber';
 import { Select } from './Select';
 import { Group } from './Group';
 import { CustomStyle } from './CustomStyle';
+import { LineDash } from './LineDash';
 
 export default {
   Collapse,
@@ -20,4 +21,5 @@ export default {
   Input,
   InputNumber,
   Select,
+  LineDash,
 };
