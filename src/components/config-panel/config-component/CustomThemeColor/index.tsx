@@ -1,9 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Dropdown } from 'antd';
-import { SketchPicker } from 'react-color';
 import * as _ from 'lodash';
 import { AttributeTreeProps } from '../../types';
 import { AttrLabel } from '../AttrLabel';
+import { CommonReactColor } from '../CommonReactColor';
 import styles from './index.module.less';
 
 export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
@@ -44,20 +43,7 @@ export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
         {_.map(colors, (color, idx) => {
           return (
             <div className={styles.colorItem} key={idx.toString()}>
-              <Dropdown
-                overlay={
-                  <SketchPicker
-                    color={color}
-                    onChangeComplete={({ hex }) => onColorChange(idx, hex)}
-                  />
-                }
-                trigger={['hover', 'click']}
-              >
-                <div
-                  style={{ backgroundColor: color }}
-                  className={styles.colorBlock}
-                />
-              </Dropdown>
+              <CommonReactColor color={color} onChange={color => onColorChange(idx, color)} />
             </div>
           );
         })}
