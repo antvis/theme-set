@@ -3,6 +3,22 @@ import React, { useMemo, useCallback } from 'react';
 import { SketchPicker } from 'react-color';
 import styles from './index.module.less';
 
+const DEFAULT_COLORS = [
+  '#F4664A',
+  '#E86452',
+  '#FF9845',
+  '#FAAD14',
+  '#F6BD16',
+  '#5AD8A6',
+  '#30BF78',
+  '#6DC8EC',
+  '#5B8FF9',
+  '#1E9493',
+  '#945FB9',
+  '#FF99C3',
+  '#5D7092',
+]
+
 type CommonReactColorProps = {
   color: string;
   onChange: (value) => void;
@@ -24,6 +40,7 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = (props) => {
         color={color}
         className={styles.colorPickerOverlay}
         onChangeComplete={onColorChange}
+        presetColors={DEFAULT_COLORS}
       />
     );
   }, [onColorChange]);
