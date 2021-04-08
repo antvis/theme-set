@@ -208,7 +208,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.bottom.title.style.fontWeight',
+                      attributeId:
+                        'components.axis.bottom.title.style.fontWeight',
                     },
                     {
                       type: 'color-picker',
@@ -229,7 +230,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.bottom.label.style.fontWeight',
+                      attributeId:
+                        'components.axis.bottom.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -261,7 +263,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.bottom.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.bottom.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -345,7 +348,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.left.title.style.fontWeight',
+                      attributeId:
+                        'components.axis.left.title.style.fontWeight',
                     },
                     {
                       type: 'color-picker',
@@ -365,7 +369,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.left.label.style.fontWeight',
+                      attributeId:
+                        'components.axis.left.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -396,7 +401,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.left.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.left.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -495,7 +501,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.top.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.top.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -543,7 +550,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.right.title.style.fontWeight',
+                      attributeId:
+                        'components.axis.right.title.style.fontWeight',
                     },
                     {
                       type: 'color-picker',
@@ -563,7 +571,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.right.label.style.fontWeight',
+                      attributeId:
+                        'components.axis.right.label.style.fontWeight',
                     },
                     {
                       type: 'checkbox',
@@ -594,7 +603,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.right.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.right.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -644,7 +654,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.circle.title.style.fontWeight',
+                      attributeId:
+                        'components.axis.circle.title.style.fontWeight',
                     },
                     {
                       type: 'color-picker',
@@ -665,7 +676,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.circle.label.style.fontWeight',
+                      attributeId:
+                        'components.axis.circle.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -696,7 +708,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.circle.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.circle.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -746,7 +759,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.radius.title.style.fontWeight',
+                      attributeId:
+                        'components.axis.radius.title.style.fontWeight',
                     },
                     {
                       type: 'color-picker',
@@ -767,7 +781,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.axis.radius.label.style.fontWeight',
+                      attributeId:
+                        'components.axis.radius.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -789,7 +804,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                     {
                       type: 'line-dash',
                       displayName: '网格线虚线配置',
-                      AttributeId: 'components.axis.radius.grid.line.style.lineDash'
+                      AttributeId:
+                        'components.axis.radius.grid.line.style.lineDash',
                     },
                     {
                       type: 'color-picker',
@@ -857,7 +873,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.common.pageNavigator.text.style.fontWeight',
+                      attributeId:
+                        'components.legend.common.pageNavigator.text.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -930,7 +947,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.top.itemName.style.fontWeight',
+                      attributeId:
+                        'components.legend.top.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1011,7 +1029,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.bottom.itemName.style.fontWeight',
+                      attributeId:
+                        'components.legend.bottom.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1091,7 +1110,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.left.itemName.style.fontWeight',
+                      attributeId:
+                        'components.legend.left.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1172,7 +1192,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.right.itemName.style.fontWeight',
+                      attributeId:
+                        'components.legend.right.itemName.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1273,7 +1294,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.legend.continuous.label.style.fontWeight',
+                      attributeId:
+                        'components.legend.continuous.label.style.fontWeight',
                     },
                     {
                       type: 'input-number',
@@ -1429,7 +1451,8 @@ export const ConfigPanel: React.FC<Props> = props => {
                         { value: 'bolder', label: 'bolder' },
                         { value: 'lighter', label: 'lighter' },
                       ],
-                      attributeId: 'components.tooltip.domStyles["g2-tooltip"].fontWeight',
+                      attributeId:
+                        'components.tooltip.domStyles["g2-tooltip"].fontWeight',
                     },
                   ],
                 },

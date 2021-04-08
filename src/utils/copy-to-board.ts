@@ -1,6 +1,6 @@
 // copy text to clipboard
 
-import { message } from "antd";
+import { message } from 'antd';
 
 // ref: https://stackoverflow.com/a/46118025
 export function copyToClipboard(text: string) {
