@@ -24,15 +24,6 @@ type FontSettingProps = {
  * 组合套件: 字体颜色 + 字体大小 + 字体 + (字重 + 对齐方式)
  */
 export class FontSetting extends BaseComponent<FontSettingProps> {
-  /**
-   * @override
-   */
-  getWrapperStyle() {
-    return {
-      display: 'block',
-    };
-  }
-
   renderContent() {
     const { onChange, attributes, config } = this.props;
     const { attributeIdMap = {} } = config;

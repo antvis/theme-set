@@ -33,8 +33,7 @@ export class LineSetting extends BaseComponent<LineSettingProps> {
     const { lineDash: lineDashId, length: lengthId } = config.attributeIdMap;
     if (lineDashId || lengthId) {
       return {
-        display: 'block',
-        paddingBottom: lineDashId ? '10px' : 0,
+        paddingBottom: lineDashId ? '16px' : 0,
       };
     }
     return {};
@@ -69,6 +68,7 @@ export class LineSetting extends BaseComponent<LineSettingProps> {
             attributes={attributes}
             config={{ attributeId: lineWidthId }}
             onChange={onChange}
+            width={lineDashId ? 56 : undefined}
           />
         )}
         {lengthId && (

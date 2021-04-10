@@ -71,7 +71,7 @@ const Page = () => {
     <Spin spinning={loading}>
       <Layout mainStyle={{ display: 'flex', width: '100%', margin: '0 auto' }}>
         <Canvas theme={theme} {...config} />
-        <AntdLayout.Sider collapsed={false} theme="light" width={320}>
+        <AntdLayout.Sider collapsed={false} theme="light" width={420}>
           <ConfigPanel
             config={{ ...config, theme }}
             onChange={onConfigChange}
