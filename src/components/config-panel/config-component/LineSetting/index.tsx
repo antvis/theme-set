@@ -34,7 +34,7 @@ export class LineSetting extends BaseComponent<LineSettingProps> {
     if (lineDashId || lengthId) {
       return {
         display: 'block',
-        paddingBottom: lineDashId ? '18px' : 0,
+        paddingBottom: lineDashId ? '10px' : 0,
       };
     }
     return {};

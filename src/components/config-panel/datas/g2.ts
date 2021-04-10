@@ -14,6 +14,41 @@ export default {
       operator: '!=' as const,
       action: 'hidden' as const,
     },
+    {
+      fromAttributeId: 'right-axis-subTick-line',
+      toAttributeId: 'right-axis-subTick-line-setting',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
+    {
+      fromAttributeId: 'left-axis-subTick-line',
+      toAttributeId: 'left-axis-subTick-line-setting',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
+    {
+      fromAttributeId: 'top-axis-subTick-line',
+      toAttributeId: 'top-axis-subTick-line-setting',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
+    {
+      fromAttributeId: 'circle-axis-subTick-line',
+      toAttributeId: 'circle-axis-subTick-line-setting',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
+    {
+      fromAttributeId: 'radius-axis-subTick-line',
+      toAttributeId: 'radius-axis-subTick-line-setting',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
   ],
   config: {
     type: 'collapse',
@@ -156,7 +191,7 @@ export default {
               },
               {
                 type: 'line-setting',
-                displayName: '坐标网格线',
+                displayName: '网格线',
                 attributeId: 'bottom-axis-grid-line-style',
                 attributeIdMap: {
                   lineColor: 'components.axis.bottom.grid.line.style.stroke',
@@ -165,13 +200,8 @@ export default {
                 },
               },
               {
-                type: 'checkbox',
-                displayName: '网格线对齐刻度线',
-                attributeId: 'components.axis.bottom.grid.alignTick',
-              },
-              {
                 type: 'line-setting',
-                displayName: '坐标轴刻度线',
+                displayName: '刻度线',
                 attributeId: 'bottom-axis-grid-line-style',
                 attributeIdMap: {
                   lineColor: 'components.axis.bottom.tickLine.style.stroke',
@@ -179,6 +209,11 @@ export default {
                   // 刻度线长度
                   length: 'components.axis.bottom.tickLine.style.length',
                 },
+              },
+              {
+                type: 'checkbox',
+                displayName: '网格线对齐刻度线',
+                attributeId: 'components.axis.bottom.grid.alignTick',
               },
               {
                 type: 'checkbox',
@@ -246,19 +281,25 @@ export default {
                 attributeId: 'components.axis.left.line.style.stroke',
               },
               {
-                type: 'input-number',
-                displayName: '网格线宽度',
-                attributeId: 'components.axis.left.grid.line.style.lineWidth',
+                type: 'line-setting',
+                displayName: '网格线',
+                attributeId: 'left-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.left.grid.line.style.stroke',
+                  lineWidth: 'components.axis.left.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.left.grid.line.style.lineDash',
+                },
               },
               {
-                type: 'line-dash',
-                displayName: '网格线虚线配置',
-                AttributeId: 'components.axis.left.grid.line.style.lineDash',
-              },
-              {
-                type: 'color-picker',
-                displayName: '网格线颜色',
-                attributeId: 'components.axis.left.grid.line.style.stroke',
+                type: 'line-setting',
+                displayName: '刻度线',
+                attributeId: 'left-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.left.tickLine.style.stroke',
+                  lineWidth: 'components.axis.left.tickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.left.tickLine.style.length',
+                },
               },
               {
                 type: 'checkbox',
@@ -266,14 +307,20 @@ export default {
                 attributeId: 'components.axis.left.grid.alignTick',
               },
               {
-                type: 'input-number',
-                displayName: '刻度线宽度',
-                attributeId: 'components.axis.left.tickLine.style.lineWidth',
+                type: 'checkbox',
+                displayName: '开启子刻度线',
+                attributeId: 'left-axis-subTick-line',
               },
               {
-                type: 'color-picker',
-                displayName: '刻度线颜色',
-                attributeId: 'components.axis.left.tickLine.style.stroke',
+                type: 'line-setting',
+                // displayName: '坐标轴子刻度线',
+                attributeId: 'left-axis-subTick-line-setting',
+                attributeIdMap: {
+                  lineColor: 'components.axis.left.subTickLine.style.stroke',
+                  lineWidth: 'components.axis.left.subTickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.left.subTickLine.style.length',
+                },
               },
             ],
           },
@@ -324,35 +371,46 @@ export default {
                 attributeId: 'components.axis.top.line.style.stroke',
               },
               {
-                type: 'input-number',
-                displayName: '网格线宽度',
-                attributeId: 'components.axis.top.grid.line.style.lineWidth',
+                type: 'line-setting',
+                displayName: '网格线',
+                attributeId: 'top-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.top.grid.line.style.stroke',
+                  lineWidth: 'components.axis.top.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.top.grid.line.style.lineDash',
+                },
               },
               {
-                type: 'line-dash',
-                displayName: '网格线虚线配置',
-                AttributeId: 'components.axis.top.grid.line.style.lineDash',
+                type: 'line-setting',
+                displayName: '刻度线',
+                attributeId: 'top-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.top.tickLine.style.stroke',
+                  lineWidth: 'components.axis.top.tickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.top.tickLine.style.length',
+                },
               },
-              {
-                type: 'color-picker',
-                displayName: '网格线颜色',
-                attributeId: 'components.axis.top.grid.line.style.stroke',
-              },
-              // todo 新增 grid.line.lineDash
               {
                 type: 'checkbox',
                 displayName: '网格线对齐刻度线',
                 attributeId: 'components.axis.top.grid.alignTick',
               },
               {
-                type: 'input-number',
-                displayName: '刻度线宽度',
-                attributeId: 'components.axis.top.tickLine.style.lineWidth',
+                type: 'checkbox',
+                displayName: '开启子刻度线',
+                attributeId: 'top-axis-subTick-line',
               },
               {
-                type: 'color-picker',
-                displayName: '刻度线颜色',
-                attributeId: 'components.axis.top.tickLine.style.stroke',
+                type: 'line-setting',
+                // displayName: '坐标轴子刻度线',
+                attributeId: 'top-axis-subTick-line-setting',
+                attributeIdMap: {
+                  lineColor: 'components.axis.top.subTickLine.style.stroke',
+                  lineWidth: 'components.axis.top.subTickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.top.subTickLine.style.length',
+                },
               },
             ],
           },
@@ -403,19 +461,25 @@ export default {
                 attributeId: 'components.axis.right.line.style.stroke',
               },
               {
-                type: 'input-number',
-                displayName: '网格线宽度',
-                attributeId: 'components.axis.right.grid.line.style.lineWidth',
+                type: 'line-setting',
+                displayName: '网格线',
+                attributeId: 'right-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.right.grid.line.style.stroke',
+                  lineWidth: 'components.axis.right.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.right.grid.line.style.lineDash',
+                },
               },
               {
-                type: 'line-dash',
-                displayName: '网格线虚线配置',
-                AttributeId: 'components.axis.right.grid.line.style.lineDash',
-              },
-              {
-                type: 'color-picker',
-                displayName: '网格线颜色',
-                attributeId: 'components.axis.right.grid.line.style.stroke',
+                type: 'line-setting',
+                displayName: '刻度线',
+                attributeId: 'right-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.right.tickLine.style.stroke',
+                  lineWidth: 'components.axis.right.tickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.right.tickLine.style.length',
+                },
               },
               {
                 type: 'checkbox',
@@ -423,14 +487,21 @@ export default {
                 attributeId: 'components.axis.right.grid.alignTick',
               },
               {
-                type: 'input-number',
-                displayName: '刻度线宽度',
-                attributeId: 'components.axis.right.tickLine.style.lineWidth',
+                type: 'checkbox',
+                displayName: '开启子刻度线',
+                attributeId: 'bottom-axis-subTick-line',
               },
               {
-                type: 'color-picker',
-                displayName: '刻度线颜色',
-                attributeId: 'components.axis.right.tickLine.style.stroke',
+                type: 'line-setting',
+                // displayName: '坐标轴子刻度线',
+                attributeId: 'right-axis-subTick-line-setting',
+                attributeIdMap: {
+                  lineColor: 'components.axis.right.subTickLine.style.stroke',
+                  lineWidth:
+                    'components.axis.right.subTickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.right.subTickLine.style.length',
+                },
               },
             ],
           },
@@ -480,19 +551,25 @@ export default {
                 attributeId: 'components.axis.circle.grid.line.type',
               },
               {
-                type: 'input-number',
-                displayName: '网格线宽度',
-                attributeId: 'components.axis.circle.grid.line.style.lineWidth',
+                type: 'line-setting',
+                displayName: '网格线',
+                attributeId: 'circle-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.circle.grid.line.style.stroke',
+                  lineWidth: 'components.axis.circle.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.circle.grid.line.style.lineDash',
+                },
               },
               {
-                type: 'line-dash',
-                displayName: '网格线虚线配置',
-                AttributeId: 'components.axis.circle.grid.line.style.lineDash',
-              },
-              {
-                type: 'color-picker',
-                displayName: '网格线颜色',
-                attributeId: 'components.axis.circle.grid.line.style.stroke',
+                type: 'line-setting',
+                displayName: '刻度线',
+                attributeId: 'circle-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.circle.tickLine.style.stroke',
+                  lineWidth: 'components.axis.circle.tickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.circle.tickLine.style.length',
+                },
               },
               {
                 type: 'checkbox',
@@ -500,14 +577,21 @@ export default {
                 attributeId: 'components.axis.circle.grid.alignTick',
               },
               {
-                type: 'input-number',
-                displayName: '刻度线宽度',
-                attributeId: 'components.axis.circle.tickLine.style.lineWidth',
+                type: 'checkbox',
+                displayName: '开启子刻度线',
+                attributeId: 'circle-axis-subTick-line',
               },
               {
-                type: 'color-picker',
-                displayName: '刻度线颜色',
-                attributeId: 'components.axis.circle.tickLine.style.stroke',
+                type: 'line-setting',
+                // displayName: '坐标轴子刻度线',
+                attributeId: 'circle-axis-subTick-line-setting',
+                attributeIdMap: {
+                  lineColor: 'components.axis.circle.subTickLine.style.stroke',
+                  lineWidth:
+                    'components.axis.circle.subTickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.circle.subTickLine.style.length',
+                },
               },
             ],
           },
@@ -548,19 +632,25 @@ export default {
                 attributeId: 'components.axis.radius.line.style.stroke',
               },
               {
-                type: 'input-number',
-                displayName: '网格线宽度',
-                attributeId: 'components.axis.radius.grid.line.style.lineWidth',
+                type: 'line-setting',
+                displayName: '网格线',
+                attributeId: 'cirradiuscle-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.radius.grid.line.style.stroke',
+                  lineWidth: 'components.axis.radius.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.radius.grid.line.style.lineDash',
+                },
               },
               {
-                type: 'line-dash',
-                displayName: '网格线虚线配置',
-                AttributeId: 'components.axis.radius.grid.line.style.lineDash',
-              },
-              {
-                type: 'color-picker',
-                displayName: '网格线颜色',
-                attributeId: 'components.axis.radius.grid.line.style.stroke',
+                type: 'line-setting',
+                displayName: '刻度线',
+                attributeId: 'radius-axis-grid-line-style',
+                attributeIdMap: {
+                  lineColor: 'components.axis.radius.tickLine.style.stroke',
+                  lineWidth: 'components.axis.radius.tickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.radius.tickLine.style.length',
+                },
               },
               {
                 type: 'checkbox',
@@ -568,14 +658,21 @@ export default {
                 attributeId: 'components.axis.radius.grid.alignTick',
               },
               {
-                type: 'input-number',
-                displayName: '刻度线宽度',
-                attributeId: 'components.axis.radius.tickLine.style.lineWidth',
+                type: 'checkbox',
+                displayName: '开启子刻度线',
+                attributeId: 'radius-axis-subTick-line',
               },
               {
-                type: 'color-picker',
-                displayName: '刻度线颜色',
-                attributeId: 'components.axis.radius.tickLine.style.stroke',
+                type: 'line-setting',
+                // displayName: '坐标轴子刻度线',
+                attributeId: 'radius-axis-subTick-line-setting',
+                attributeIdMap: {
+                  lineColor: 'components.axis.radius.subTickLine.style.stroke',
+                  lineWidth:
+                    'components.axis.radius.subTickLine.style.lineWidth',
+                  // 刻度线长度
+                  length: 'components.axis.radius.subTickLine.style.length',
+                },
               },
             ],
           },
