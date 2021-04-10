@@ -9,6 +9,7 @@ import { Select } from './Select';
 import { Group } from './Group';
 import { CustomStyle } from './CustomStyle';
 import { LineDash } from './LineDash';
+import { FontSetting } from './FontSetting';
 
 export default {
   Collapse,
@@ -22,4 +23,5 @@ export default {
   InputNumber,
   Select,
   LineDash,
+  FontSetting,
 };

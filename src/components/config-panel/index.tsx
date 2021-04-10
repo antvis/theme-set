@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, InputNumber, Radio } from 'antd';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { copyToClipboard } from '../../utils/copy-to-board';
 import Palette from '../../theme/palette.json';
 import { ConfigProps } from '../../types';
@@ -122,26 +122,17 @@ export const ConfigPanel: React.FC<Props> = props => {
               displayName: '标签',
               children: [
                 {
-                  type: 'color-picker',
-                  displayName: '标签字体颜色',
+                  type: 'font-setting',
+                  displayName: '标签字体',
                   info:
                     '1. 柱条形图内置了 "adjust-color" 的标签布局，故标签填充色设置对其无效',
-                  attributeId: 'labels.style.fill',
-                },
-                {
-                  type: 'input-number',
-                  displayName: '标签字体大小',
-                  attributeId: 'labels.style.fontSize',
-                },
-                {
-                  type: 'select',
-                  displayName: '轴标题字体粗细',
-                  options: [
-                    { value: 'normal', label: 'normal' },
-                    { value: 'bolder', label: 'bolder' },
-                    { value: 'lighter', label: 'lighter' },
-                  ],
-                  attributeId: 'labels.style.fontWeight',
+                  attributeId: 'labels.style',
+                  attributeIdMap: {
+                    fontSize: 'labels.style.fontSize',
+                    fontFamily: 'labels.style.fontFamily',
+                    fontWeight: 'labels.style.fontWeight',
+                    fontColor: 'labels.style.fill',
+                  },
                 },
                 {
                   type: 'color-picker',
@@ -190,48 +181,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(下)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.bottom.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.bottom.title.style.fontSize',
+                        fontColor: 'components.axis.bottom.title.style.fill',
+                        fontFamily:
+                          'components.axis.bottom.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.bottom.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId:
-                        'components.axis.bottom.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.bottom.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.bottom.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId:
-                        'components.axis.bottom.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.bottom.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.bottom.label.style.fill',
+                        fontSize: 'components.axis.bottom.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.bottom.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.bottom.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'checkbox',
@@ -331,46 +304,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(左)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.left.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.left.title.style.fontSize',
+                        fontColor: 'components.axis.left.title.style.fill',
+                        fontFamily:
+                          'components.axis.left.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.left.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId: 'components.axis.left.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.left.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.left.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId: 'components.axis.left.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.left.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'left-axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.left.label.style.fill',
+                        fontSize: 'components.axis.left.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.left.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.left.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'checkbox',
@@ -433,44 +390,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(上)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.top.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.top.title.style.fontSize',
+                        fontColor: 'components.axis.top.title.style.fill',
+                        fontFamily:
+                          'components.axis.top.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.top.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId: 'components.axis.top.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId: 'components.axis.top.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.top.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId: 'components.axis.top.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId: 'components.axis.top.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'top-axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.top.label.style.fill',
+                        fontSize: 'components.axis.top.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.top.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.top.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'checkbox',
@@ -533,46 +476,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(右)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.right.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.right.title.style.fontSize',
+                        fontColor: 'components.axis.right.title.style.fill',
+                        fontFamily:
+                          'components.axis.right.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.right.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId: 'components.axis.right.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.right.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.right.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId: 'components.axis.right.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.right.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'right-axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.right.label.style.fill',
+                        fontSize: 'components.axis.right.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.right.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.right.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'checkbox',
@@ -636,48 +563,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(circle - 适用于雷达图)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.circle.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.circle.title.style.fontSize',
+                        fontColor: 'components.axis.circle.title.style.fill',
+                        fontFamily:
+                          'components.axis.circle.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.circle.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId:
-                        'components.axis.circle.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.circle.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.circle.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId:
-                        'components.axis.circle.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.circle.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'circle-axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.circle.label.style.fill',
+                        fontSize: 'components.axis.circle.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.circle.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.circle.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -741,48 +650,30 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '坐标轴(radius 径向轴 - 适用于雷达图)',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '轴标题颜色',
-                      attributeId: 'components.axis.radius.title.style.fill',
+                      type: 'font-setting',
+                      displayName: '轴标题字体',
+                      attributeId: 'axis.title',
+                      attributeIdMap: {
+                        fontSize: 'components.axis.radius.title.style.fontSize',
+                        fontColor: 'components.axis.radius.title.style.fill',
+                        fontFamily:
+                          'components.axis.radius.title.style.fontFamily',
+                        fontWeight:
+                          'components.axis.radius.title.style.fontWeight',
+                      },
                     },
                     {
-                      type: 'input-number',
-                      displayName: '轴标题字体大小',
-                      attributeId:
-                        'components.axis.radius.title.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标题字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.radius.title.style.fontWeight',
-                    },
-                    {
-                      type: 'color-picker',
-                      displayName: '轴标签颜色',
-                      attributeId: 'components.axis.radius.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '轴标签字体大小',
-                      attributeId:
-                        'components.axis.radius.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '轴标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.axis.radius.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '轴标签字体',
+                      attributeId: 'radius-axis-label-style',
+                      attributeIdMap: {
+                        fontColor: 'components.axis.radius.label.style.fill',
+                        fontSize: 'components.axis.radius.label.style.fontSize',
+                        fontFamily:
+                          'components.axis.radius.label.style.fontFamily',
+                        fontWeight:
+                          'components.axis.radius.label.style.fontWeight',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -854,27 +745,17 @@ export const ConfigPanel: React.FC<Props> = props => {
                   displayName: '图例分页器',
                   children: [
                     {
-                      type: 'color-picker',
-                      displayName: '标签颜色',
-                      attributeId:
-                        'components.legend.common.pageNavigator.text.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '标签字体大小',
-                      attributeId:
-                        'components.legend.common.pageNavigator.text.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '标签字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.common.pageNavigator.text.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '标签字体',
+                      attributeId: 'legend-pageNavigator-text-style',
+                      attributeIdMap: {
+                        fontSize:
+                          'components.legend.common.pageNavigator.text.style.fontSize',
+                        fontColor:
+                          'components.legend.common.pageNavigator.text.style.fill',
+                        fontWeight:
+                          'components.legend.common.pageNavigator.text.style.fontWeight',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -927,28 +808,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.legend.top.marker.spacing',
                     },
                     {
-                      type: 'color-picker',
-                      displayName: '图例项文本字体颜色',
-                      initialValue: 12,
-                      attributeId: 'components.legend.top.itemName.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '图例项文本字体大小',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.top.itemName.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '图例项文本字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.top.itemName.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '图例项文本字体',
+                      attributeId: 'legend-item-name-style',
+                      attributeIdMap: {
+                        fontWeight:
+                          'components.legend.top.itemName.style.fontWeight',
+                        fontSize:
+                          'components.legend.top.itemName.style.fontSize',
+                        fontColor: 'components.legend.top.itemName.style.fill',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -1008,29 +877,17 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.legend.bottom.marker.spacing',
                     },
                     {
-                      type: 'color-picker',
-                      displayName: '图例项文本字体颜色',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.bottom.itemName.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '图例项文本字体大小',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.bottom.itemName.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '图例项文本字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.bottom.itemName.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '图例项文本字体',
+                      attributeId: 'legend-item-name-style',
+                      attributeIdMap: {
+                        fontWeight:
+                          'components.legend.bottom.itemName.style.fontWeight',
+                        fontSize:
+                          'components.legend.bottom.itemName.style.fontSize',
+                        fontColor:
+                          'components.legend.bottom.itemName.style.fill',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -1090,28 +947,16 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.legend.left.marker.spacing',
                     },
                     {
-                      type: 'color-picker',
-                      displayName: '图例项文本字体颜色',
-                      initialValue: 12,
-                      attributeId: 'components.legend.left.itemName.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '图例项文本字体大小',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.left.itemName.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '图例项文本字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.left.itemName.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '图例项文本字体',
+                      attributeId: 'legend-item-name-style',
+                      attributeIdMap: {
+                        fontWeight:
+                          'components.legend.left.itemName.style.fontWeight',
+                        fontSize:
+                          'components.legend.left.itemName.style.fontSize',
+                        fontColor: 'components.legend.left.itemName.style.fill',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -1171,29 +1016,17 @@ export const ConfigPanel: React.FC<Props> = props => {
                       attributeId: 'components.legend.right.marker.spacing',
                     },
                     {
-                      type: 'color-picker',
-                      displayName: '图例项文本字体颜色',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.right.itemName.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '图例项文本字体大小',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.right.itemName.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '图例项文本字体粗细',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.right.itemName.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '图例项文本字体',
+                      attributeId: 'legend-item-name-style',
+                      attributeIdMap: {
+                        fontWeight:
+                          'components.legend.right.itemName.style.fontWeight',
+                        fontSize:
+                          'components.legend.right.itemName.style.fontSize',
+                        fontColor:
+                          'components.legend.right.itemName.style.fill',
+                      },
                     },
                     {
                       type: 'input-number',
@@ -1274,28 +1107,17 @@ export const ConfigPanel: React.FC<Props> = props => {
                     },
                     // label
                     {
-                      type: 'color-picker',
-                      displayName: '连续图例标签文本颜色',
-                      attributeId:
-                        'components.legend.continuous.label.style.fill',
-                    },
-                    {
-                      type: 'input-number',
-                      displayName: '连续图例标签字体大小',
-                      initialValue: 12,
-                      attributeId:
-                        'components.legend.continuous.label.style.fontSize',
-                    },
-                    {
-                      type: 'select',
-                      displayName: '连续图例标签字体大小',
-                      options: [
-                        { value: 'normal', label: 'normal' },
-                        { value: 'bolder', label: 'bolder' },
-                        { value: 'lighter', label: 'lighter' },
-                      ],
-                      attributeId:
-                        'components.legend.continuous.label.style.fontWeight',
+                      type: 'font-setting',
+                      displayName: '连续图例标签字体',
+                      attributeId: 'continuous-legend-label-style',
+                      attributeIdMap: {
+                        fontWeight:
+                          'ccomponents.legend.continuous.label.style.fontWeight',
+                        fontSize:
+                          'components.legend.continuous.label.style.fontSize',
+                        fontColor:
+                          'components.legend.continuous.label.style.fill',
+                      },
                     },
                     {
                       type: 'input-number',

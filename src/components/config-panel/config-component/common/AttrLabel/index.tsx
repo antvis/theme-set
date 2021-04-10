@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { Popover } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { AttributeTreeProps } from '../../types';
+import { AttributeTreeProps } from '../../../types';
 import styles from './index.module.less';
 
 export const AttrLabel = (

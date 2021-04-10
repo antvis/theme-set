@@ -17,22 +17,26 @@ const DEFAULT_COLORS = [
   '#945FB9',
   '#FF99C3',
   '#5D7092',
-]
+];
 
 type CommonReactColorProps = {
   color: string;
   onChange: (value) => void;
-}
+  style?: React.CSSProperties;
+};
 
-export const CommonReactColor: React.FC<CommonReactColorProps> = (props) => {
-  const { color, onChange } = props;
+export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
+  const { color, onChange, style } = props;
 
-  const onColorChange = useCallback((newColor) => {
-    const {
-      rgb: { r, g, b, a },
-    } = newColor;
-    onChange(`rgba(${r}, ${g}, ${b}, ${a})`);
-  }, [onChange]);
+  const onColorChange = useCallback(
+    newColor => {
+      const {
+        rgb: { r, g, b, a },
+      } = newColor;
+      onChange(`rgba(${r}, ${g}, ${b}, ${a})`);
+    },
+    [onChange]
+  );
 
   const overlay = useMemo(() => {
     return (
@@ -46,7 +50,10 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = (props) => {
   }, [onColorChange]);
   return (
     <Dropdown overlay={overlay} trigger={['click', 'hover']}>
-      <div style={{ backgroundColor: color }} className={styles.colorBlock} />
+      <div
+        style={{ backgroundColor: color, ...style }}
+        className={styles.colorBlock}
+      />
     </Dropdown>
-  )
-}
+  );
+};

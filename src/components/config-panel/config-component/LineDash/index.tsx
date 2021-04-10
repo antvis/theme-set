@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { InputNumber as AntdInputNumber } from 'antd';
 import { AttributeTreeProps } from '../../types';
 import styles from './index.module.less';
@@ -23,7 +23,7 @@ export const LineDash: React.FC<AttributeTreeProps> = props => {
       <span>{displayName}</span>
       <div className={styles.content}>
         <div className={styles.contentItem}>
-        <span className={styles.contentItemLabel}>dash</span>
+          <span className={styles.contentItemLabel}>dash</span>
           <AntdInputNumber
             value={dash}
             size="small"

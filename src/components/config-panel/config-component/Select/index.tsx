@@ -1,8 +1,7 @@
 import { Select as AntdSelect } from 'antd';
 import React from 'react';
-import * as _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
-import { AttrLabel } from '../AttrLabel';
+import _ from 'lodash';
+import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
 
 const { Option } = AntdSelect;
@@ -11,19 +10,22 @@ type SelectConfig = {
   options: { label: string; value: string }[];
 };
 
-export const Select: React.FC<AttributeTreeProps<SelectConfig>> = props => {
-  const { config, attributes, onChange } = props;
+export class Select extends BaseComponent<SelectConfig> {
+  renderContent() {
+    const { config, attributes, onChange } = this.props;
+    const value = _.get(attributes, config.attributeId);
 
-  const value = _.get(attributes, config.attributeId);
+    const style = config.displayName
+      ? { width: '78px' }
+      : { width: '100%', minWidth: '78px' };
 
-  return (
-    <div className={styles.select}>
-      <AttrLabel config={config} />
+    return (
       <AntdSelect
         value={value}
         onChange={v => onChange({ [config.attributeId]: v })}
-        style={{ width: 78 }}
+        style={style}
         size="small"
+        className={styles.select}
       >
         {_.map(config.options, (option, idx) => {
           return (
@@ -33,6 +35,6 @@ export const Select: React.FC<AttributeTreeProps<SelectConfig>> = props => {
           );
         })}
       </AntdSelect>
-    </div>
-  );
-};
+    );
+  }
+}

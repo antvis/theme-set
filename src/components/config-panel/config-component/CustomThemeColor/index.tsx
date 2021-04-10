@@ -1,16 +1,34 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import * as _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
-import { AttrLabel } from '../AttrLabel';
+import React from 'react';
+import _ from 'lodash';
 import { CommonReactColor } from '../CommonReactColor';
+import { CompositeComponent } from '../base/CompositeComponent';
 import styles from './index.module.less';
 
-export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
-  const { attributes, config, onChange } = props;
+type State = {
+  colorMap: Record<string, string>;
+};
 
-  const [colorMap, setColorMap] = useState({});
+export class CustomThemeColor extends CompositeComponent<{}, State> {
+  state: State = {
+    colorMap: {},
+  };
 
-  const onColorChange = (idx: string, color: string) => {
+  static getDerivedStateFromProps(props) {
+    const { attributes } = props;
+
+    const obj = {};
+    _.forEach(attributes.colors10, (color, idx) => {
+      obj[idx.toString()] = color;
+    });
+    return {
+      colorMap: obj,
+    };
+  }
+
+  onColorChange = (idx: number, color: string) => {
+    const { attributes, onChange } = this.props;
+    const { colorMap } = this.state;
+
     const newColors10 = _.values(
       _.merge({}, colorMap, { [idx.toString()]: color })
     );
@@ -23,31 +41,24 @@ export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
     onChange({ colors10: newColors10, colors20: newColors20 });
   };
 
-  /** 颜色。默认使用 colors10  */
-  const colors = useMemo(() => {
-    return attributes.colors10;
-  }, [attributes]);
+  renderContent() {
+    const { colorMap } = this.state;
+    /** 颜色。默认使用 colors10  */
+    const colors = _.values(colorMap);
 
-  useEffect(() => {
-    const obj = {};
-    _.forEach(colors, (color, idx) => {
-      obj[idx.toString()] = color;
-    });
-    setColorMap(obj);
-  }, [colors]);
-
-  return (
-    <div className={styles.customThemeColor}>
-      <AttrLabel config={config} />
+    return (
       <div className={styles.colorGroup}>
         {_.map(colors, (color, idx) => {
           return (
             <div className={styles.colorItem} key={idx.toString()}>
-              <CommonReactColor color={color} onChange={color => onColorChange(idx, color)} />
+              <CommonReactColor
+                color={color}
+                onChange={color => this.onColorChange(idx, color)}
+              />
             </div>
           );
         })}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}

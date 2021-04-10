@@ -1,8 +1,8 @@
 import { Checkbox as AntdCheckbox } from 'antd';
 import React from 'react';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { AttributeTreeProps } from '../../types';
-import { AttrLabel } from '../AttrLabel';
+import { AttrLabel } from '../common/AttrLabel';
 import styles from './index.module.less';
 
 export const Checkbox: React.FC<AttributeTreeProps> = props => {

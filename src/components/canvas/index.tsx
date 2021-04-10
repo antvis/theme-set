@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import {
   Area,
   Bar,

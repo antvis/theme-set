@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import configComponents from './config-component';
 import { AttributeTreeProps } from './types';
 

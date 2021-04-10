@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AttributeTreeProps } from '../../types';
-import { AttrLabel } from '../AttrLabel';
+import { AttrLabel } from '../common/AttrLabel';
 import styles from './index.module.less';
 
 type GroupConfig = {

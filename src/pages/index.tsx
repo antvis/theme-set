@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Spin, Layout as AntdLayout } from 'antd';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import Layout from '../layouts/layout';
 import { CodeLoading } from '../components/common/CodeLoading';
 import { ConfigPanel } from '../components/config-panel';
