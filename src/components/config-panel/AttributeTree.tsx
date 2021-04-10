@@ -29,6 +29,8 @@ export class AttributeTree extends PureComponent<AttributeTreeProps> {
       const fromAttributeValue = _.get(attributes, fromAttributeId);
       if (operator === '=' && fromAttributeValue === value) {
         status.push(action);
+      } else if (operator === '!=' && fromAttributeValue !== value) {
+        status.push(action);
       }
     });
     return status;

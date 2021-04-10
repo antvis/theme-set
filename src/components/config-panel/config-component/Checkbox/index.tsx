@@ -1,22 +1,18 @@
 import { Checkbox as AntdCheckbox } from 'antd';
 import React from 'react';
 import _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
-import { AttrLabel } from '../common/AttrLabel';
-import styles from './index.module.less';
+import { BaseComponent } from '../base/BaseComponent';
 
-export const Checkbox: React.FC<AttributeTreeProps> = props => {
-  const { config, attributes, onChange } = props;
+export class Checkbox extends BaseComponent {
+  renderContent() {
+    const { config, attributes, onChange } = this.props;
+    const value = _.get(attributes, config.attributeId);
 
-  const value = _.get(attributes, config.attributeId);
-
-  return (
-    <div className={styles.input}>
-      <AttrLabel config={config} />
+    return (
       <AntdCheckbox
         checked={value}
         onChange={e => onChange({ [config.attributeId]: e.target.checked })}
       />
-    </div>
-  );
-};
+    );
+  }
+}

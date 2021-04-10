@@ -1,14 +1,14 @@
 import React from 'react';
 import _ from 'lodash';
 import { CommonReactColor } from '../CommonReactColor';
-import { CompositeComponent } from '../base/CompositeComponent';
+import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
 
 type State = {
   colorMap: Record<string, string>;
 };
 
-export class CustomThemeColor extends CompositeComponent<{}, State> {
+export class CustomThemeColor extends BaseComponent<{}, State> {
   state: State = {
     colorMap: {},
   };
@@ -40,6 +40,15 @@ export class CustomThemeColor extends CompositeComponent<{}, State> {
 
     onChange({ colors10: newColors10, colors20: newColors20 });
   };
+
+  /**
+   * @override
+   */
+  getWrapperStyle() {
+    return {
+      display: 'block',
+    };
+  }
 
   renderContent() {
     const { colorMap } = this.state;

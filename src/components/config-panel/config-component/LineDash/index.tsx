@@ -1,11 +1,14 @@
 import React from 'react';
+import cx from 'classnames';
 import _ from 'lodash';
 import { InputNumber as AntdInputNumber } from 'antd';
 import { AttributeTreeProps } from '../../types';
 import styles from './index.module.less';
 
-export const LineDash: React.FC<AttributeTreeProps> = props => {
-  const { config, attributes, onChange } = props;
+export const LineDash: React.FC<
+  AttributeTreeProps & { displayType?: 'inline' }
+> = props => {
+  const { config, attributes, onChange, displayType } = props;
   const { displayName } = config;
 
   const value = _.get(attributes, config.attributeId);
@@ -19,7 +22,11 @@ export const LineDash: React.FC<AttributeTreeProps> = props => {
   };
 
   return (
-    <div className={styles.lineDash}>
+    <div
+      className={cx(styles.lineDash, {
+        [styles.inline]: displayType === 'inline',
+      })}
+    >
       <span>{displayName}</span>
       <div className={styles.content}>
         <div className={styles.contentItem}>

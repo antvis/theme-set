@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { CompositeComponent } from '../base/CompositeComponent';
+import { BaseComponent } from '../base/BaseComponent';
 import { ColorPicker } from '../ColorPicker';
 import { InputNumber } from '../InputNumber';
 import { Select } from '../Select';
@@ -14,6 +14,7 @@ type FontSettingProps = {
     fontWeight?: string;
     fontFamily?: string;
     textAlign?: string;
+    opacity?: string;
   };
 };
 
@@ -22,13 +23,23 @@ type FontSettingProps = {
  *
  * 组合套件: 字体颜色 + 字体大小 + 字体 + (字重 + 对齐方式)
  */
-export class FontSetting extends CompositeComponent<FontSettingProps> {
+export class FontSetting extends BaseComponent<FontSettingProps> {
+  /**
+   * @override
+   */
+  getWrapperStyle() {
+    return {
+      display: 'block',
+    };
+  }
+
   renderContent() {
     const { onChange, attributes, config } = this.props;
     const { attributeIdMap = {} } = config;
     const {
       fontColor: fontColorId,
       fontFamily: fontFamilyId,
+      opacity: opacityId,
       fontSize: fontSizeId,
       fontWeight: fontWeightId,
     } = attributeIdMap;
@@ -49,6 +60,13 @@ export class FontSetting extends CompositeComponent<FontSettingProps> {
           <InputNumber
             attributes={attributes}
             config={{ attributeId: fontSizeId }}
+            onChange={onChange}
+          />
+        )}
+        {opacityId && (
+          <InputNumber
+            attributes={attributes}
+            config={{ attributeId: opacityId }}
             onChange={onChange}
           />
         )}

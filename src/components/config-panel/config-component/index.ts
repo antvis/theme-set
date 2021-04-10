@@ -10,6 +10,7 @@ import { Group } from './Group';
 import { CustomStyle } from './CustomStyle';
 import { LineDash } from './LineDash';
 import { FontSetting } from './FontSetting';
+import { LineSetting } from './LineSetting';
 
 export default {
   Collapse,
@@ -24,4 +25,5 @@ export default {
   Select,
   LineDash,
   FontSetting,
+  LineSetting,
 };
