@@ -15,6 +15,10 @@ import {
   PieOptions,
   BarOptions,
   ColumnOptions,
+  Gauge,
+  GaugeOptions,
+  RadialBarOptions,
+  RadialBar,
 } from '@antv/g2plot';
 import { UseG2Plot } from '../../hooks/use-g2plot';
 import { ConfigProps } from '../../types';
@@ -140,6 +144,20 @@ export const Canvas: React.FC<ConfigProps> = props => {
     };
   }, [pieData, theme]);
 
+  /** 适用于：玉珏图 */
+  const radialBarOptions = useMemo((): RadialBarOptions => {
+    return {
+      data: pieData,
+      xField: 'category',
+      colorField: 'category',
+      yField: 'value',
+      radius: 0.8,
+      innerRadius: 0.4,
+      barBackground: {},
+      theme,
+    };
+  }, [pieData, theme]);
+
   /** 雷达图数据 */
   const radarData = useMemo(() => {
     const result = [];
@@ -220,6 +238,15 @@ export const Canvas: React.FC<ConfigProps> = props => {
     };
   }, [theme]);
 
+  /** 适用于：仪表盘 */
+  const gaugeOptions = useMemo((): GaugeOptions => {
+    return {
+      percent: 0.75,
+      axis: {},
+      theme,
+    };
+  }, [theme]);
+
   /** canvas 容器样式 */
   const containerStyle = useMemo(() => {
     return {
@@ -230,11 +257,11 @@ export const Canvas: React.FC<ConfigProps> = props => {
 
   return (
     <div className={styles.canvasContainer} style={containerStyle}>
-      <UseG2Plot Ctor={Line} title="Line Chart" options={options1} />
-      <UseG2Plot Ctor={Area} title="Area Chart" options={options1} />
+      <UseG2Plot Ctor={Line} title="Line Plot" options={options1} />
+      <UseG2Plot Ctor={Area} title="Area Plot" options={options1} />
       <UseG2Plot
         Ctor={Column}
-        title="Stacked Column Chart"
+        title="Stacked Column Plot"
         options={{
           ...columnOptions,
           isStack: true,
@@ -243,17 +270,17 @@ export const Canvas: React.FC<ConfigProps> = props => {
       />
       <UseG2Plot
         Ctor={Column}
-        title="Group Column Chart"
+        title="Group Column Plot"
         options={{
           ...columnOptions,
           isGroup: true,
           scrollbar: { type: 'horizontal', categorySize: 100 },
         }}
       />
-      <UseG2Plot Ctor={Bar} title="Bar Chart" options={barOptions} />
+      <UseG2Plot Ctor={Bar} title="Bar Plot" options={barOptions} />
       <UseG2Plot
         Ctor={Bar}
-        title="Group Bar Chart"
+        title="Group Bar Plot"
         options={{
           ...barOptions,
           isGroup: true,
@@ -262,18 +289,16 @@ export const Canvas: React.FC<ConfigProps> = props => {
           },
         }}
       />
-      <UseG2Plot Ctor={Radar} title="Radar Chart" options={radarOptions} />
-      <UseG2Plot Ctor={Pie} title="Pie Chart" options={pieOptions} />
+      <UseG2Plot Ctor={Radar} title="Radar Plot" options={radarOptions} />
+      <UseG2Plot Ctor={Pie} title="Pie Plot" options={pieOptions} />
+      <UseG2Plot Ctor={Gauge} title="Gauge Plot" options={gaugeOptions} />
       <UseG2Plot
-        Ctor={Treemap}
-        title="Treemap Chart"
-        options={treemapOptions}
+        Ctor={RadialBar}
+        title="Radial Bar Plot"
+        options={radialBarOptions}
       />
-      <UseG2Plot
-        Ctor={Heatmap}
-        title="Heatmap Chart"
-        options={heatmapOptions}
-      />
+      <UseG2Plot Ctor={Treemap} title="Treemap Plot" options={treemapOptions} />
+      <UseG2Plot Ctor={Heatmap} title="Heatmap Plot" options={heatmapOptions} />
     </div>
   );
 };
