@@ -145,39 +145,28 @@ export default {
         children: [
           {
             type: 'group',
-            displayName: '坐标轴(下)',
+            displayName: '坐标轴(通用)',
             children: [
-              {
-                type: 'font-setting',
-                displayName: '轴标题字体',
-                attributeId: 'axis.title',
-                attributeIdMap: {
-                  fontSize: 'components.axis.bottom.title.style.fontSize',
-                  fontColor: 'components.axis.bottom.title.style.fill',
-                  fontFamily: 'components.axis.bottom.title.style.fontFamily',
-                  fontWeight: 'components.axis.bottom.title.style.fontWeight',
-                },
-              },
               {
                 type: 'font-setting',
                 displayName: '轴标签字体',
                 attributeId: 'axis-label-style',
                 attributeIdMap: {
-                  fontColor: 'components.axis.bottom.label.style.fill',
-                  fontSize: 'components.axis.bottom.label.style.fontSize',
-                  fontFamily: 'components.axis.bottom.label.style.fontFamily',
-                  fontWeight: 'components.axis.bottom.label.style.fontWeight',
+                  fontColor: 'components.axis.common.label.style.fill',
+                  fontSize: 'components.axis.common.label.style.fontSize',
+                  fontFamily: 'components.axis.common.label.style.fontFamily',
+                  fontWeight: 'components.axis.common.label.style.fontWeight',
                 },
               },
               {
                 type: 'checkbox',
                 displayName: '轴标签-自动旋转',
-                attributeId: 'components.axis.bottom.label.autoRotate',
+                attributeId: 'components.axis.common.label.autoRotate',
               },
               {
                 type: 'checkbox',
                 displayName: '轴标签-自动省略',
-                attributeId: 'components.axis.bottom.label.autoEllipsis',
+                attributeId: 'components.axis.common.label.autoEllipsis',
               },
 
               {
@@ -185,8 +174,8 @@ export default {
                 displayName: '坐标轴线',
                 attributeId: 'bottom-axis-line-style',
                 attributeIdMap: {
-                  lineColor: 'components.axis.bottom.line.style.stroke',
-                  lineWidth: 'components.axis.bottom.line.style.lineWidth',
+                  lineColor: 'components.axis.common.line.style.stroke',
+                  lineWidth: 'components.axis.common.line.style.lineWidth',
                 },
               },
               {
@@ -194,9 +183,9 @@ export default {
                 displayName: '网格线',
                 attributeId: 'bottom-axis-grid-line-style',
                 attributeIdMap: {
-                  lineColor: 'components.axis.bottom.grid.line.style.stroke',
-                  lineWidth: 'components.axis.bottom.grid.line.style.lineWidth',
-                  lineDash: 'components.axis.bottom.grid.line.style.lineDash',
+                  lineColor: 'components.axis.common.grid.line.style.stroke',
+                  lineWidth: 'components.axis.common.grid.line.style.lineWidth',
+                  lineDash: 'components.axis.common.grid.line.style.lineDash',
                 },
               },
               {
@@ -204,16 +193,16 @@ export default {
                 displayName: '刻度线',
                 attributeId: 'bottom-axis-grid-line-style',
                 attributeIdMap: {
-                  lineColor: 'components.axis.bottom.tickLine.style.stroke',
-                  lineWidth: 'components.axis.bottom.tickLine.style.lineWidth',
+                  lineColor: 'components.axis.common.tickLine.style.stroke',
+                  lineWidth: 'components.axis.common.tickLine.style.lineWidth',
                   // 刻度线长度
-                  length: 'components.axis.bottom.tickLine.style.length',
+                  length: 'components.axis.common.tickLine.style.length',
                 },
               },
               {
                 type: 'checkbox',
                 displayName: '网格线对齐刻度线',
-                attributeId: 'components.axis.bottom.grid.alignTick',
+                attributeId: 'components.axis.common.grid.alignTick',
               },
               {
                 type: 'checkbox',
@@ -225,11 +214,28 @@ export default {
                 // displayName: '坐标轴子刻度线',
                 attributeId: 'bottom-axis-subTick-line-setting',
                 attributeIdMap: {
-                  lineColor: 'components.axis.bottom.subTickLine.style.stroke',
+                  lineColor: 'components.axis.common.subTickLine.style.stroke',
                   lineWidth:
-                    'components.axis.bottom.subTickLine.style.lineWidth',
+                    'components.axis.common.subTickLine.style.lineWidth',
                   // 刻度线长度
-                  length: 'components.axis.bottom.subTickLine.style.length',
+                  length: 'components.axis.common.subTickLine.style.length',
+                },
+              },
+            ],
+          },
+          {
+            type: 'group',
+            displayName: '坐标轴(下)',
+            children: [
+              {
+                type: 'font-setting',
+                displayName: '轴标题字体',
+                attributeId: 'axis-title',
+                attributeIdMap: {
+                  fontSize: 'components.axis.bottom.title.style.fontSize',
+                  fontColor: 'components.axis.bottom.title.style.fill',
+                  fontFamily: 'components.axis.bottom.title.style.fontFamily',
+                  fontWeight: 'components.axis.bottom.title.style.fontWeight',
                 },
               },
             ],
@@ -241,85 +247,12 @@ export default {
               {
                 type: 'font-setting',
                 displayName: '轴标题字体',
-                attributeId: 'axis.title',
+                attributeId: 'axis-title',
                 attributeIdMap: {
                   fontSize: 'components.axis.left.title.style.fontSize',
                   fontColor: 'components.axis.left.title.style.fill',
                   fontFamily: 'components.axis.left.title.style.fontFamily',
                   fontWeight: 'components.axis.left.title.style.fontWeight',
-                },
-              },
-              {
-                type: 'font-setting',
-                displayName: '轴标签字体',
-                attributeId: 'left-axis-label-style',
-                attributeIdMap: {
-                  fontColor: 'components.axis.left.label.style.fill',
-                  fontSize: 'components.axis.left.label.style.fontSize',
-                  fontFamily: 'components.axis.left.label.style.fontFamily',
-                  fontWeight: 'components.axis.left.label.style.fontWeight',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动旋转',
-                attributeId: 'components.axis.left.label.autoRotate',
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动省略',
-                attributeId: 'components.axis.left.label.autoEllipsis',
-              },
-              {
-                type: 'input-number',
-                displayName: '轴线宽度',
-                attributeId: 'components.axis.left.line.style.lineWidth',
-              },
-              {
-                type: 'color-picker',
-                displayName: '轴线颜色',
-                attributeId: 'components.axis.left.line.style.stroke',
-              },
-              {
-                type: 'line-setting',
-                displayName: '网格线',
-                attributeId: 'left-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.left.grid.line.style.stroke',
-                  lineWidth: 'components.axis.left.grid.line.style.lineWidth',
-                  lineDash: 'components.axis.left.grid.line.style.lineDash',
-                },
-              },
-              {
-                type: 'line-setting',
-                displayName: '刻度线',
-                attributeId: 'left-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.left.tickLine.style.stroke',
-                  lineWidth: 'components.axis.left.tickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.left.tickLine.style.length',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '网格线对齐刻度线',
-                attributeId: 'components.axis.left.grid.alignTick',
-              },
-              {
-                type: 'checkbox',
-                displayName: '开启子刻度线',
-                attributeId: 'left-axis-subTick-line',
-              },
-              {
-                type: 'line-setting',
-                // displayName: '坐标轴子刻度线',
-                attributeId: 'left-axis-subTick-line-setting',
-                attributeIdMap: {
-                  lineColor: 'components.axis.left.subTickLine.style.stroke',
-                  lineWidth: 'components.axis.left.subTickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.left.subTickLine.style.length',
                 },
               },
             ],
@@ -331,85 +264,12 @@ export default {
               {
                 type: 'font-setting',
                 displayName: '轴标题字体',
-                attributeId: 'axis.title',
+                attributeId: 'axis-title',
                 attributeIdMap: {
                   fontSize: 'components.axis.top.title.style.fontSize',
                   fontColor: 'components.axis.top.title.style.fill',
                   fontFamily: 'components.axis.top.title.style.fontFamily',
                   fontWeight: 'components.axis.top.title.style.fontWeight',
-                },
-              },
-              {
-                type: 'font-setting',
-                displayName: '轴标签字体',
-                attributeId: 'top-axis-label-style',
-                attributeIdMap: {
-                  fontColor: 'components.axis.top.label.style.fill',
-                  fontSize: 'components.axis.top.label.style.fontSize',
-                  fontFamily: 'components.axis.top.label.style.fontFamily',
-                  fontWeight: 'components.axis.top.label.style.fontWeight',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动旋转',
-                attributeId: 'components.axis.top.label.autoRotate',
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动省略',
-                attributeId: 'components.axis.top.label.autoEllipsis',
-              },
-              {
-                type: 'input-number',
-                displayName: '轴线宽度',
-                attributeId: 'components.axis.top.line.style.lineWidth',
-              },
-              {
-                type: 'color-picker',
-                displayName: '轴线颜色',
-                attributeId: 'components.axis.top.line.style.stroke',
-              },
-              {
-                type: 'line-setting',
-                displayName: '网格线',
-                attributeId: 'top-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.top.grid.line.style.stroke',
-                  lineWidth: 'components.axis.top.grid.line.style.lineWidth',
-                  lineDash: 'components.axis.top.grid.line.style.lineDash',
-                },
-              },
-              {
-                type: 'line-setting',
-                displayName: '刻度线',
-                attributeId: 'top-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.top.tickLine.style.stroke',
-                  lineWidth: 'components.axis.top.tickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.top.tickLine.style.length',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '网格线对齐刻度线',
-                attributeId: 'components.axis.top.grid.alignTick',
-              },
-              {
-                type: 'checkbox',
-                displayName: '开启子刻度线',
-                attributeId: 'top-axis-subTick-line',
-              },
-              {
-                type: 'line-setting',
-                // displayName: '坐标轴子刻度线',
-                attributeId: 'top-axis-subTick-line-setting',
-                attributeIdMap: {
-                  lineColor: 'components.axis.top.subTickLine.style.stroke',
-                  lineWidth: 'components.axis.top.subTickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.top.subTickLine.style.length',
                 },
               },
             ],
@@ -421,86 +281,12 @@ export default {
               {
                 type: 'font-setting',
                 displayName: '轴标题字体',
-                attributeId: 'axis.title',
+                attributeId: 'axis-title',
                 attributeIdMap: {
                   fontSize: 'components.axis.right.title.style.fontSize',
                   fontColor: 'components.axis.right.title.style.fill',
                   fontFamily: 'components.axis.right.title.style.fontFamily',
                   fontWeight: 'components.axis.right.title.style.fontWeight',
-                },
-              },
-              {
-                type: 'font-setting',
-                displayName: '轴标签字体',
-                attributeId: 'right-axis-label-style',
-                attributeIdMap: {
-                  fontColor: 'components.axis.right.label.style.fill',
-                  fontSize: 'components.axis.right.label.style.fontSize',
-                  fontFamily: 'components.axis.right.label.style.fontFamily',
-                  fontWeight: 'components.axis.right.label.style.fontWeight',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动旋转',
-                attributeId: 'components.axis.right.label.autoRotate',
-              },
-              {
-                type: 'checkbox',
-                displayName: '轴标签-自动省略',
-                attributeId: 'components.axis.right.label.autoEllipsis',
-              },
-              {
-                type: 'input-number',
-                displayName: '轴线宽度',
-                attributeId: 'components.axis.right.line.style.lineWidth',
-              },
-              {
-                type: 'color-picker',
-                displayName: '轴线颜色',
-                attributeId: 'components.axis.right.line.style.stroke',
-              },
-              {
-                type: 'line-setting',
-                displayName: '网格线',
-                attributeId: 'right-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.right.grid.line.style.stroke',
-                  lineWidth: 'components.axis.right.grid.line.style.lineWidth',
-                  lineDash: 'components.axis.right.grid.line.style.lineDash',
-                },
-              },
-              {
-                type: 'line-setting',
-                displayName: '刻度线',
-                attributeId: 'right-axis-grid-line-style',
-                attributeIdMap: {
-                  lineColor: 'components.axis.right.tickLine.style.stroke',
-                  lineWidth: 'components.axis.right.tickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.right.tickLine.style.length',
-                },
-              },
-              {
-                type: 'checkbox',
-                displayName: '网格线对齐刻度线',
-                attributeId: 'components.axis.right.grid.alignTick',
-              },
-              {
-                type: 'checkbox',
-                displayName: '开启子刻度线',
-                attributeId: 'bottom-axis-subTick-line',
-              },
-              {
-                type: 'line-setting',
-                // displayName: '坐标轴子刻度线',
-                attributeId: 'right-axis-subTick-line-setting',
-                attributeIdMap: {
-                  lineColor: 'components.axis.right.subTickLine.style.stroke',
-                  lineWidth:
-                    'components.axis.right.subTickLine.style.lineWidth',
-                  // 刻度线长度
-                  length: 'components.axis.right.subTickLine.style.length',
                 },
               },
             ],
@@ -691,88 +477,17 @@ export default {
                 displayName: '图例项之间的水平间距',
                 attributeId: 'components.legend.common.itemSpacing',
               },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '图例(上)',
-            children: [
               {
                 type: 'input-number',
                 displayName: 'marker 默认半径大小',
                 initialValue: 4,
-                attributeId: 'components.legend.top.marker.style.r',
+                attributeId: 'components.legend.common.marker.style.r',
               },
               {
                 type: 'input-number',
                 displayName: '图例项之间的水平间距',
                 initialValue: 8,
-                attributeId: 'components.legend.top.marker.spacing',
-              },
-              {
-                type: 'font-setting',
-                displayName: '图例项文本字体',
-                attributeId: 'legend-item-name-style',
-                attributeIdMap: {
-                  fontWeight: 'components.legend.top.itemName.style.fontWeight',
-                  fontSize: 'components.legend.top.itemName.style.fontSize',
-                  fontColor: 'components.legend.top.itemName.style.fill',
-                },
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项文本行高',
-                initialValue: 12,
-                attributeId: 'components.legend.top.itemName.style.lineHeight',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.top.marker.spacing',
-              },
-              // 通用
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 24,
-                attributeId: 'components.legend.top.itemSpacing',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项垂直方向的间隔',
-                initialValue: 12,
-                attributeId: 'components.legend.top.legendItemMarginBottom',
-              },
-              {
-                type: 'input',
-                displayName: '图例组件自己的外边距',
-                initialValue: 16,
-                attributeId: 'components.legend.top.padding',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项最大宽度',
-                initialValue: 200,
-                attributeId: 'components.legend.top.maxItemWidth',
-              },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '图例(下)',
-            children: [
-              {
-                type: 'input-number',
-                displayName: 'marker 默认半径大小',
-                initialValue: 4,
-                attributeId: 'components.legend.bottom.marker.style.r',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.bottom.marker.spacing',
+                attributeId: 'components.legend.common.marker.spacing',
               },
               {
                 type: 'font-setting',
@@ -780,9 +495,9 @@ export default {
                 attributeId: 'legend-item-name-style',
                 attributeIdMap: {
                   fontWeight:
-                    'components.legend.bottom.itemName.style.fontWeight',
-                  fontSize: 'components.legend.bottom.itemName.style.fontSize',
-                  fontColor: 'components.legend.bottom.itemName.style.fill',
+                    'components.legend.common.itemName.style.fontWeight',
+                  fontSize: 'components.legend.common.itemName.style.fontSize',
+                  fontColor: 'components.legend.common.itemName.style.fill',
                 },
               },
               {
@@ -790,171 +505,38 @@ export default {
                 displayName: '图例项文本行高',
                 initialValue: 12,
                 attributeId:
-                  'components.legend.bottom.itemName.style.lineHeight',
+                  'components.legend.common.itemName.style.lineHeight',
               },
               {
                 type: 'input-number',
                 displayName: '图例项之间的水平间距',
                 initialValue: 8,
-                attributeId: 'components.legend.bottom.marker.spacing',
+                attributeId: 'components.legend.common.marker.spacing',
               },
               // 通用
               {
                 type: 'input-number',
                 displayName: '图例项之间的水平间距',
                 initialValue: 24,
-                attributeId: 'components.legend.bottom.itemSpacing',
+                attributeId: 'components.legend.common.itemSpacing',
               },
               {
                 type: 'input-number',
                 displayName: '图例项垂直方向的间隔',
                 initialValue: 12,
-                attributeId: 'components.legend.bottom.legendItemMarginBottom',
+                attributeId: 'components.legend.common.legendItemMarginBottom',
               },
               {
                 type: 'input',
                 displayName: '图例组件自己的外边距',
                 initialValue: 16,
-                attributeId: 'components.legend.bottom.padding',
+                attributeId: 'components.legend.common.padding',
               },
               {
                 type: 'input-number',
                 displayName: '图例项最大宽度',
                 initialValue: 200,
-                attributeId: 'components.legend.bottom.maxItemWidth',
-              },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '图例(左)',
-            children: [
-              {
-                type: 'input-number',
-                displayName: 'marker 默认半径大小',
-                initialValue: 4,
-                attributeId: 'components.legend.left.marker.style.r',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.left.marker.spacing',
-              },
-              {
-                type: 'font-setting',
-                displayName: '图例项文本字体',
-                attributeId: 'legend-item-name-style',
-                attributeIdMap: {
-                  fontWeight:
-                    'components.legend.left.itemName.style.fontWeight',
-                  fontSize: 'components.legend.left.itemName.style.fontSize',
-                  fontColor: 'components.legend.left.itemName.style.fill',
-                },
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项文本行高',
-                initialValue: 12,
-                attributeId: 'components.legend.left.itemName.style.lineHeight',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.left.marker.spacing',
-              },
-              // 通用
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 24,
-                attributeId: 'components.legend.left.itemSpacing',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项垂直方向的间隔',
-                initialValue: 12,
-                attributeId: 'components.legend.left.legendItemMarginBottom',
-              },
-              {
-                type: 'input',
-                displayName: '图例组件自己的外边距',
-                initialValue: 16,
-                attributeId: 'components.legend.left.padding',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项最大宽度',
-                initialValue: 200,
-                attributeId: 'components.legend.left.maxItemWidth',
-              },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '图例(右)',
-            children: [
-              {
-                type: 'input-number',
-                displayName: 'marker 默认半径大小',
-                initialValue: 4,
-                attributeId: 'components.legend.right.marker.style.r',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.right.marker.spacing',
-              },
-              {
-                type: 'font-setting',
-                displayName: '图例项文本字体',
-                attributeId: 'legend-item-name-style',
-                attributeIdMap: {
-                  fontWeight:
-                    'components.legend.right.itemName.style.fontWeight',
-                  fontSize: 'components.legend.right.itemName.style.fontSize',
-                  fontColor: 'components.legend.right.itemName.style.fill',
-                },
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项文本行高',
-                initialValue: 12,
-                attributeId:
-                  'components.legend.right.itemName.style.lineHeight',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 8,
-                attributeId: 'components.legend.right.marker.spacing',
-              },
-              // 通用
-              {
-                type: 'input-number',
-                displayName: '图例项之间的水平间距',
-                initialValue: 24,
-                attributeId: 'components.legend.right.itemSpacing',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项垂直方向的间隔',
-                initialValue: 12,
-                attributeId: 'components.legend.right.legendItemMarginBottom',
-              },
-              {
-                type: 'input',
-                displayName: '图例组件自己的外边距',
-                initialValue: 16,
-                attributeId: 'components.legend.right.padding',
-              },
-              {
-                type: 'input-number',
-                displayName: '图例项最大宽度',
-                initialValue: 200,
-                attributeId: 'components.legend.right.maxItemWidth',
+                attributeId: 'components.legend.common.maxItemWidth',
               },
             ],
           },
