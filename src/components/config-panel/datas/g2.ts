@@ -55,6 +55,21 @@ export default {
     children: [
       {
         type: 'collapse-panel',
+        displayName: '主题色板',
+        children: [
+          {
+            type: 'slider',
+            attributeId: 'seriesCount',
+            displayName: '系列数量',
+            min: 1,
+            max: 10,
+            initialValue: 3,
+            showInputNumber: true,
+          },
+        ],
+      },
+      {
+        type: 'collapse-panel',
         displayName: '基础配置',
         children: [
           {

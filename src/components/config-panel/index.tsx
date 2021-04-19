@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button, InputNumber, Radio } from 'antd';
+import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { copyToClipboard } from '../../utils/copy-to-board';
 import Palette from '../../theme/palette.json';
@@ -35,10 +36,18 @@ export const ConfigPanel: React.FC<Props> = props => {
 
   return (
     <div className={styles.configPanel} style={style}>
-      <div className={styles.configPanelTitle}>配置区</div>
-      <div className="">
-        <Button onClick={copyConfig}>拷贝</Button>
+      <div className={styles.configPanelTitleContainer}>
+        <div className={styles.configPanelTitle}>主题配置</div>
+        <div className={styles.operation}>
+          <Button icon={<PlusOutlined />}>导入</Button>
+          <Button icon={<DownloadOutlined />} type="primary">
+            导出
+          </Button>
+        </div>
       </div>
+      {/* <div className="">
+        <Button onClick={copyConfig}>拷贝</Button>
+      </div> */}
       <hr />
       {/* 颜色色板区 START */}
       <h4>颜色色板</h4>
