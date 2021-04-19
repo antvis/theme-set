@@ -11,6 +11,7 @@ import { CustomStyle } from './CustomStyle';
 import { LineDash } from './LineDash';
 import { FontSetting } from './FontSetting';
 import { LineSetting } from './LineSetting';
+import { Slider } from './Slider';
 
 export default {
   Collapse,
@@ -26,4 +27,5 @@ export default {
   LineDash,
   FontSetting,
   LineSetting,
+  Slider,
 };
