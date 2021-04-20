@@ -12,6 +12,7 @@ import { LineDash } from './LineDash';
 import { FontSetting } from './FontSetting';
 import { LineSetting } from './LineSetting';
 import { Slider } from './Slider';
+import { GridLayout } from './GridLayout';
 
 export default {
   Collapse,
@@ -28,4 +29,5 @@ export default {
   FontSetting,
   LineSetting,
   Slider,
+  GridLayout,
 };
