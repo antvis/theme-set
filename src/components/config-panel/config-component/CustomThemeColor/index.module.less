@@ -1,11 +1,15 @@
 .color-group {
-  overflow: auto;
+  overflow: hidden;
 
   width: 100%;
   height: 28px;
   border: 1px solid #eee;
   background-color: #fff;
   border-radius: 6px;
+
+  &.selected {
+    border-color: #873bf4;
+  }
   &:not(:first-child) {
     margin-top: 6px;
   }

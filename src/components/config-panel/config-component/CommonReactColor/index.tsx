@@ -55,7 +55,7 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
     <Dropdown
       overlay={overlay}
       trigger={['click', 'hover']}
-      disabled={canChangeColor}
+      disabled={!canChangeColor}
     >
       <div
         style={{ backgroundColor: color, ...style }}
