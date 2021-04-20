@@ -1,17 +1,31 @@
 import React, { CSSProperties } from 'react';
 import { Popover } from 'antd';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined, CaretRightOutlined } from '@ant-design/icons';
 import { AttributeTreeProps } from '../../../types';
 import styles from './index.module.less';
 
-export const AttrLabel = (
-  props: Pick<AttributeTreeProps, 'config'> & { style?: CSSProperties }
-) => {
-  const { config, style = {} } = props;
+type Props = Pick<AttributeTreeProps, 'config'> & {
+  style?: CSSProperties;
+  canCollapse?: boolean;
+  collapsed?: boolean;
+  onClick?: () => void;
+};
+export const AttrLabel = (props: Props) => {
+  const { config, style = {}, canCollapse, collapsed, onClick } = props;
   const { displayName, info } = config;
 
   return displayName ? (
-    <div className={styles.attrLabel} style={style}>
+    <div
+      className={styles.attrLabel}
+      style={{ ...style, cursor: onClick ? 'pointer' : 'unset' }}
+      onClick={onClick}
+    >
+      {canCollapse && (
+        <CaretRightOutlined
+          rotate={collapsed ? 0 : 90}
+          className={styles.collapseIcon}
+        />
+      )}
       {displayName}
       {info && (
         <Popover
