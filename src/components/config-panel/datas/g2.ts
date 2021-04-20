@@ -74,27 +74,43 @@ export default {
             children: [
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
               {
                 type: 'custom-theme-color',
+                asAWhole: true,
+                // TODO 添加色板
               },
             ],
           },
@@ -105,16 +121,11 @@ export default {
               {
                 type: 'custom-theme-color',
                 displayName: '色板',
+                canChangeColor: true,
                 attributeId: 'theme-color',
               },
             ],
           },
-        ],
-      },
-      {
-        type: 'collapse-panel',
-        displayName: '基础配置',
-        children: [
           {
             type: 'color-picker',
             displayName: '背景色',
