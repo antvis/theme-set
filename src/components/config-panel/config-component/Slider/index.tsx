@@ -26,6 +26,8 @@ export class Slider extends BaseComponent<{
           <AntdInputNumber
             className={styles.inputNumber}
             value={value}
+            max={config.max}
+            min={config.min}
             onChange={v => onChange({ [config.attributeId]: v })}
           />
         )}
