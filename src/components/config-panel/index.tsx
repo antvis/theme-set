@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
-import { Button, InputNumber, Radio } from 'antd';
+import { Button, message, Upload } from 'antd';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import _ from 'lodash';
-import { copyToClipboard } from '../../utils/copy-to-board';
-import Palette from '../../theme/palette.json';
+import { exportDataToLocal } from '../../utils/export-to-local';
 import { ConfigProps } from '../../types';
 import G2ThemeTokenConfig from './datas/g2';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
+import { RcFile } from 'antd/lib/upload';
 
 type Props = {
   config: ConfigProps;
@@ -26,12 +26,26 @@ export const ConfigPanel: React.FC<Props> = props => {
     return G2ThemeTokenConfig;
   }, []);
 
-  const copyConfig = () => {
-    copyToClipboard(JSON.stringify(config || null));
-  };
-
-  const onColorsChange = ({ colors10, colors20 }) => {
-    onThemeChange({ colors10, colors20 });
+  const uploadConfig = (file: RcFile) => {
+    if (window.FileReader) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          if (reader.result) {
+            const newConfig: ConfigProps = JSON.parse(reader.result);
+            onThemeChange(newConfig.theme);
+            onChange(_.omit(newConfig, 'theme'));
+          }
+          message.success('上传配置已应用');
+        } catch (err) {
+          message.error('上传文件有误，请重新上传');
+        }
+      };
+      reader.readAsText(file);
+    } else {
+      message.error('您当前浏览器不支持 FileReader，建议使用谷歌浏览器');
+    }
+    return false;
   };
 
   return (
@@ -39,48 +53,27 @@ export const ConfigPanel: React.FC<Props> = props => {
       <div className={styles.configPanelTitleContainer}>
         <div className={styles.configPanelTitle}>主题配置</div>
         <div className={styles.operation}>
-          <Button icon={<PlusOutlined />}>导入</Button>
-          <Button icon={<DownloadOutlined />} type="primary">
+          <Upload
+            accept=".json"
+            showUploadList={false}
+            beforeUpload={uploadConfig}
+          >
+            <Button icon={<PlusOutlined />}>导入</Button>
+          </Upload>
+          <Button
+            icon={<DownloadOutlined />}
+            type="primary"
+            onClick={() => {
+              exportDataToLocal(config, 'config.json');
+            }}
+          >
             导出
           </Button>
         </div>
       </div>
-      {/* <div className="">
-        <Button onClick={copyConfig}>拷贝</Button>
-      </div> */}
-      <hr />
-      {/* 颜色色板区 START */}
-      <h4>颜色色板</h4>
-      <Radio.Group defaultValue={0} className={styles.colorPalettePicker}>
-        {Palette.categorical.map((colors, idx) => {
-          return (
-            <Radio.Button
-              key={`${idx}`}
-              value={idx}
-              className={styles.colorGroup}
-              onClick={() => onColorsChange(colors)}
-            >
-              {colors.colors10.map((color, colorIdx) => (
-                <span
-                  key={`${colorIdx}`}
-                  className={styles.colorItem}
-                  style={{ background: color }}
-                />
-              ))}
-            </Radio.Button>
-          );
-        })}
-      </Radio.Group>
-      <h4 style={{ marginTop: '8px' }}>系列数量</h4>
-      <InputNumber
-        size="small"
-        value={config.seriesCount}
-        onChange={v => onChange({ seriesCount: Number(v) })}
-      />
-      {/* 颜色色板区 END */}
       <hr />
       <AttributeTree
-        attributes={config.theme}
+        attributes={{ ...config.theme, seriesCount: config.seriesCount }}
         config={attributesConfig.config}
         relations={attributesConfig.relations}
         onChange={attrs => {
