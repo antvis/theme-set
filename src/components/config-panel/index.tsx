@@ -84,8 +84,21 @@ export const ConfigPanel: React.FC<Props> = props => {
         config={attributesConfig.config}
         relations={attributesConfig.relations}
         onChange={attrs => {
-          const actualValue = {};
+          let actualValue = {};
           _.each(attrs, (v, k) => _.set(actualValue, k, v));
+          console.log(
+            'attrs',
+            attrs,
+            actualValue,
+            _.get(actualValue, 'seriesCount')
+          );
+          if (_.get(actualValue, 'seriesCount')) {
+            onChange({
+              seriesCount: Number(_.get(actualValue, 'seriesCount')),
+            });
+            actualValue = _.omit(actualValue, ['seriesCount']);
+            console.log('actualValue', actualValue);
+          }
           onThemeChange(actualValue);
         }}
       />

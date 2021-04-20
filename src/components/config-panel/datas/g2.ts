@@ -66,6 +66,49 @@ export default {
             initialValue: 3,
             showInputNumber: true,
           },
+          {
+            type: 'grid-layout',
+            displayName: '色板预览',
+            gridColumnGap: '8px',
+            // gridRowGap: '8px',
+            children: [
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+              {
+                type: 'custom-theme-color',
+              },
+            ],
+          },
+          {
+            type: 'group',
+            displayName: '自定义配色',
+            children: [
+              {
+                type: 'custom-theme-color',
+                displayName: '色板',
+                attributeId: 'theme-color',
+              },
+            ],
+          },
         ],
       },
       {
@@ -76,11 +119,6 @@ export default {
             type: 'color-picker',
             displayName: '背景色',
             attributeId: 'background',
-          },
-          {
-            type: 'custom-theme-color',
-            displayName: '主题色',
-            attributeId: 'theme-color',
           },
         ],
       },

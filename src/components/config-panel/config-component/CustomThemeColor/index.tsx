@@ -52,6 +52,7 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
 
   renderContent() {
     const { colorMap } = this.state;
+    const { config } = this.props;
     /** 颜色。默认使用 colors10  */
     const colors = _.values(colorMap);
 
@@ -59,12 +60,13 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
       <div className={styles.colorGroup}>
         {_.map(colors, (color, idx) => {
           return (
-            <div className={styles.colorItem} key={idx.toString()}>
-              <CommonReactColor
-                color={color}
-                onChange={color => this.onColorChange(idx, color)}
-              />
-            </div>
+            <CommonReactColor
+              key={idx.toString()}
+              className={styles.colorItem}
+              canChangeColor={config.canChangeColor}
+              color={color}
+              onChange={color => this.onColorChange(idx, color)}
+            />
           );
         })}
       </div>
