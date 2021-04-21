@@ -1,3 +1,6 @@
+/**
+ * 切换 主题模式组件 白天/黑夜模式
+ */
 import { Radio as AntdRadio } from 'antd';
 import React from 'react';
 import _ from 'lodash';
