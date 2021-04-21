@@ -1,8 +1,9 @@
 .config-panel {
   height: 100%;
   width: 100%;
-  padding: 12px 24px;
+  padding: 12px 0;
   background-color: #f2f4f7;
+  box-shadow: 0 0 10px 0px #E4E4E4;
 
   overflow-y: auto;
 
@@ -16,12 +17,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 14px;
+    margin-bottom: 10px;
 
     .config-panel-title {
       font-size: 18px;
       font-weight: bold;
       margin: 8px 0;
       color: rgba(0, 0, 0, 0.85);
+
+      .title-icon {
+        margin-right: 8px;
+      }
     }
 
     .operation {
@@ -29,6 +36,11 @@
 
       &>:first-child {
         margin-right: 11px;
+      }
+      .export-btn {
+        span {
+          color: #fff;
+        }
       }
     }
   }

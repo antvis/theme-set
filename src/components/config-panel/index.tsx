@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { Button, message, Upload } from 'antd';
-import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
+import { RcFile } from 'antd/lib/upload';
+import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { exportDataToLocal } from '../../utils/export-to-local';
 import { ConfigProps } from '../../types';
 import G2ThemeTokenConfig from './datas/g2';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
-import { RcFile } from 'antd/lib/upload';
 
 type Props = {
   config: ConfigProps;
@@ -60,9 +60,11 @@ export const ConfigPanel: React.FC<Props> = props => {
           >
             <Button icon={<PlusOutlined />}>导入</Button>
           </Upload>
+
           <Button
-            icon={<DownloadOutlined />}
+            icon={<UploadOutlined style={{ color: '#ffffff' }} />}
             type="primary"
+            className={styles.exportBtn}
             onClick={() => {
               exportDataToLocal(config, 'config.json');
             }}
@@ -71,7 +73,6 @@ export const ConfigPanel: React.FC<Props> = props => {
           </Button>
         </div>
       </div>
-      <hr />
       <AttributeTree
         attributes={{ ...config.theme, seriesCount: config.seriesCount }}
         config={attributesConfig.config}
@@ -79,18 +80,11 @@ export const ConfigPanel: React.FC<Props> = props => {
         onChange={attrs => {
           let actualValue = {};
           _.each(attrs, (v, k) => _.set(actualValue, k, v));
-          console.log(
-            'attrs',
-            attrs,
-            actualValue,
-            _.get(actualValue, 'seriesCount')
-          );
           if (_.get(actualValue, 'seriesCount')) {
             onChange({
               seriesCount: Number(_.get(actualValue, 'seriesCount')),
             });
             actualValue = _.omit(actualValue, ['seriesCount']);
-            console.log('actualValue', actualValue);
           }
           onThemeChange(actualValue);
         }}
