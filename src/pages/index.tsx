@@ -77,7 +77,7 @@ const Page = () => {
         <AntdLayout.Sider
           collapsed={configPanelCollapse}
           theme="light"
-          width={420}
+          width={360}
           collapsible
           trigger={null}
         >
