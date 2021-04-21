@@ -1,3 +1,5 @@
+import Palette from '../../../theme/palette.json';
+
 export default {
   relations: [
     {
@@ -75,48 +77,14 @@ export default {
             displayName: '色板预览',
             gridColumnGap: '8px',
             // gridRowGap: '8px',
-            children: [
-              {
+            children: Palette.categorical.map(colors => {
+              return {
                 type: 'custom-theme-color',
                 asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-              {
-                type: 'custom-theme-color',
-                asAWhole: true,
-                // TODO 添加色板
-              },
-            ],
+                colors10: colors.colors10,
+                colors20: colors.colors20,
+              };
+            }),
           },
           {
             type: 'group',

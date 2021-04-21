@@ -44,9 +44,9 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
 
   onWholeClick = () => {
     const { config, onChange } = this.props;
-    const { colors10 } = config;
-    if (colors10) {
-      onChange({ colors10 });
+    const { colors10, colors20 } = config;
+    if (colors10 && colors20) {
+      onChange({ colors10, colors20 });
     }
   };
 
