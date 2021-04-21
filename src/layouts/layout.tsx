@@ -33,7 +33,7 @@ const Layout: React.FC<Props> = ({ children, mainStyle = {} }) => {
 
   return (
     <>
-      <Header siteTitle={title} />
+      <Header siteTitle={title} themeSwitcher={false} />
       <main style={mainStyle}>{children}</main>
       <Footer author={author} githubUrl={githubUrl} contact={contact} />
     </>

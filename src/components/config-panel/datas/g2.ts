@@ -58,6 +58,10 @@ export default {
         displayName: '主题色板',
         children: [
           {
+            type: 'theme-style-switcher',
+            displayName: '预览主题',
+          },
+          {
             type: 'slider',
             attributeId: 'seriesCount',
             displayName: '系列数量',
