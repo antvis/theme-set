@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import cx from 'classnames';
 import { CommonReactColor } from '../CommonReactColor';
 import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
@@ -14,10 +15,10 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
   };
 
   static getDerivedStateFromProps(props) {
-    const { attributes } = props;
+    const { attributes, config } = props;
 
     const obj = {};
-    _.forEach(attributes.colors10, (color, idx) => {
+    _.forEach(config.colors10 || attributes.colors10, (color, idx) => {
       obj[idx.toString()] = color;
     });
     return {
@@ -41,6 +42,14 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
     onChange({ colors10: newColors10, colors20: newColors20 });
   };
 
+  onWholeClick = () => {
+    const { config, onChange } = this.props;
+    const { colors10, colors20 } = config;
+    if (colors10 && colors20) {
+      onChange({ colors10, colors20 });
+    }
+  };
+
   /**
    * @override
    */
@@ -52,19 +61,29 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
 
   renderContent() {
     const { colorMap } = this.state;
+    const { config, attributes } = this.props;
+    /** 是否视为一个整体 */
+    const { asAWhole } = config;
     /** 颜色。默认使用 colors10  */
     const colors = _.values(colorMap);
+    const isSelected =
+      asAWhole && _.isEqual(config.colors10, attributes.colors10);
 
     return (
-      <div className={styles.colorGroup}>
+      <div
+        className={cx(styles.colorGroup, { [styles.selected]: isSelected })}
+        onClick={asAWhole ? this.onWholeClick : null}
+      >
         {_.map(colors, (color, idx) => {
           return (
-            <div className={styles.colorItem} key={idx.toString()}>
-              <CommonReactColor
-                color={color}
-                onChange={color => this.onColorChange(idx, color)}
-              />
-            </div>
+            <CommonReactColor
+              key={idx.toString()}
+              className={styles.colorItem}
+              /** 当视为一个整体时，不允许修改子元素color */
+              canChangeColor={!asAWhole}
+              color={color}
+              onChange={color => this.onColorChange(idx, color)}
+            />
           );
         })}
       </div>

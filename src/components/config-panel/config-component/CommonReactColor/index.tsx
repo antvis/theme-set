@@ -1,6 +1,7 @@
 import { Dropdown } from 'antd';
 import React, { useMemo, useCallback } from 'react';
 import { SketchPicker } from 'react-color';
+import cx from 'classnames';
 import styles from './index.module.less';
 
 const DEFAULT_COLORS = [
@@ -22,11 +23,13 @@ const DEFAULT_COLORS = [
 type CommonReactColorProps = {
   color: string;
   onChange: (value) => void;
+  canChangeColor?: boolean;
   style?: React.CSSProperties;
+  className?: string;
 };
 
 export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
-  const { color, onChange, style } = props;
+  const { color, onChange, style, canChangeColor = true, className } = props;
 
   const onColorChange = useCallback(
     newColor => {
@@ -49,10 +52,14 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
     );
   }, [onColorChange]);
   return (
-    <Dropdown overlay={overlay} trigger={['click', 'hover']}>
+    <Dropdown
+      overlay={overlay}
+      trigger={['click', 'hover']}
+      disabled={!canChangeColor}
+    >
       <div
         style={{ backgroundColor: color, ...style }}
-        className={styles.colorBlock}
+        className={cx(styles.colorBlock, className)}
       />
     </Dropdown>
   );

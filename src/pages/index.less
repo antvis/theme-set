@@ -3,3 +3,29 @@
 body {
   line-height: 1;
 }
+
+.sider-trigger {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  top: 160px;
+  left: -13px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+// 重写侧边样式
+.ant-layout-sider-collapsed {
+  flex: 0 0 0 !important;
+  min-width: 0 !important;
+
+  .sider-trigger {
+    left: -18px;
+    transform: rotate(180deg);
+  }
+}

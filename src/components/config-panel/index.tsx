@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
-import { Button, InputNumber, Radio } from 'antd';
+import { Button, message, Upload } from 'antd';
+import { RcFile } from 'antd/lib/upload';
+import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import _ from 'lodash';
-import { copyToClipboard } from '../../utils/copy-to-board';
-import Palette from '../../theme/palette.json';
+import { exportDataToLocal } from '../../utils/export-to-local';
 import { ConfigProps } from '../../types';
 import G2ThemeTokenConfig from './datas/g2';
 import { AttributeTree } from './AttributeTree';
@@ -25,58 +26,66 @@ export const ConfigPanel: React.FC<Props> = props => {
     return G2ThemeTokenConfig;
   }, []);
 
-  const copyConfig = () => {
-    copyToClipboard(JSON.stringify(config || null));
-  };
-
-  const onColorsChange = ({ colors10, colors20 }) => {
-    onThemeChange({ colors10, colors20 });
+  const uploadConfig = (file: RcFile) => {
+    if (window.FileReader) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          if (reader.result) {
+            const newConfig: ConfigProps = JSON.parse(reader.result);
+            onThemeChange(newConfig.theme);
+            onChange(_.omit(newConfig, 'theme'));
+          }
+          message.success('上传配置已应用');
+        } catch (err) {
+          message.error('上传文件有误，请重新上传');
+        }
+      };
+      reader.readAsText(file);
+    } else {
+      message.error('您当前浏览器不支持 FileReader，建议使用谷歌浏览器');
+    }
+    return false;
   };
 
   return (
     <div className={styles.configPanel} style={style}>
-      <div className={styles.configPanelTitle}>配置区</div>
-      <div className="">
-        <Button onClick={copyConfig}>拷贝</Button>
+      <div className={styles.configPanelTitleContainer}>
+        <div className={styles.configPanelTitle}>主题配置</div>
+        <div className={styles.operation}>
+          <Upload
+            accept=".json"
+            showUploadList={false}
+            beforeUpload={uploadConfig}
+          >
+            <Button icon={<PlusOutlined />}>导入</Button>
+          </Upload>
+
+          <Button
+            icon={<UploadOutlined style={{ color: '#ffffff' }} />}
+            type="primary"
+            className={styles.exportBtn}
+            onClick={() => {
+              exportDataToLocal(config, 'config.json');
+            }}
+          >
+            导出
+          </Button>
+        </div>
       </div>
-      <hr />
-      {/* 颜色色板区 START */}
-      <h4>颜色色板</h4>
-      <Radio.Group defaultValue={0} className={styles.colorPalettePicker}>
-        {Palette.categorical.map((colors, idx) => {
-          return (
-            <Radio.Button
-              key={`${idx}`}
-              value={idx}
-              className={styles.colorGroup}
-              onClick={() => onColorsChange(colors)}
-            >
-              {colors.colors10.map((color, colorIdx) => (
-                <span
-                  key={`${colorIdx}`}
-                  className={styles.colorItem}
-                  style={{ background: color }}
-                />
-              ))}
-            </Radio.Button>
-          );
-        })}
-      </Radio.Group>
-      <h4 style={{ marginTop: '8px' }}>系列数量</h4>
-      <InputNumber
-        size="small"
-        value={config.seriesCount}
-        onChange={v => onChange({ seriesCount: Number(v) })}
-      />
-      {/* 颜色色板区 END */}
-      <hr />
       <AttributeTree
-        attributes={config.theme}
+        attributes={{ ...config.theme, seriesCount: config.seriesCount }}
         config={attributesConfig.config}
         relations={attributesConfig.relations}
         onChange={attrs => {
-          const actualValue = {};
+          let actualValue = {};
           _.each(attrs, (v, k) => _.set(actualValue, k, v));
+          if (_.get(actualValue, 'seriesCount')) {
+            onChange({
+              seriesCount: Number(_.get(actualValue, 'seriesCount')),
+            });
+            actualValue = _.omit(actualValue, ['seriesCount']);
+          }
           onThemeChange(actualValue);
         }}
       />

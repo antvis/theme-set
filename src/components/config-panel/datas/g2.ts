@@ -1,3 +1,5 @@
+import Palette from '../../../theme/palette.json';
+
 export default {
   relations: [
     {
@@ -55,17 +57,51 @@ export default {
     children: [
       {
         type: 'collapse-panel',
-        displayName: '基础配置',
+        displayName: '主题色板',
         children: [
+          {
+            type: 'theme-style-switcher',
+            displayName: '预览主题',
+          },
+          {
+            type: 'slider',
+            attributeId: 'seriesCount',
+            displayName: '系列数量',
+            min: 1,
+            max: 10,
+            initialValue: 3,
+            showInputNumber: true,
+          },
+          {
+            type: 'grid-layout',
+            displayName: '色板预览',
+            gridColumnGap: '8px',
+            // gridRowGap: '8px',
+            children: Palette.categorical.map(colors => {
+              return {
+                type: 'custom-theme-color',
+                asAWhole: true,
+                colors10: colors.colors10,
+                colors20: colors.colors20,
+              };
+            }),
+          },
+          {
+            type: 'group',
+            displayName: '自定义配色',
+            children: [
+              {
+                type: 'custom-theme-color',
+                displayName: '色板',
+                canChangeColor: true,
+                attributeId: 'theme-color',
+              },
+            ],
+          },
           {
             type: 'color-picker',
             displayName: '背景色',
             attributeId: 'background',
-          },
-          {
-            type: 'custom-theme-color',
-            displayName: '主题色',
-            attributeId: 'theme-color',
           },
         ],
       },

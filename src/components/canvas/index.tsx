@@ -250,18 +250,34 @@ export const Canvas: React.FC<ConfigProps> = props => {
   /** canvas 容器样式 */
   const containerStyle = useMemo(() => {
     return {
-      background: theme.background,
       color: _.get(theme, ['labels', 'style', 'fill']),
+    };
+  }, [theme]);
+
+  const plotStyle = useMemo(() => {
+    return {
+      background: theme.background,
     };
   }, [theme]);
 
   return (
     <div className={styles.canvasContainer} style={containerStyle}>
-      <UseG2Plot Ctor={Line} title="Line Plot" options={options1} />
-      <UseG2Plot Ctor={Area} title="Area Plot" options={options1} />
+      <UseG2Plot
+        Ctor={Line}
+        title="Line Plot"
+        options={options1}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={Area}
+        title="Area Plot"
+        options={options1}
+        style={plotStyle}
+      />
       <UseG2Plot
         Ctor={Column}
         title="Stacked Column Plot"
+        style={plotStyle}
         options={{
           ...columnOptions,
           isStack: true,
@@ -271,16 +287,23 @@ export const Canvas: React.FC<ConfigProps> = props => {
       <UseG2Plot
         Ctor={Column}
         title="Group Column Plot"
+        style={plotStyle}
         options={{
           ...columnOptions,
           isGroup: true,
           scrollbar: { type: 'horizontal', categorySize: 100 },
         }}
       />
-      <UseG2Plot Ctor={Bar} title="Bar Plot" options={barOptions} />
+      <UseG2Plot
+        Ctor={Bar}
+        title="Bar Plot"
+        options={barOptions}
+        style={plotStyle}
+      />
       <UseG2Plot
         Ctor={Bar}
         title="Group Bar Plot"
+        style={plotStyle}
         options={{
           ...barOptions,
           isGroup: true,
@@ -289,16 +312,42 @@ export const Canvas: React.FC<ConfigProps> = props => {
           },
         }}
       />
-      <UseG2Plot Ctor={Radar} title="Radar Plot" options={radarOptions} />
-      <UseG2Plot Ctor={Pie} title="Pie Plot" options={pieOptions} />
-      <UseG2Plot Ctor={Gauge} title="Gauge Plot" options={gaugeOptions} />
+      <UseG2Plot
+        Ctor={Radar}
+        title="Radar Plot"
+        options={radarOptions}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={Pie}
+        title="Pie Plot"
+        options={pieOptions}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={Gauge}
+        title="Gauge Plot"
+        options={gaugeOptions}
+        style={plotStyle}
+      />
       <UseG2Plot
         Ctor={RadialBar}
         title="Radial Bar Plot"
+        style={plotStyle}
         options={radialBarOptions}
       />
-      <UseG2Plot Ctor={Treemap} title="Treemap Plot" options={treemapOptions} />
-      <UseG2Plot Ctor={Heatmap} title="Heatmap Plot" options={heatmapOptions} />
+      <UseG2Plot
+        Ctor={Treemap}
+        title="Treemap Plot"
+        options={treemapOptions}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={Heatmap}
+        title="Heatmap Plot"
+        options={heatmapOptions}
+        style={plotStyle}
+      />
     </div>
   );
 };
