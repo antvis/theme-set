@@ -23,7 +23,7 @@ const Page = () => {
   const [theme, setTheme] = useState(LIGHT_THEME);
   /** 其他和主题无关的配置项 */
   const [config, setConfig] = useState(DEFAULT_CONFIG);
-  /**  */
+  /** 侧边栏是否缩进状态 */
   const [configPanelCollapse, setConfigPanelCollapse] = useState(false);
 
   // 初始化加载 先 loading 一下
