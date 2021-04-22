@@ -16,6 +16,12 @@ export class Group extends PureComponent<
     collapsed: false,
   };
 
+  onCollapse = () => {
+    this.setState(old => ({
+      collapsed: !old.collapsed,
+    }));
+  };
+
   render() {
     const { config, children } = this.props;
     return (
@@ -24,11 +30,7 @@ export class Group extends PureComponent<
           config={config}
           canCollapse
           collapsed={this.state.collapsed}
-          onClick={() => {
-            this.setState(old => ({
-              collapsed: !old.collapsed,
-            }));
-          }}
+          onClick={this.onCollapse}
           style={{ color: 'rgba(0,0,0,0.85)', padding: '4px 0' }}
         />
         <div
