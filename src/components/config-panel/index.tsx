@@ -62,7 +62,7 @@ export const ConfigPanel: React.FC<Props> = props => {
           </Upload>
 
           <Button
-            icon={<UploadOutlined style={{ color: '#ffffff' }} />}
+            icon={<UploadOutlined />}
             type="primary"
             className={styles.exportBtn}
             onClick={() => {

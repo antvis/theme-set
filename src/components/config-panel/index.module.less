@@ -3,7 +3,7 @@
   width: 100%;
   padding: 12px 0;
   background-color: #f2f4f7;
-  box-shadow: 0 0 10px 0px #E4E4E4;
+  box-shadow: -5px 0px 5px -2px rgba(0, 0, 0, 0.05);
 
   overflow-y: auto;
 
@@ -34,12 +34,15 @@
     .operation {
       display: flex;
 
-      &>:first-child {
+      & > :first-child {
         margin-right: 11px;
       }
       .export-btn {
         span {
           color: #fff;
+        }
+        svg {
+          fill: #fff;
         }
       }
     }
@@ -78,5 +81,11 @@
         }
       }
     }
+  }
+}
+
+body[data-theme='dark'] {
+  .config-panel {
+    box-shadow: -5px 0px 5px -2px rgba(255, 255, 255, 0.1);
   }
 }
