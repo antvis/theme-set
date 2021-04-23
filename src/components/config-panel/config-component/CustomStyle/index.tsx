@@ -1,8 +1,8 @@
+import React from 'react';
 import { Input as AntdInput } from 'antd';
-import React, { useEffect, useState } from 'react';
-import * as _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
+import _ from 'lodash';
 import styles from './index.module.less';
+import { BaseComponent } from '../base/BaseComponent';
 
 const { TextArea } = AntdInput;
 
@@ -10,39 +10,47 @@ type SelectConfig = {
   options: { label: string; value: string }[];
 };
 
-export const CustomStyle: React.FC<
-  AttributeTreeProps<SelectConfig>
-> = props => {
-  const { config, attributes, onChange } = props;
-  const { displayName } = config;
+type State = { value: string };
 
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    try {
-      setValue(
-        JSON.stringify(_.get(attributes, config.attributeId), null, '\t')
-      );
-    } catch (e) {}
-  }, [_.get(attributes, config.attributeId)]);
-
-  const onPressEnter = evt => {
-    try {
-      const style = JSON.parse(evt.target.value);
-      onChange({ [config.attributeId]: style });
-    } catch (e) {}
+export class CustomStyle extends BaseComponent<SelectConfig, State> {
+  state = {
+    value: '',
   };
 
-  return (
-    <div className={styles.customStyle}>
-      {displayName && <div>{displayName}</div>}
-      <TextArea
-        value={value}
-        onPressEnter={onPressEnter}
-        onChange={e => setValue(e.target.value)}
-        size="small"
-        autoSize={{ minRows: 2, maxRows: 10 }}
-      />
-    </div>
-  );
-};
+  static getDerivedStateFromProps(props) {
+    const { config, attributes } = props;
+
+    let v = '';
+    try {
+      v = JSON.stringify(_.get(attributes, config.attributeId), null, '\t');
+    } catch (e) {}
+
+    return {
+      value: v,
+    };
+  }
+
+  renderContent() {
+    const { config, onChange } = this.props;
+    const { value } = this.state;
+
+    const onPressEnter = evt => {
+      try {
+        const style = JSON.parse(evt.target.value);
+        onChange({ [config.attributeId]: style });
+      } catch (e) {}
+    };
+
+    return (
+      <div className={styles.customStyle}>
+        <TextArea
+          value={value}
+          onPressEnter={onPressEnter}
+          onChange={e => this.setState({ value: e.target.value })}
+          size="small"
+          autoSize={{ minRows: 2, maxRows: 10 }}
+        />
+      </div>
+    );
+  }
+}

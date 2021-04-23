@@ -1,16 +1,35 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Dropdown } from 'antd';
-import { SketchPicker } from 'react-color';
-import * as _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
+import React from 'react';
+import _ from 'lodash';
+import cx from 'classnames';
+import { CommonReactColor } from '../CommonReactColor';
+import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
 
-export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
-  const { attributes, config, onChange } = props;
+type State = {
+  colorMap: Record<string, string>;
+};
 
-  const [colorMap, setColorMap] = useState({});
+export class CustomThemeColor extends BaseComponent<{}, State> {
+  state: State = {
+    colorMap: {},
+  };
 
-  const onColorChange = (idx: string, color: string) => {
+  static getDerivedStateFromProps(props) {
+    const { attributes, config } = props;
+
+    const obj = {};
+    _.forEach(config.colors10 || attributes.colors10, (color, idx) => {
+      obj[idx.toString()] = color;
+    });
+    return {
+      colorMap: obj,
+    };
+  }
+
+  onColorChange = (idx: number, color: string) => {
+    const { attributes, onChange } = this.props;
+    const { colorMap } = this.state;
+
     const newColors10 = _.values(
       _.merge({}, colorMap, { [idx.toString()]: color })
     );
@@ -23,44 +42,51 @@ export const CustomThemeColor: React.FC<AttributeTreeProps> = props => {
     onChange({ colors10: newColors10, colors20: newColors20 });
   };
 
-  /** 颜色。默认使用 colors10  */
-  const colors = useMemo(() => {
-    return attributes.colors10;
-  }, [attributes]);
+  onWholeClick = () => {
+    const { config, onChange } = this.props;
+    const { colors10, colors20 } = config;
+    if (colors10 && colors20) {
+      onChange({ colors10, colors20 });
+    }
+  };
 
-  useEffect(() => {
-    const obj = {};
-    _.forEach(colors, (color, idx) => {
-      obj[idx.toString()] = color;
-    });
-    setColorMap(obj);
-  }, [colors]);
+  /**
+   * @override
+   */
+  getWrapperStyle() {
+    return {
+      display: 'block',
+    };
+  }
 
-  return (
-    <div className={styles.customThemeColor}>
-      <span>{config.displayName}</span>
-      <div className={styles.colorGroup}>
+  renderContent() {
+    const { colorMap } = this.state;
+    const { config, attributes } = this.props;
+    /** 是否视为一个整体 */
+    const { asAWhole } = config;
+    /** 颜色。默认使用 colors10  */
+    const colors = _.values(colorMap);
+    const isSelected =
+      asAWhole && _.isEqual(config.colors10, attributes.colors10);
+
+    return (
+      <div
+        className={cx(styles.colorGroup, { [styles.selected]: isSelected })}
+        onClick={asAWhole ? this.onWholeClick : null}
+      >
         {_.map(colors, (color, idx) => {
           return (
-            <div className={styles.colorItem} key={idx.toString()}>
-              <Dropdown
-                overlay={
-                  <SketchPicker
-                    color={color}
-                    onChangeComplete={({ hex }) => onColorChange(idx, hex)}
-                  />
-                }
-                trigger={['hover', 'click']}
-              >
-                <div
-                  style={{ backgroundColor: color }}
-                  className={styles.colorBlock}
-                />
-              </Dropdown>
-            </div>
+            <CommonReactColor
+              key={idx.toString()}
+              className={styles.colorItem}
+              /** 当视为一个整体时，不允许修改子元素color */
+              canChangeColor={!asAWhole}
+              color={color}
+              onChange={color => this.onColorChange(idx, color)}
+            />
           );
         })}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}

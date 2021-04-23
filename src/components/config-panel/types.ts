@@ -7,7 +7,7 @@ export type AttributeTreeProps<
   relations?: {
     fromAttributeId: string;
     value: string | number | boolean | object; // field 比较 length，其他的配置比较 form 表单的 value
-    operator: '='; // 支持 =, 待支持: >, < & in
+    operator: '=' | '!='; // 支持 =, !=, 待支持: >, < & in
     toAttributeId: string;
     // 支持 hidden, 待支持: disable
     action: 'hidden';
@@ -16,8 +16,12 @@ export type AttributeTreeProps<
 
 type AttributeComponentProps = {
   type?: string;
+  /** 属性组件 id */
   attributeId?: string;
+  /** 属性组件 展示名 */
   displayName?: string;
+  /** 属性组件 描述信息 */
+  info?: string;
   initialValue?: string | number | object;
   children?: AttributeComponentProps[];
 

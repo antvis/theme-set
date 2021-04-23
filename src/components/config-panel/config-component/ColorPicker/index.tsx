@@ -1,35 +1,30 @@
-import React, { useMemo } from 'react';
-import { Dropdown } from 'antd';
-import * as _ from 'lodash';
-import { SketchPicker } from 'react-color';
-import { AttributeTreeProps } from '../../types';
-import styles from './index.module.less';
+import React from 'react';
+import _ from 'lodash';
+import { BaseComponent } from '../base/BaseComponent';
+import { CommonReactColor } from '../CommonReactColor';
 
-type ColorPickerProps = {};
+export class ColorPicker extends BaseComponent<
+  { step?: number },
+  null,
+  { innerStyle?: React.CSSProperties }
+> {
+  onColorChange = color => {
+    const { config, onChange } = this.props;
+    onChange({ [config.attributeId]: color });
+  };
 
-export const ColorPicker: React.FC<
-  AttributeTreeProps<ColorPickerProps>
-> = props => {
-  const { config, attributes, onChange } = props;
-  const { displayName } = config;
+  renderContent() {
+    const { config, attributes, innerStyle } = this.props;
+    const color =
+      _.get(attributes, config.attributeId, config.initialValue) ||
+      'transparent';
 
-  const color = _.get(attributes, config.attributeId, config.initialValue) || 'transparent';
-
-  const overlay = useMemo(() => {
     return (
-      <SketchPicker
+      <CommonReactColor
         color={color}
-        onChangeComplete={({ hex }) => onChange({ [config.attributeId]: hex })}
+        onChange={this.onColorChange}
+        style={innerStyle}
       />
     );
-  }, [attributes, onChange]);
-
-  return (
-    <div className={`${styles.colorPicker}`}>
-      <span>{displayName}</span>
-      <Dropdown overlay={overlay} trigger={['hover', 'click']}>
-        <div style={{ backgroundColor: color }} className={styles.colorBlock} />
-      </Dropdown>
-    </div>
-  );
-};
+  }
+}

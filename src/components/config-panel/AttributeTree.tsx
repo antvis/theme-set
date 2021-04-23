@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import configComponents from './config-component';
 import { AttributeTreeProps } from './types';
 
@@ -28,6 +28,8 @@ export class AttributeTree extends PureComponent<AttributeTreeProps> {
     _.each(relations, ({ fromAttributeId, value, operator, action }) => {
       const fromAttributeValue = _.get(attributes, fromAttributeId);
       if (operator === '=' && fromAttributeValue === value) {
+        status.push(action);
+      } else if (operator === '!=' && fromAttributeValue !== value) {
         status.push(action);
       }
     });

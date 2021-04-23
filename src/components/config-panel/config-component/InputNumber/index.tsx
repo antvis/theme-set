@@ -1,25 +1,26 @@
-import { InputNumber as AntdInputNumber } from 'antd';
 import React from 'react';
-import * as _ from 'lodash';
-import { AttributeTreeProps } from '../../types';
+import { InputNumber as AntdInputNumber } from 'antd';
+import _ from 'lodash';
+import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
+export class InputNumber extends BaseComponent<
+  { step?: number },
+  null,
+  { width?: number }
+> {
+  renderContent() {
+    const { config, attributes, onChange, width = 78 } = this.props;
+    const value = _.get(attributes, config.attributeId, config.initialValue);
 
-export const InputNumber: React.FC<AttributeTreeProps<{ step?: number;}>> = props => {
-  const { config, attributes, onChange } = props;
-  const { displayName, step = 1 } = config;
-
-  const value = _.get(attributes, config.attributeId, config.initialValue);
-
-  return (
-    <div className={styles.inputNumber}>
-      <span>{displayName}</span>
+    return (
       <AntdInputNumber
         value={value}
-        step={step}
+        step={config.step || 1}
         onChange={v => onChange({ [config.attributeId]: v })}
-        style={{ width: 78 }}
+        style={{ width }}
         size="small"
+        className={styles.inputNumber}
       />
-    </div>
-  );
-};
+    );
+  }
+}

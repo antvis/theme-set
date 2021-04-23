@@ -1,22 +1,51 @@
 .config-panel {
   height: 100%;
   width: 100%;
-  padding: 12px 24px;
+  padding: 12px 0;
   background-color: #f2f4f7;
+  box-shadow: -5px 0px 5px -2px rgba(0, 0, 0, 0.05);
 
   overflow-y: auto;
 
   * {
     font-size: 12px;
-    line-height: 24px;
     color: rgba(0, 0, 0, 0.65);
   }
+  background-color: #ffffff;
 
-  .config-panel-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 8px 0;
-    color: rgba(0, 0, 0, 0.85);
+  .config-panel-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+    margin-bottom: 10px;
+
+    .config-panel-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 8px 0;
+      color: rgba(0, 0, 0, 0.85);
+
+      .title-icon {
+        margin-right: 8px;
+      }
+    }
+
+    .operation {
+      display: flex;
+
+      & > :first-child {
+        margin-right: 11px;
+      }
+      .export-btn {
+        span {
+          color: #fff;
+        }
+        svg {
+          fill: #fff;
+        }
+      }
+    }
   }
 
   hr {
@@ -52,5 +81,11 @@
         }
       }
     }
+  }
+}
+
+body[data-theme='dark'] {
+  .config-panel {
+    box-shadow: -5px 0px 5px -2px rgba(255, 255, 255, 0.1);
   }
 }

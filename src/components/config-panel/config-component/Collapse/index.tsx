@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Collapse as AntdCollapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { AttributeTree } from '../../AttributeTree';
 import { AttributeTreeProps } from '../../types';
 import './index.less';

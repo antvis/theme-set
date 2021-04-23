@@ -8,6 +8,12 @@ import { InputNumber } from './InputNumber';
 import { Select } from './Select';
 import { Group } from './Group';
 import { CustomStyle } from './CustomStyle';
+import { LineDash } from './LineDash';
+import { FontSetting } from './FontSetting';
+import { LineSetting } from './LineSetting';
+import { Slider } from './Slider';
+import { GridLayout } from './GridLayout';
+import { ThemeStyleSwitcher } from './ThemeStyleSwitcher';
 
 export default {
   Collapse,
@@ -20,4 +26,10 @@ export default {
   Input,
   InputNumber,
   Select,
+  LineDash,
+  FontSetting,
+  LineSetting,
+  Slider,
+  GridLayout,
+  ThemeStyleSwitcher,
 };

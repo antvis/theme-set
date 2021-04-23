@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spin, Layout as AntdLayout } from 'antd';
-import * as _ from 'lodash';
+import _ from 'lodash';
+import { RightOutlined } from '@ant-design/icons';
 import Layout from '../layouts/layout';
 import { CodeLoading } from '../components/common/CodeLoading';
 import { ConfigPanel } from '../components/config-panel';
@@ -22,10 +23,12 @@ const Page = () => {
   const [theme, setTheme] = useState(LIGHT_THEME);
   /** 其他和主题无关的配置项 */
   const [config, setConfig] = useState(DEFAULT_CONFIG);
+  /** 侧边栏是否缩进状态 */
+  const [configPanelCollapse, setConfigPanelCollapse] = useState(false);
 
   // 初始化加载 先 loading 一下
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 100);
   }, []);
 
   // 监听 黑暗主题切换
@@ -70,14 +73,24 @@ const Page = () => {
   return (
     <Spin spinning={loading}>
       <Layout mainStyle={{ display: 'flex', width: '100%', margin: '0 auto' }}>
-        <AntdLayout.Sider collapsed={false} theme="light" width={320}>
+        <Canvas theme={theme} {...config} />
+        <AntdLayout.Sider
+          collapsed={configPanelCollapse}
+          theme="light"
+          width={360}
+          collapsible
+          trigger={null}
+        >
+          <RightOutlined
+            className="sider-trigger"
+            onClick={() => setConfigPanelCollapse(old => !old)}
+          />
           <ConfigPanel
             config={{ ...config, theme }}
             onChange={onConfigChange}
             onThemeChange={onThemeChange}
           />
         </AntdLayout.Sider>
-        <Canvas theme={theme} {...config} />
       </Layout>
     </Spin>
   );

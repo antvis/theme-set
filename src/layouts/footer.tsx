@@ -27,7 +27,11 @@ const Footer: React.FC<Props> = props => {
         className="actio</div>ns"
         style={{ position: 'absolute', right: '24px' }}
       >
-        <Tooltip title="客人，来个 star 呗 😉" color="#873bf4" placement="topRight">
+        <Tooltip
+          title="客人，来个 star 呗 😉"
+          color="#873bf4"
+          placement="topRight"
+        >
           <a
             href={props.githubUrl}
             style={{ textDecoration: 'none' }}

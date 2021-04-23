@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from './header';
 import Footer from './footer';
 import './layout.less';
+import Seo from './Seo';
 
 type Props = {
   mainStyle?: React.CSSProperties;
@@ -33,7 +34,8 @@ const Layout: React.FC<Props> = ({ children, mainStyle = {} }) => {
 
   return (
     <>
-      <Header siteTitle={title} />
+      <Seo title={title} />
+      <Header siteTitle={title} themeSwitcher={false} />
       <main style={mainStyle}>{children}</main>
       <Footer author={author} githubUrl={githubUrl} contact={contact} />
     </>
