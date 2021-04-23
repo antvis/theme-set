@@ -1,7 +1,8 @@
 module.exports = {
   pathPrefix: '/g2plot-theme-builder',
   siteMetadata: {
-    title: `📈 G2Plot theme builder 💄`,
+    title: `AntV ThemeSet 💄`,
+    description: '',
     githubUrl: 'https://github.com/visiky/g2plot-theme-builder.git',
     author: 'visiky',
     contact: 'https://github.com/visiky',
@@ -29,7 +30,17 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Antv ThemeSet`,
+        short_name: `Antv ThemeSet`,
+        background_color: `#6b37bf`,
+        theme_color: `#6b37bf`,
+        icon: require.resolve(`./src/static/images/favicon.png`), // This path is relative to the root of the site.
+      },
+    }, // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
