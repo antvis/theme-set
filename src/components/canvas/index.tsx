@@ -153,7 +153,9 @@ export const Canvas: React.FC<ConfigProps> = props => {
       yField: 'value',
       radius: 0.8,
       innerRadius: 0.4,
-      barBackground: {},
+      barBackground: {
+        style: { fill: theme.subColor },
+      },
       theme,
     };
   }, [pieData, theme]);
@@ -214,6 +216,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
       xField: 'time',
       yField: 'day',
       colorField: 'value',
+      color: _.join(theme.sequenceColors, '-'),
       theme,
     };
   }, [theme]);
@@ -243,6 +246,9 @@ export const Canvas: React.FC<ConfigProps> = props => {
     return {
       percent: 0.75,
       axis: {},
+      range: {
+        color: [theme.defaultColor, theme.subColor],
+      },
       theme,
     };
   }, [theme]);

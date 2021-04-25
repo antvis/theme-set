@@ -32,6 +32,7 @@ export const ConfigPanel: React.FC<Props> = props => {
       reader.onload = () => {
         try {
           if (reader.result) {
+            // @ts-ignore
             const newConfig: ConfigProps = JSON.parse(reader.result);
             onThemeChange(newConfig.theme);
             onChange(_.omit(newConfig, 'theme'));
