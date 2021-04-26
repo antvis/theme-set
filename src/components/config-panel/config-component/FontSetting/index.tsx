@@ -26,7 +26,7 @@ type FontSettingProps = {
 export class FontSetting extends BaseComponent<FontSettingProps> {
   renderContent() {
     const { onChange, attributes, config } = this.props;
-    const { attributeIdMap = {} } = config;
+    const { attributeIdMap = {}, initialValue } = config;
     const {
       fontColor: fontColorId,
       fontFamily: fontFamilyId,
@@ -50,7 +50,10 @@ export class FontSetting extends BaseComponent<FontSettingProps> {
         {fontSizeId && (
           <InputNumber
             attributes={attributes}
-            config={{ attributeId: fontSizeId }}
+            config={{
+              attributeId: fontSizeId,
+              initialValue: initialValue?.['fontSize'],
+            }}
             onChange={onChange}
           />
         )}

@@ -87,6 +87,8 @@ export const Canvas: React.FC<ConfigProps> = props => {
         showMarkers: undefined,
       },
       label: {},
+      xAxis: { title: {} },
+      yAxis: { title: {} },
     };
   }, [data, theme]);
 
@@ -102,6 +104,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
       },
       theme,
       label: {},
+      yAxis: { title: {} },
     };
   }, [barData, theme]);
 

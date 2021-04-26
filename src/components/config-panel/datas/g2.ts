@@ -273,6 +273,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.bottom.title.style.fontSize',
                   fontColor: 'components.axis.bottom.title.style.fill',
@@ -290,6 +293,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.left.title.style.fontSize',
                   fontColor: 'components.axis.left.title.style.fill',
@@ -307,6 +313,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.top.title.style.fontSize',
                   fontColor: 'components.axis.top.title.style.fill',
@@ -324,6 +333,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.right.title.style.fontSize',
                   fontColor: 'components.axis.right.title.style.fill',
@@ -341,6 +353,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis.title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.circle.title.style.fontSize',
                   fontColor: 'components.axis.circle.title.style.fill',
