@@ -39,14 +39,23 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
       newColors20[colorIdx] = color;
     }
 
-    onChange({ colors10: newColors10, colors20: newColors20 });
+    onChange({
+      defaultColor: newColors10[0],
+      colors10: newColors10,
+      colors20: newColors20,
+    });
   };
 
   onWholeClick = () => {
     const { config, onChange } = this.props;
-    const { colors10, colors20 } = config;
+    const { colors10, colors20, sequenceColors } = config;
     if (colors10 && colors20) {
-      onChange({ colors10, colors20 });
+      onChange({
+        defaultColor: colors10[0],
+        colors10,
+        colors20,
+        sequenceColors,
+      });
     }
   };
 

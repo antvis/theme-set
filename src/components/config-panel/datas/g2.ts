@@ -83,6 +83,7 @@ export default {
                 asAWhole: true,
                 colors10: colors.colors10,
                 colors20: colors.colors20,
+                sequenceColors: colors.sequenceColors,
               };
             }),
           },
@@ -98,29 +99,34 @@ export default {
               },
             ],
           },
+        ],
+      },
+      {
+        type: 'collapse-panel',
+        displayName: '基础色',
+        children: [
           {
             type: 'color-picker',
             displayName: '背景色',
             attributeId: 'background',
           },
+          {
+            type: 'color-picker',
+            displayName: '辅助色',
+            attributeId: 'subColor',
+          },
+          {
+            type: 'color-picker',
+            displayName: '语义红',
+            attributeId: 'semanticRed', // risingFill for waterfall
+          },
+          {
+            type: 'color-picker',
+            displayName: '语义绿',
+            attributeId: 'semanticGreen', // fallingFill for waterfall
+          },
         ],
       },
-      // {
-      //   type: 'collapse-panel',
-      //   displayName: '语义色',
-      //   children: [
-      //     {
-      //       type: 'color-picker',
-      //       displayName: '上涨色',
-      //       attributeId: 'paletteSemanticRed', // risingFill for waterfall
-      //     },
-      //     {
-      //       type: 'color-picker',
-      //       displayName: '下跌色',
-      //       attributeId: 'paletteSemanticGreen', // fallingFill for waterfall
-      //     },
-      //   ],
-      // },
       {
         type: 'collapse-panel',
         displayName: '标签',
@@ -267,6 +273,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.bottom.title.style.fontSize',
                   fontColor: 'components.axis.bottom.title.style.fill',
@@ -284,6 +293,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.left.title.style.fontSize',
                   fontColor: 'components.axis.left.title.style.fill',
@@ -301,6 +313,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.top.title.style.fontSize',
                   fontColor: 'components.axis.top.title.style.fill',
@@ -318,6 +333,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis-title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.right.title.style.fontSize',
                   fontColor: 'components.axis.right.title.style.fill',
@@ -335,6 +353,9 @@ export default {
                 type: 'font-setting',
                 displayName: '轴标题字体',
                 attributeId: 'axis.title',
+                initialValue: {
+                  fontSize: 12,
+                },
                 attributeIdMap: {
                   fontSize: 'components.axis.circle.title.style.fontSize',
                   fontColor: 'components.axis.circle.title.style.fill',
@@ -874,7 +895,6 @@ export default {
               {
                 type: 'color-picker',
                 displayName: '标签字体颜色',
-                initialValue: '#F7F7F7',
                 attributeId: 'components.slider.common.textStyle.fill',
               },
               {

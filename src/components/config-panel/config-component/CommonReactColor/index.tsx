@@ -50,7 +50,7 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
         presetColors={DEFAULT_COLORS}
       />
     );
-  }, [onColorChange]);
+  }, [onColorChange, color]);
   return (
     <Dropdown
       overlay={overlay}
