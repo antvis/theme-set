@@ -19,6 +19,10 @@ import {
   GaugeOptions,
   RadialBarOptions,
   RadialBar,
+  WaterfallOptions,
+  Waterfall,
+  Scatter,
+  ScatterOptions,
 } from '@antv/g2plot';
 import { UseG2Plot } from '../../hooks/use-g2plot';
 import { ConfigProps } from '../../types';
@@ -256,6 +260,71 @@ export const Canvas: React.FC<ConfigProps> = props => {
     };
   }, [theme]);
 
+  const waterfallData = useMemo(() => {
+    return [
+      { month: 'Jan', value: 10 },
+      { month: 'Feb', value: 42 },
+      { month: 'March', value: -10 },
+      { month: 'Apr', value: 31 },
+      { month: 'May', value: -12 },
+      { month: 'Jun', value: 10 },
+    ];
+  }, []);
+
+  /** 适用于：瀑布图 */
+  const waterfallOptions = useMemo((): WaterfallOptions => {
+    return {
+      data: waterfallData,
+      xField: 'month',
+      yField: 'value',
+      risingFill: theme.semanticRed,
+      fallingFill: theme.semanticGreen,
+      legend: { position: 'top-left' },
+      theme,
+    };
+  }, [theme, waterfallData]);
+
+  const scatterData = useMemo(() => {
+    const result = [];
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        result.push(
+          {
+            x: _.random(i + 2, 30, false),
+            y: _.random(j + 2, 50, false),
+            size: _.random(2, 8),
+            genre: 'female',
+          },
+          {
+            x: _.random(i + 2, 50, false),
+            y: _.random(j + 2, 40, false),
+            size: _.random(2, 10),
+            genre: 'male',
+          }
+        );
+      }
+    }
+    return result;
+    // 主题变化，改变下数据
+  }, [theme]);
+
+  /** 适用于：散点图 */
+  const scatterOptions = useMemo((): ScatterOptions => {
+    return {
+      data: scatterData,
+      xField: 'x',
+      yField: 'y',
+      colorField: 'genre',
+      sizeField: 'size',
+      size: [5, 20],
+      shape: 'circle',
+      yAxis: { grid: {} },
+      legend: { position: 'top-left' },
+      sizeLegend: {},
+      theme,
+    };
+  }, [theme, scatterData]);
+
   /** canvas 容器样式 */
   const containerStyle = useMemo(() => {
     return {
@@ -322,6 +391,18 @@ export const Canvas: React.FC<ConfigProps> = props => {
         }}
       />
       <UseG2Plot
+        Ctor={Waterfall}
+        title="Waterfall Plot"
+        options={waterfallOptions}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={RadialBar}
+        title="Radial Bar Plot"
+        style={plotStyle}
+        options={radialBarOptions}
+      />
+      <UseG2Plot
         Ctor={Radar}
         title="Radar Plot"
         options={radarOptions}
@@ -339,12 +420,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
         options={gaugeOptions}
         style={plotStyle}
       />
-      <UseG2Plot
-        Ctor={RadialBar}
-        title="Radial Bar Plot"
-        style={plotStyle}
-        options={radialBarOptions}
-      />
+
       <UseG2Plot
         Ctor={Treemap}
         title="Treemap Plot"
@@ -355,6 +431,12 @@ export const Canvas: React.FC<ConfigProps> = props => {
         Ctor={Heatmap}
         title="Heatmap Plot"
         options={heatmapOptions}
+        style={plotStyle}
+      />
+      <UseG2Plot
+        Ctor={Scatter}
+        title="Scatter Plot"
+        options={scatterOptions}
         style={plotStyle}
       />
     </div>

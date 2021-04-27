@@ -35,7 +35,7 @@ export const LineDash: React.FC<
             value={dash}
             size="small"
             style={{ width: 48 }}
-            onChange={e => onValueChange('dash', e.target.value)}
+            onChange={value => onValueChange('dash', value)}
           />
         </div>
         <div className={styles.contentItem}>
@@ -44,7 +44,7 @@ export const LineDash: React.FC<
             size="small"
             value={gap}
             style={{ width: 48 }}
-            onChange={e => onValueChange('gap', e.target.value)}
+            onChange={value => onValueChange('gap', value)}
           />
         </div>
       </div>

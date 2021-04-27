@@ -523,7 +523,7 @@ export default {
       },
       {
         type: 'collapse-panel',
-        displayName: '图例',
+        displayName: '图例 - Legend',
         children: [
           {
             type: 'group',
@@ -750,7 +750,6 @@ export default {
                   lineColor: 'components.tooltip.crosshairs.line.style.stroke',
                 },
               },
-              // todo 增加 “辅助线虚线间隔”, lineDash
               {
                 type: 'checkbox',
                 displayName: 'showMarkers',
@@ -886,7 +885,7 @@ export default {
       },
       {
         type: 'collapse-panel',
-        displayName: '缩略轴',
+        displayName: '缩略轴 - Slider',
         children: [
           {
             type: 'group',
@@ -992,7 +991,7 @@ export default {
       },
       {
         type: 'collapse-panel',
-        displayName: '滚动条',
+        displayName: '滚动条 - Scrollbar',
         children: [
           {
             type: 'group',
