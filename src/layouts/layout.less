@@ -11,7 +11,7 @@ body {
   font-size: 14px;
   font-family: @font-family;
 
-  @background: #EAF2F6;
+  @background: #eaf2f6;
 
   height: 100vh;
   width: 100vw;
@@ -27,7 +27,9 @@ body {
   @main-padding: 24px;
 
   main {
-    height: calc(100vh - @main-padding-vertical * 2 - @header-height - @footer-height);
+    height: calc(
+      100vh - @main-padding-vertical * 2 - @header-height - @footer-height
+    );
     margin: 0;
     padding: 0;
   }
@@ -88,6 +90,11 @@ body {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    .website-help-content {
+      color: rgba(0, 0, 0, 0.65);
+      letter-spacing: 0.4em;
     }
   }
 
