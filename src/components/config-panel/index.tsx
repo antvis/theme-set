@@ -5,7 +5,7 @@ import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { exportDataToLocal } from '../../utils/export-to-local';
 import { ConfigProps } from '../../types';
-import G2ThemeTokenConfig from './datas/g2';
+import G2ThemeTokenConfig from './theme-token/g2';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
 

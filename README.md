@@ -9,10 +9,12 @@ AntV 官方提供了默认的主题色板以及抽象出一套通用的主题 to
 # Contribute
 
 ```sh
-git clone git@github.com:visiky/g2plot-theme-builder.git
+git clone git@github.com:antvis/theme-set.git
 
-cd g2plot-theme-builder
+cd theme-set
 
 npm install && npm start
+
 # then open http://localhost:8000
+
 ```

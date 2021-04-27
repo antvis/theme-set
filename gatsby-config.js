@@ -1,11 +1,10 @@
 module.exports = {
-  pathPrefix: '/g2plot-theme-builder',
+  pathPrefix: '/theme-set',
   siteMetadata: {
     title: `AntV ThemeSet 💄`,
     description: '',
-    githubUrl: 'https://github.com/visiky/g2plot-theme-builder.git',
+    githubUrl: 'https://github.com/antvis/theme-set',
     author: 'visiky',
-    contact: 'https://github.com/visiky',
   },
   flags: {
     DEV_SSR: true,

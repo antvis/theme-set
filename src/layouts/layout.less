@@ -56,23 +56,6 @@ body {
       justify-content: space-between;
       align-items: center;
       margin: 0 auto;
-
-      // 主题切换开关
-      .theme-switcher {
-        transition: all ease 0.3s;
-
-        // 未选中时的样式
-        .ant-switch-handle::before {
-          background: @theme-light-img center center;
-        }
-        // 选中时的样式
-        &.ant-switch-checked {
-          background: rgba(0, 0, 0, 0.25);
-          .ant-switch-handle::before {
-            background: @theme-dark-img center center;
-          }
-        }
-      }
     }
 
     h1 {
@@ -98,6 +81,18 @@ body {
     }
   }
 
+  header {
+    .actions .anticon {
+      font-size: 16px;
+      svg {
+        fill: #fff;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
   footer {
     font-family: @font-family;
     background: #000;
@@ -115,22 +110,6 @@ body {
 
     .action-link:first-of-type {
       margin-left: 12px;
-    }
-
-    .github-icon,
-    .wechat-icon {
-      font-size: 16px;
-      svg {
-        fill: #fff;
-        &:hover {
-          fill: #873bf4;
-          opacity: 0.8;
-        }
-      }
-    }
-
-    .wechat-icon {
-      transform: scale(1.2);
     }
   }
 }

@@ -9,8 +9,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header from './header';
 import Footer from './footer';
+import Seo from './seo';
 import './layout.less';
-import Seo from './Seo';
 
 type Props = {
   mainStyle?: React.CSSProperties;
@@ -24,20 +24,19 @@ const Layout: React.FC<Props> = ({ children, mainStyle = {} }) => {
           title
           githubUrl
           author
-          contact
         }
       }
     }
   `);
 
-  const { title, githubUrl, contact, author } = data.site.siteMetadata;
+  const { title, githubUrl, author } = data.site.siteMetadata;
 
   return (
     <>
       <Seo title={title} />
-      <Header siteTitle={title} themeSwitcher={false} />
+      <Header siteTitle={title} githubUrl={githubUrl} />
       <main style={mainStyle}>{children}</main>
-      <Footer author={author} githubUrl={githubUrl} contact={contact} />
+      <Footer author={author} />
     </>
   );
 };
