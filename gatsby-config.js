@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: '/theme-set',
   siteMetadata: {
     title: `💄 AntV ThemeSet`,
     description: '',
