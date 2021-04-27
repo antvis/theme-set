@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { Button, message, Upload } from 'antd';
 import { RcFile } from 'antd/lib/upload';
-import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
+import { UploadOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import _ from 'lodash';
+import cx from 'classnames';
 import { exportDataToLocal } from '../../utils/export-to-local';
+import { copyToClipboard } from '../../utils/copy-to-board';
 import { ConfigProps } from '../../types';
 import G2ThemeTokenConfig from './theme-token/g2';
 import { AttributeTree } from './AttributeTree';
@@ -61,18 +63,28 @@ export const ConfigPanel: React.FC<Props> = props => {
             showUploadList={false}
             beforeUpload={uploadConfig}
           >
-            <Button icon={<PlusOutlined />}>导入</Button>
+            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>
+              导入
+            </Button>
           </Upload>
 
           <Button
             icon={<UploadOutlined />}
             type="primary"
-            className={styles.exportBtn}
+            className={cx(styles.exportBtn, styles.btn)}
             onClick={() => {
               exportDataToLocal(config, 'g2-theme.json');
             }}
           >
             导出
+          </Button>
+          <Button
+            icon={<CopyOutlined />}
+            type="primary"
+            className={cx(styles.copyBtn, styles.btn)}
+            onClick={() => copyToClipboard(JSON.stringify(config))}
+          >
+            复制
           </Button>
         </div>
       </div>
