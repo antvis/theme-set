@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm run deploy
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+          directory: public
+          branch: gh-pages
+          force: true
