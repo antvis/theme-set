@@ -1,6 +1,8 @@
 import React from 'react';
 import { Popover, Switch } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import { LanguageSwitcher } from '../components/common/LanguageSwitcher';
+import i18n from '../base/i18n';
 
 type Props = {
   siteTitle: string;
@@ -25,6 +27,7 @@ const Header: React.FC<Props> = ({ siteTitle, themeSwitcher }) => {
               onChange={changeTheme}
             />
           )}
+          <LanguageSwitcher />
           <Popover
             content={
               <div>
