@@ -273,6 +273,8 @@ export const Canvas: React.FC<ConfigProps> = props => {
 
   /** 适用于：瀑布图 */
   const waterfallOptions = useMemo((): WaterfallOptions => {
+    const isBrowser = typeof document !== 'undefined';
+    const themeType = isBrowser && document.body.getAttribute('data-theme');
     return {
       data: waterfallData,
       xField: 'month',
@@ -280,6 +282,14 @@ export const Canvas: React.FC<ConfigProps> = props => {
       risingFill: theme.semanticRed,
       fallingFill: theme.semanticGreen,
       legend: { position: 'top-left' },
+      total: {
+        style: {
+          fill:
+            themeType === 'dark'
+              ? 'rgba(255, 255, 255, 0.25)'
+              : 'rgba(0, 0, 0, 0.25)',
+        },
+      },
       theme,
     };
   }, [theme, waterfallData]);
