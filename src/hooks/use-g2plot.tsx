@@ -76,7 +76,7 @@ export function UseG2Plot<O extends CommonOptions = CommonOptions>({
       <div
         className={className}
         ref={container}
-        style={{ height: 'calc(100% - 28px - 16px - 8px)' }}
+        style={{ height: 'calc(100% - 28px - 8px)' }}
       />
     </div>
   );

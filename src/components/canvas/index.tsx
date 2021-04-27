@@ -29,7 +29,7 @@ import { ConfigProps } from '../../types';
 import styles from './index.module.less';
 
 export const Canvas: React.FC<ConfigProps> = props => {
-  const { seriesCount = 3, theme } = props;
+  const { seriesCount = 3, showAxisTitle, theme } = props;
 
   /** 图表数据 */
   const data = useMemo(() => {
@@ -91,8 +91,8 @@ export const Canvas: React.FC<ConfigProps> = props => {
         showMarkers: undefined,
       },
       label: {},
-      xAxis: { title: {} },
-      yAxis: { title: {} },
+      xAxis: { title: showAxisTitle ? {} : null },
+      yAxis: { title: showAxisTitle ? {} : null },
     };
   }, [data, theme]);
 
@@ -108,7 +108,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
       },
       theme,
       label: {},
-      yAxis: { title: {} },
+      yAxis: { title: showAxisTitle ? {} : null },
     };
   }, [barData, theme]);
 

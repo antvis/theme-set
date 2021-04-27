@@ -14,6 +14,7 @@ Spin.setDefaultIndicator(<CodeLoading />);
 
 const DEFAULT_CONFIG: Omit<ConfigProps, 'theme'> = {
   seriesCount: 3,
+  showAxisTitle: true,
 };
 
 const Page = () => {

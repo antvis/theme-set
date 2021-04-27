@@ -9,6 +9,8 @@ import G2ThemeTokenConfig from './theme-token/g2';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
 
+const OmitKeys = ['seriesCount', 'showAxisTitle'];
+
 type Props = {
   config: ConfigProps;
   /** 配置变化，含：seriesCount 等 🤔 */
@@ -75,19 +77,22 @@ export const ConfigPanel: React.FC<Props> = props => {
         </div>
       </div>
       <AttributeTree
-        attributes={{ ...config.theme, seriesCount: config.seriesCount }}
+        attributes={{ ...config.theme, ..._.pick(config, OmitKeys) }}
+        // @ts-ignore
         config={attributesConfig.config}
         relations={attributesConfig.relations}
         onChange={attrs => {
-          let actualValue = {};
-          _.each(attrs, (v, k) => _.set(actualValue, k, v));
-          if (_.get(actualValue, 'seriesCount')) {
-            onChange({
-              seriesCount: Number(_.get(actualValue, 'seriesCount')),
-            });
-            actualValue = _.omit(actualValue, ['seriesCount']);
-          }
-          onThemeChange(actualValue);
+          const configValue = {};
+          const themeValue = {};
+          _.each(attrs, (v, k) => {
+            if (OmitKeys.indexOf(k) !== -1) {
+              _.set(configValue, k, v);
+            } else {
+              _.set(themeValue, k, v);
+            }
+          });
+          onChange(configValue);
+          onThemeChange(themeValue);
         }}
       />
     </div>
