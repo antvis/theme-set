@@ -67,7 +67,7 @@ export const ConfigPanel: React.FC<Props> = props => {
             type="primary"
             className={styles.exportBtn}
             onClick={() => {
-              exportDataToLocal(config, 'config.json');
+              exportDataToLocal(config, 'g2-theme.json');
             }}
           >
             导出
