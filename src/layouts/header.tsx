@@ -49,12 +49,12 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
                   <div>
                     💡 Ideas 或 Q & A 前往
                     <a
-                      href="https://github.com/visiky/g2plot-theme-builder/discussions"
-                      target="_blank"
-                      style={{ marginRight: '4px' }}
+                      href="https://github.com/antvis/theme-set/issues"
+                      style={{ margin: '0 4px' }}
                     >
-                      Discussions
+                      issues
                     </a>
+                    反馈
                   </div>
                 </div>
               }
