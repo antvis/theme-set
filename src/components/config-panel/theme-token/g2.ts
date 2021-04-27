@@ -281,7 +281,8 @@ export default {
                 displayName: '展示轴标题',
                 attributeId: 'showAxisTitle',
                 initialValue: true,
-                info: '是否展示坐标轴标题（应用于折线图、面积图、柱状图）',
+                info:
+                  '是否展示坐标轴标题（应用于折线图、面积图、柱状图）。不属于主题部分，实际应用时，需要处理具体图表的配置项',
                 children: [],
               },
               {
