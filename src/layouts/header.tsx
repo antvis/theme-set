@@ -21,6 +21,15 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
             className="actions"
             style={{ position: 'absolute', right: '24px' }}
           >
+            <Popover content="客人，来个 star 呗 😉" placement="topRight">
+              <a
+                href={githubUrl}
+                style={{ textDecoration: 'none' }}
+                target="_blank"
+              >
+                <GithubFilled className="github-icon action-link" />
+              </a>
+            </Popover>
             <Popover
               content={
                 <div className="website-help-content">
@@ -53,18 +62,8 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
               overlayStyle={{ width: '560px' }}
             >
               <QuestionCircleOutlined
-                style={{ marginRight: '8px', cursor: 'pointer' }}
+                style={{ marginLeft: '8px', cursor: 'pointer' }}
               />
-            </Popover>
-
-            <Popover content="客人，来个 star 呗 😉" placement="topRight">
-              <a
-                href={githubUrl}
-                style={{ textDecoration: 'none' }}
-                target="_blank"
-              >
-                <GithubFilled className="github-icon action-link" />
-              </a>
             </Popover>
           </div>
         </div>

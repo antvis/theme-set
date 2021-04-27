@@ -24,19 +24,20 @@ const Layout: React.FC<Props> = ({ children, mainStyle = {} }) => {
           title
           githubUrl
           author
+          contact
         }
       }
     }
   `);
 
-  const { title, githubUrl, author } = data.site.siteMetadata;
+  const { title, githubUrl, author, contact } = data.site.siteMetadata;
 
   return (
     <>
-      <Seo title={title} />
+      <Seo title="ThemeSet | AntV" />
       <Header siteTitle={title} githubUrl={githubUrl} />
       <main style={mainStyle}>{children}</main>
-      <Footer author={author} />
+      <Footer author={author} contact={contact} />
     </>
   );
 };
