@@ -4,11 +4,16 @@
 import { Radio as AntdRadio } from 'antd';
 import React from 'react';
 import _ from 'lodash';
+import { withTranslation } from 'react-i18next';
 import { BaseComponent } from '../base/BaseComponent';
 import styles from './index.module.less';
 
+//@ts-ignore
+@withTranslation()
 export class ThemeStyleSwitcher extends BaseComponent {
   renderContent() {
+
+    const { config, attributes, t } = this.props;
     const changeTheme = (themeType: 'light' | 'dark') => {
       document.body.dataset['theme'] = themeType;
     };
@@ -21,10 +26,10 @@ export class ThemeStyleSwitcher extends BaseComponent {
           defaultValue="light"
         >
           <AntdRadio.Button className={styles.radioButton} value="light">
-            白天模式
+            {t('白天模式')}
           </AntdRadio.Button>
           <AntdRadio.Button className={styles.radioButton} value="dark">
-            黑夜模式
+            {t('黑夜模式')}
           </AntdRadio.Button>
         </AntdRadio.Group>
       </div>

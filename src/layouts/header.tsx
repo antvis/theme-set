@@ -1,6 +1,8 @@
 import React from 'react';
-import { Popover } from 'antd';
+import { Popover, Switch } from 'antd';
 import { GithubFilled, QuestionCircleOutlined } from '@ant-design/icons';
+import { LanguageSwitcher } from '../components/common/LanguageSwitcher';
+import i18n from '../base/i18n';
 
 type Props = {
   siteTitle: string;

@@ -2,6 +2,7 @@ import { Dropdown } from 'antd';
 import React, { useMemo, useCallback } from 'react';
 import { SketchPicker } from 'react-color';
 import cx from 'classnames';
+import _ from 'lodash';
 import styles from './index.module.less';
 
 const DEFAULT_COLORS = [
@@ -36,9 +37,11 @@ export const CommonReactColor: React.FC<CommonReactColorProps> = props => {
       const {
         rgb: { r, g, b, a },
       } = newColor;
-      onChange(`rgba(${r}, ${g}, ${b}, ${a})`);
+      const alpha =
+        color === undefined || _.lowerCase(color) === 'transparent' ? 1 : a;
+      onChange(`rgba(${r}, ${g}, ${b}, ${alpha})`);
     },
-    [onChange]
+    [onChange, color]
   );
 
   const overlay = useMemo(() => {

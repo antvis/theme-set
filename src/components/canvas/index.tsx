@@ -24,56 +24,67 @@ import {
   Scatter,
   ScatterOptions,
 } from '@antv/g2plot';
+import { useTranslation } from 'react-i18next';
 import { UseG2Plot } from '../../hooks/use-g2plot';
 import { ConfigProps } from '../../types';
 import styles from './index.module.less';
 
 export const Canvas: React.FC<ConfigProps> = props => {
+
+  const { t } = useTranslation();
   const { seriesCount = 3, showAxisTitle, theme } = props;
+
 
   /** 图表数据 */
   const data = useMemo(() => {
-    const months = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun'];
-    const result = [];
-    months.forEach(month => {
-      for (let i = 0; i < seriesCount; i += 1) {
-        result.push({
-          month,
-          category: `分类 ${i + 1}`,
-          value: Math.floor(Math.random() * 920 + 40),
-        });
-      }
-    });
-    return result;
-  }, [seriesCount]);
-
-  const barData = useMemo(() => {
     const months = [
-      'Jan',
-      'Feb',
-      'March',
-      'Apr',
-      'May',
-      'Jun',
-      'July',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
+      t('Jan'),
+      t('Feb'),
+      t('March'),
+      t('Apr'),
+      t('May'),
+      t('Jun'),
     ];
     const result = [];
     months.forEach(month => {
       for (let i = 0; i < seriesCount; i += 1) {
         result.push({
           month,
-          category: `分类 ${i + 1}`,
+          category: `${t('分类')} ${i + 1}`,
           value: Math.floor(Math.random() * 920 + 40),
         });
       }
     });
     return result;
-  }, [seriesCount]);
+  }, [seriesCount, t]);
+
+  const barData = useMemo(() => {
+    const months = [
+      t('Jan'),
+      t('Feb'),
+      t('March'),
+      t('Apr'),
+      t('May'),
+      t('Jun'),
+      t('July'),
+      t('Aug'),
+      t('Sep'),
+      t('Oct'),
+      t('Nov'),
+      t('Dec'),
+    ];
+    const result = [];
+    months.forEach(month => {
+      for (let i = 0; i < seriesCount; i += 1) {
+        result.push({
+          month,
+          category: `${t('分类')} ${i + 1}`,
+          value: Math.floor(Math.random() * 920 + 40),
+        });
+      }
+    });
+    return result;
+  }, [seriesCount, t]);
 
   /** 适用于：折线图、面积图 */
   const options1 = useMemo(() => {
@@ -133,12 +144,12 @@ export const Canvas: React.FC<ConfigProps> = props => {
     const result = [];
     for (let i = 0; i < seriesCount; i += 1) {
       result.push({
-        category: `分类 ${i + 1}`,
+        category: `${t('分类')} ${i + 1}`,
         value: Math.floor(Math.random() * 920 + 40),
       });
     }
     return result;
-  }, [seriesCount]);
+  }, [seriesCount, t]);
 
   /** 适用于：饼图 */
   const pieOptions = useMemo((): PieOptions => {
@@ -171,25 +182,25 @@ export const Canvas: React.FC<ConfigProps> = props => {
   const radarData = useMemo(() => {
     const result = [];
     const names = [
-      '销售',
-      '市场营销',
-      '发展',
-      '客户支持',
-      '信息技术',
-      '行政管理',
+      t('销售'),
+      t('市场营销'),
+      t('发展'),
+      t('客户支持'),
+      t('信息技术'),
+      t('行政管理'),
     ];
     names.forEach(name => {
       for (let i = 0; i < seriesCount; i += 1) {
         result.push({
           name,
-          category: `分类 ${i + 1}`,
+          category: `${t('分类')} ${i + 1}`,
           value: Math.floor(Math.random() * 20 + 140),
         });
       }
     });
 
     return result;
-  }, [seriesCount]);
+  }, [seriesCount, t]);
 
   /** 适用于：雷达图 */
   const radarOptions = useMemo((): RadarOptions => {
@@ -208,7 +219,15 @@ export const Canvas: React.FC<ConfigProps> = props => {
   /** 适用于：色块图 */
   const heatmapOptions = useMemo((): HeatmapOptions => {
     const heatmapData = [];
-    const days = ['Mon', 'Thu', 'Web', 'Thur', 'Fri', 'Sat', 'Sun'];
+    const days = [
+      t('Mon'),
+      t('Thu'),
+      t('Web'),
+      t('Thur'),
+      t('Fri'),
+      t('Sat'),
+      t('Sun'),
+    ];
     days.forEach(day => {
       for (let i = 0; i < 12; i++) {
         heatmapData.push({
@@ -226,14 +245,14 @@ export const Canvas: React.FC<ConfigProps> = props => {
       color: _.join(theme.sequenceColors, '-'),
       theme,
     };
-  }, [theme]);
+  }, [theme, t]);
 
   /** 适用于：矩阵树图 */
   const treemapOptions = useMemo((): TreemapOptions => {
     const treemapData = [];
     for (let i = 0; i < 20; i++) {
       treemapData.push({
-        name: `分类 ${i}`,
+        name: `${t('分类')} ${i}`,
         value: Math.floor(Math.random() * 10),
       });
     }
@@ -246,41 +265,55 @@ export const Canvas: React.FC<ConfigProps> = props => {
       legend: { position: 'bottom' },
       theme,
     };
-  }, [theme]);
+  }, [theme, t]);
 
   /** 适用于：仪表盘 */
   const gaugeOptions = useMemo((): GaugeOptions => {
+    const range =
+      theme.defaultColor && theme.subColor
+        ? {
+            range: {
+              color: [theme.defaultColor, theme.subColor],
+            },
+          }
+        : {};
     return {
       percent: 0.75,
       axis: {},
-      range: {
-        color: [theme.defaultColor, theme.subColor],
-      },
+      ...range,
       theme,
     };
   }, [theme]);
 
   const waterfallData = useMemo(() => {
     return [
-      { month: 'Jan', value: 10 },
-      { month: 'Feb', value: 42 },
-      { month: 'March', value: -10 },
-      { month: 'Apr', value: 31 },
-      { month: 'May', value: -12 },
-      { month: 'Jun', value: 10 },
+      { month: t('Jan'), value: 10 },
+      { month: t('Feb'), value: 42 },
+      { month: t('March'), value: -10 },
+      { month: t('Apr'), value: 31 },
+      { month: t('May'), value: -12 },
+      { month: t('Jun'), value: 10 },
     ];
-  }, []);
+  }, [t]);
 
   /** 适用于：瀑布图 */
   const waterfallOptions = useMemo((): WaterfallOptions => {
+    const risingFill = theme.semanticRed
+      ? { risingFill: theme.semanticRed }
+      : {};
+    const fallingFill = theme.semanticGreen
+      ? { fallingFill: theme.semanticGreen }
+      : {};
+
     const isBrowser = typeof document !== 'undefined';
     const themeType = isBrowser && document.body.getAttribute('data-theme');
+
     return {
       data: waterfallData,
       xField: 'month',
       yField: 'value',
-      risingFill: theme.semanticRed,
-      fallingFill: theme.semanticGreen,
+      ...risingFill,
+      ...fallingFill,
       legend: { position: 'top-left' },
       total: {
         style: {
@@ -303,20 +336,20 @@ export const Canvas: React.FC<ConfigProps> = props => {
             x: _.random(i + 2, 30, false),
             y: _.random(j + 2, 50, false),
             size: _.random(2, 8),
-            genre: 'female',
+            genre: t('female'),
           },
           {
             x: _.random(i + 2, 50, false),
             y: _.random(j + 2, 40, false),
             size: _.random(2, 10),
-            genre: 'male',
+            genre: t('male'),
           }
         );
       }
     }
     return result;
     // 主题变化，改变下数据
-  }, [theme]);
+  }, [theme, t]);
 
   /** 适用于：散点图 */
   const scatterOptions = useMemo((): ScatterOptions => {

@@ -3,6 +3,7 @@ import { Button, message, Upload } from 'antd';
 import { RcFile } from 'antd/lib/upload';
 import { UploadOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import _ from 'lodash';
+import { useTranslation } from 'react-i18next';
 import cx from 'classnames';
 import { exportDataToLocal } from '../../utils/export-to-local';
 import { copyToClipboard } from '../../utils/copy-to-board';
@@ -24,6 +25,7 @@ type Props = {
 
 export const ConfigPanel: React.FC<Props> = props => {
   const { style = {}, config, onThemeChange, onChange } = props;
+  const { t } = useTranslation();
 
   // 一期只有 G2 栈
   const attributesConfig = useMemo(() => {
@@ -41,14 +43,14 @@ export const ConfigPanel: React.FC<Props> = props => {
             onThemeChange(newConfig.theme);
             onChange(_.omit(newConfig, 'theme'));
           }
-          message.success('上传配置已应用');
+          message.success(t('上传配置已应用'));
         } catch (err) {
-          message.error('上传文件有误，请重新上传');
+          message.error(t('上传文件有误，请重新上传'));
         }
       };
       reader.readAsText(file);
     } else {
-      message.error('您当前浏览器不支持 FileReader，建议使用谷歌浏览器');
+      message.error(t('您当前浏览器不支持 FileReader，建议使用谷歌浏览器'));
     }
     return false;
   };
@@ -56,16 +58,14 @@ export const ConfigPanel: React.FC<Props> = props => {
   return (
     <div className={styles.configPanel} style={style}>
       <div className={styles.configPanelTitleContainer}>
-        <div className={styles.configPanelTitle}>主题配置</div>
+        <div className={styles.configPanelTitle}>{t('主题配置')}</div>
         <div className={styles.operation}>
           <Upload
             accept=".json"
             showUploadList={false}
             beforeUpload={uploadConfig}
           >
-            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>
-              导入
-            </Button>
+            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>{t('导入')}</Button>
           </Upload>
 
           <Button
@@ -76,7 +76,7 @@ export const ConfigPanel: React.FC<Props> = props => {
               exportDataToLocal(config, 'g2-theme.json');
             }}
           >
-            导出
+            {t('导出')}
           </Button>
           <Button
             icon={<CopyOutlined />}

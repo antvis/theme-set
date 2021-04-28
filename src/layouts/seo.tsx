@@ -74,7 +74,7 @@ const SEO: React.FC<SEOProps> = ({
 };
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `en_US`,
   meta: [],
   description: ``,
 };
