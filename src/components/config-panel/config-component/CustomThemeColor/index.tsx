@@ -82,6 +82,11 @@ export class CustomThemeColor extends BaseComponent<{}, State> {
       <div
         className={cx(styles.colorGroup, { [styles.selected]: isSelected })}
         onClick={asAWhole ? this.onWholeClick : null}
+        style={{
+          border: isSelected
+            ? `1px solid ${colors[0]}`
+            : '1px solid transparent',
+        }}
       >
         {_.map(colors, (color, idx) => {
           return (

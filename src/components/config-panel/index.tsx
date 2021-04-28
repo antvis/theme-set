@@ -1,14 +1,18 @@
 import React, { useMemo } from 'react';
 import { Button, message, Upload } from 'antd';
 import { RcFile } from 'antd/lib/upload';
-import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
+import { UploadOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
+import cx from 'classnames';
 import { exportDataToLocal } from '../../utils/export-to-local';
+import { copyToClipboard } from '../../utils/copy-to-board';
 import { ConfigProps } from '../../types';
-import G2ThemeTokenConfig from './datas/g2';
+import G2ThemeTokenConfig from './theme-token/g2';
 import { AttributeTree } from './AttributeTree';
 import styles from './index.module.less';
+
+const OmitKeys = ['seriesCount', 'showAxisTitle'];
 
 type Props = {
   config: ConfigProps;
@@ -61,35 +65,46 @@ export const ConfigPanel: React.FC<Props> = props => {
             showUploadList={false}
             beforeUpload={uploadConfig}
           >
-            <Button icon={<PlusOutlined />}>{t('导入')}</Button>
+            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>{t('导入')}</Button>
           </Upload>
 
           <Button
             icon={<UploadOutlined />}
             type="primary"
-            className={styles.exportBtn}
+            className={cx(styles.exportBtn, styles.btn)}
             onClick={() => {
-              exportDataToLocal(config, 'config.json');
+              exportDataToLocal(config, 'g2-theme.json');
             }}
           >
             {t('导出')}
           </Button>
+          <Button
+            icon={<CopyOutlined />}
+            type="primary"
+            className={cx(styles.copyBtn, styles.btn)}
+            onClick={() => copyToClipboard(JSON.stringify(config))}
+          >
+            复制
+          </Button>
         </div>
       </div>
       <AttributeTree
-        attributes={{ ...config.theme, seriesCount: config.seriesCount }}
+        attributes={{ ...config.theme, ..._.pick(config, OmitKeys) }}
+        // @ts-ignore
         config={attributesConfig.config}
         relations={attributesConfig.relations}
         onChange={attrs => {
-          let actualValue = {};
-          _.each(attrs, (v, k) => _.set(actualValue, k, v));
-          if (_.get(actualValue, 'seriesCount')) {
-            onChange({
-              seriesCount: Number(_.get(actualValue, 'seriesCount')),
-            });
-            actualValue = _.omit(actualValue, ['seriesCount']);
-          }
-          onThemeChange(actualValue);
+          const configValue = {};
+          const themeValue = {};
+          _.each(attrs, (v, k) => {
+            if (OmitKeys.indexOf(k) !== -1) {
+              _.set(configValue, k, v);
+            } else {
+              _.set(themeValue, k, v);
+            }
+          });
+          onChange(configValue);
+          onThemeChange(themeValue);
         }}
       />
     </div>

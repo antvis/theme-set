@@ -6,7 +6,7 @@ import { BaseComponent } from '../base/BaseComponent';
 export class Checkbox extends BaseComponent {
   renderContent() {
     const { config, attributes, onChange } = this.props;
-    const value = _.get(attributes, config.attributeId);
+    const value = _.get(attributes, config.attributeId, config.initialValue);
 
     return (
       <AntdCheckbox

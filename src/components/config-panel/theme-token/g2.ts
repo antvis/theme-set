@@ -51,6 +51,13 @@ export default {
       operator: '!=' as const,
       action: 'hidden' as const,
     },
+    {
+      fromAttributeId: 'showAxisTitle',
+      toAttributeId: 'axis-title',
+      value: true,
+      operator: '!=' as const,
+      action: 'hidden' as const,
+    },
   ],
   config: {
     type: 'collapse',
@@ -267,14 +274,24 @@ export default {
           },
           {
             type: 'group',
-            displayName: '坐标轴(下)',
+            displayName: '坐标轴标题',
             children: [
               {
+                type: 'checkbox',
+                displayName: '展示轴标题',
+                attributeId: 'showAxisTitle',
+                initialValue: true,
+                info:
+                  '是否展示坐标轴标题（应用于折线图、面积图、柱状图）。不属于主题部分，实际应用时，需要处理具体图表的配置项',
+                children: [],
+              },
+              {
                 type: 'font-setting',
-                displayName: '轴标题字体',
+                displayName: '轴标题字体(下)',
                 attributeId: 'axis-title',
                 initialValue: {
                   fontSize: 12,
+                  fontColor: 'rgba(0,0,0,0.65)',
                 },
                 attributeIdMap: {
                   fontSize: 'components.axis.bottom.title.style.fontSize',
@@ -283,18 +300,13 @@ export default {
                   fontWeight: 'components.axis.bottom.title.style.fontWeight',
                 },
               },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '坐标轴(左)',
-            children: [
               {
                 type: 'font-setting',
-                displayName: '轴标题字体',
+                displayName: '轴标题字体(左)',
                 attributeId: 'axis-title',
                 initialValue: {
                   fontSize: 12,
+                  fontColor: 'rgba(0,0,0,0.65)',
                 },
                 attributeIdMap: {
                   fontSize: 'components.axis.left.title.style.fontSize',
@@ -303,18 +315,13 @@ export default {
                   fontWeight: 'components.axis.left.title.style.fontWeight',
                 },
               },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '坐标轴(上)',
-            children: [
               {
                 type: 'font-setting',
-                displayName: '轴标题字体',
+                displayName: '轴标题字体(上)',
                 attributeId: 'axis-title',
                 initialValue: {
                   fontSize: 12,
+                  fontColor: 'rgba(0,0,0,0.65)',
                 },
                 attributeIdMap: {
                   fontSize: 'components.axis.top.title.style.fontSize',
@@ -323,18 +330,13 @@ export default {
                   fontWeight: 'components.axis.top.title.style.fontWeight',
                 },
               },
-            ],
-          },
-          {
-            type: 'group',
-            displayName: '坐标轴(右)',
-            children: [
               {
                 type: 'font-setting',
-                displayName: '轴标题字体',
+                displayName: '轴标题字体(右)',
                 attributeId: 'axis-title',
                 initialValue: {
                   fontSize: 12,
+                  fontColor: 'rgba(0,0,0,0.65)',
                 },
                 attributeIdMap: {
                   fontSize: 'components.axis.right.title.style.fontSize',

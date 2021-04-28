@@ -34,10 +34,11 @@
     .operation {
       display: flex;
 
-      & > :first-child {
-        margin-right: 11px;
+      .btn:not(:first-child) {
+        margin-right: 4px;
       }
-      .export-btn {
+      .export-btn,
+      .copy-btn {
         span {
           color: #fff;
         }
@@ -67,7 +68,6 @@
       padding: 4px;
       margin-bottom: 4px;
       line-height: 1;
-      border: 1px solid #eee;
       background-color: #fff;
 
       .color-item {

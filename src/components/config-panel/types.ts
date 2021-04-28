@@ -22,6 +22,7 @@ type AttributeComponentProps = {
   displayName?: string;
   /** 属性组件 描述信息 */
   info?: string;
+  /** 属性组件 默认值 */
   initialValue?: string | number | object;
   children?: AttributeComponentProps[];
 

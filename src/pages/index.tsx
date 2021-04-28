@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Spin, Layout as AntdLayout } from 'antd';
 import _ from 'lodash';
 import { RightOutlined } from '@ant-design/icons';
@@ -14,9 +14,11 @@ Spin.setDefaultIndicator(<CodeLoading />);
 
 const DEFAULT_CONFIG: Omit<ConfigProps, 'theme'> = {
   seriesCount: 3,
+  showAxisTitle: true,
 };
 
 const Page = () => {
+  const themeType = useRef<string>();
   /** 加载状态 */
   const [loading, setLoading] = useState(true);
   /** 主题 */
@@ -38,20 +40,27 @@ const Page = () => {
         record.target.nodeName === 'BODY' &&
         record.attributeName === 'data-theme'
       ) {
-        const themeType = document.body.dataset.theme;
-        // 注意：需要额外控制主题色
-        const { colors10, colors20 } = theme;
-        setTheme(
-          _.merge({}, theme, themeType === 'dark' ? DARK_THEME : LIGHT_THEME, {
-            colors10,
-            colors20,
-          })
-        );
+        if (themeType.current !== document.body.dataset.theme) {
+          themeType.current = document.body.dataset.theme;
+          // 注意：需要额外控制主题色
+          const { colors10, colors20 } = theme;
+          setTheme(
+            _.merge(
+              {},
+              theme,
+              themeType.current === 'dark' ? DARK_THEME : LIGHT_THEME,
+              {
+                colors10,
+                colors20,
+              }
+            )
+          );
+        }
       }
     });
 
     observer.observe(document.body, { attributes: true });
-  }, [theme]);
+  }, []);
 
   /**
    * 处理配置变化, 如：seriesCount
@@ -66,7 +75,6 @@ const Page = () => {
    * @param value
    */
   const onThemeChange = value => {
-    // todo 类型定义
     setTheme(_.merge({}, theme, value));
   };
 

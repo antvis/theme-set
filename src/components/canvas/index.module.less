@@ -2,6 +2,18 @@
   width: 100%;
   height: auto;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    // display: none;
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2.5px;
+
+    &:hover {
+      background-color: #727272;
+    }
+  }
   padding: 20px;
 
   display: grid;
@@ -14,11 +26,10 @@
 @media only screen and (max-width: 764px) {
   .canvas-container {
     grid-template-columns: 1fr;
-    overflow-y: auto;
   }
 }
 
-body[data-theme=dark] {
+body[data-theme='dark'] {
   .canvas-container {
     background: rgba(20, 20, 20, 0.92);
   }

@@ -12,8 +12,8 @@ import styles from './index.module.less';
 @withTranslation()
 export class ThemeStyleSwitcher extends BaseComponent {
   renderContent() {
-    const { config, attributes, t } = this.props;
 
+    const { config, attributes, t } = this.props;
     const changeTheme = (themeType: 'light' | 'dark') => {
       document.body.dataset['theme'] = themeType;
     };

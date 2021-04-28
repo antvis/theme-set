@@ -69,6 +69,7 @@ export function UseG2Plot<O extends CommonOptions = CommonOptions>({
         <Popover
           content="复制当前图表配置项"
           overlayInnerStyle={{ color: 'rgba(0,0,0,0.65)', fontSize: '12px' }}
+          arrowPointAtCenter
         >
           <CopyOutlined id="copy-icon" className="copy-icon" onClick={onCopy} />
         </Popover>
@@ -76,7 +77,7 @@ export function UseG2Plot<O extends CommonOptions = CommonOptions>({
       <div
         className={className}
         ref={container}
-        style={{ height: 'calc(100% - 28px - 16px - 8px)' }}
+        style={{ height: 'calc(100% - 28px - 8px)' }}
       />
     </div>
   );

@@ -30,8 +30,10 @@ import { ConfigProps } from '../../types';
 import styles from './index.module.less';
 
 export const Canvas: React.FC<ConfigProps> = props => {
-  const { seriesCount = 3, theme } = props;
+
   const { t } = useTranslation();
+  const { seriesCount = 3, showAxisTitle, theme } = props;
+
 
   /** 图表数据 */
   const data = useMemo(() => {
@@ -100,8 +102,8 @@ export const Canvas: React.FC<ConfigProps> = props => {
         showMarkers: undefined,
       },
       label: {},
-      xAxis: { title: {} },
-      yAxis: { title: {} },
+      xAxis: { title: showAxisTitle ? {} : null },
+      yAxis: { title: showAxisTitle ? {} : null },
     };
   }, [data, theme]);
 
@@ -117,7 +119,7 @@ export const Canvas: React.FC<ConfigProps> = props => {
       },
       theme,
       label: {},
-      yAxis: { title: {} },
+      yAxis: { title: showAxisTitle ? {} : null },
     };
   }, [barData, theme]);
 
@@ -302,6 +304,10 @@ export const Canvas: React.FC<ConfigProps> = props => {
     const fallingFill = theme.semanticGreen
       ? { fallingFill: theme.semanticGreen }
       : {};
+
+    const isBrowser = typeof document !== 'undefined';
+    const themeType = isBrowser && document.body.getAttribute('data-theme');
+
     return {
       data: waterfallData,
       xField: 'month',
@@ -309,6 +315,14 @@ export const Canvas: React.FC<ConfigProps> = props => {
       ...risingFill,
       ...fallingFill,
       legend: { position: 'top-left' },
+      total: {
+        style: {
+          fill:
+            themeType === 'dark'
+              ? 'rgba(255, 255, 255, 0.25)'
+              : 'rgba(0, 0, 0, 0.25)',
+        },
+      },
       theme,
     };
   }, [theme, waterfallData]);
