@@ -4,10 +4,10 @@ import { en_US } from './locals/en_US';
 import { zh_CN } from './locals/zh_CN';
 
 const resources = {
-  en: {
+  en_US: {
     translation: en_US,
   },
-  zh: {
+  zh_CN: {
     translation: zh_CN,
   },
 };
@@ -16,7 +16,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: 'en',
+    lng: 'en_US',
 
     keySeparator: false, // we do not use keys in form messages.welcome
 
