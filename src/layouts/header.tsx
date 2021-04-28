@@ -21,7 +21,11 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
             className="actions"
             style={{ position: 'absolute', right: '24px' }}
           >
-            <Popover content="客人，来个 star 呗 😉" placement="topRight">
+            <Popover
+              content="客人，来个 star 呗 😉"
+              placement="topRight"
+              arrowPointAtCenter
+            >
               <a
                 href={githubUrl}
                 style={{ textDecoration: 'none' }}
@@ -60,6 +64,7 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
               }
               placement="rightBottom"
               overlayStyle={{ width: '560px' }}
+              arrowPointAtCenter
             >
               <QuestionCircleOutlined
                 style={{ marginLeft: '8px', cursor: 'pointer' }}

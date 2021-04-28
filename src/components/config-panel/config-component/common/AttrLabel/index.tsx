@@ -36,6 +36,7 @@ export const AttrLabel = (props: Props) => {
             fontSize: '12px',
             color: 'rgba(0,0,0,0.65)',
           }}
+          arrowPointAtCenter
         >
           <InfoCircleOutlined style={{ marginLeft: '4px' }} />
         </Popover>
