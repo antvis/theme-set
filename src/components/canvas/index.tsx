@@ -267,12 +267,18 @@ export const Canvas: React.FC<ConfigProps> = props => {
 
   /** 适用于：仪表盘 */
   const gaugeOptions = useMemo((): GaugeOptions => {
+    const range =
+      theme.defaultColor && theme.subColor
+        ? {
+            range: {
+              color: [theme.defaultColor, theme.subColor],
+            },
+          }
+        : {};
     return {
       percent: 0.75,
       axis: {},
-      range: {
-        color: [theme.defaultColor, theme.subColor],
-      },
+      ...range,
       theme,
     };
   }, [theme]);
@@ -290,12 +296,18 @@ export const Canvas: React.FC<ConfigProps> = props => {
 
   /** 适用于：瀑布图 */
   const waterfallOptions = useMemo((): WaterfallOptions => {
+    const risingFill = theme.semanticRed
+      ? { risingFill: theme.semanticRed }
+      : {};
+    const fallingFill = theme.semanticGreen
+      ? { fallingFill: theme.semanticGreen }
+      : {};
     return {
       data: waterfallData,
       xField: 'month',
       yField: 'value',
-      risingFill: theme.semanticRed,
-      fallingFill: theme.semanticGreen,
+      ...risingFill,
+      ...fallingFill,
       legend: { position: 'top-left' },
       theme,
     };
