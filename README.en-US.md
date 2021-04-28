@@ -6,7 +6,7 @@
 
 ThemeSet is an online tool to generate theme configs file and then using in [G2](https://github.com/antvis/g2)(A highly interactive data-driven visualization grammar for statistical charts) or [G2Plot](https://github.com/antvis/g2plot)(A charting library which is easy to use).
 
-📺  [Live Demos](https://theme-set/antv.vision)
+📺  <a href="https://theme-set.antv.vision" target="_blank">Website</a>
 
 ## ⌨️ Development
 
