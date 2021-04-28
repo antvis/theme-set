@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Collapse as AntdCollapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import _ from 'lodash';
+import { withTranslation } from 'react-i18next';
 import { AttributeTree } from '../../AttributeTree';
 import { AttributeTreeProps } from '../../types';
 import './index.less';
@@ -11,10 +12,15 @@ interface Props
     type: string;
     displayName: string;
     children: any[];
-  }> {}
+  }> {
+  t: Function;
+}
 
+//@ts-ignore
+@withTranslation()
 export class Collapse extends PureComponent<Props> {
   renderPanel = childrenConfig => {
+    const { t } = this.props;
     if (!childrenConfig) return null;
 
     return childrenConfig.map((config, index) => {
@@ -23,7 +29,7 @@ export class Collapse extends PureComponent<Props> {
           <AntdCollapse.Panel
             className="custom-panel"
             key={index.toString()}
-            header={config.displayName}
+            header={t(config.displayName)}
           >
             {_.map(config.children, (childConfig, idx) => {
               return (
