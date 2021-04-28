@@ -7,15 +7,14 @@ export const LanguageSwitcher = () => {
   const [language, setLanguage] = useState(i18n.language);
 
   const onClick = () => {
-    i18n.changeLanguage(language === 'ch' ? 'en' : 'ch', () => {
-      console.log('最新', i18n.language);
+    i18n.changeLanguage(language === 'zh_CN' ? 'en_US' : 'zh_CN', () => {
       setLanguage(i18n.language);
     });
   };
 
   return (
     <Button className={styles.languageSwitcher} onClick={onClick} size="small">
-      {language === 'ch' ? 'En' : '中'}
+      {language === 'zh_CN' ? 'En' : '中'}
     </Button>
   );
 };
