@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { Popover } from 'antd';
 import { InfoCircleOutlined, CaretRightOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import { AttributeTreeProps } from '../../../types';
 import styles from './index.module.less';
 
@@ -13,6 +14,7 @@ type Props = Pick<AttributeTreeProps, 'config'> & {
 export const AttrLabel = (props: Props) => {
   const { config, style = {}, canCollapse, collapsed, onClick } = props;
   const { displayName, info } = config;
+  const { t } = useTranslation();
 
   return displayName ? (
     <div
@@ -26,7 +28,7 @@ export const AttrLabel = (props: Props) => {
           className={styles.collapseIcon}
         />
       )}
-      {displayName}
+      {t(displayName)}
       {info && (
         <Popover
           placement="topLeft"
