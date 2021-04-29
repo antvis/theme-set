@@ -1,8 +1,8 @@
 import React from 'react';
-import { Popover, Switch } from 'antd';
+import { Popover } from 'antd';
 import { GithubFilled, QuestionCircleOutlined } from '@ant-design/icons';
 import { LanguageSwitcher } from '../components/common/LanguageSwitcher';
-import i18n from '../base/i18n';
+import { getDevice } from '../utils/windowUtils';
 
 type Props = {
   siteTitle: string;
@@ -23,6 +23,7 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
             className="actions"
             style={{ position: 'absolute', right: '24px' }}
           >
+            <LanguageSwitcher />
             <Popover
               content="客人，来个 star 呗 😉"
               placement="topRight"
@@ -64,8 +65,8 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
                   </div>
                 </div>
               }
-              placement="rightBottom"
-              overlayStyle={{ width: '560px' }}
+              placement="topRight"
+              overlayStyle={{ width: getDevice() === 'pc' ? '560px' : '100%' }}
               arrowPointAtCenter
             >
               <QuestionCircleOutlined

@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Spin, Layout as AntdLayout } from 'antd';
+import { Spin, Layout as AntdLayout, Drawer } from 'antd';
 import _ from 'lodash';
-import { RightOutlined } from '@ant-design/icons';
+import { RightOutlined, UpOutlined } from '@ant-design/icons';
 import Layout from '../layouts/layout';
 import { CodeLoading } from '../components/common/CodeLoading';
 import { ConfigPanel } from '../components/config-panel';
 import { Canvas } from '../components/canvas';
 import { DARK_THEME, LIGHT_THEME } from '../theme/default';
 import { ConfigProps } from '../types';
+import { getDevice } from '../utils/windowUtils';
 import './index.less';
 
 Spin.setDefaultIndicator(<CodeLoading />);
@@ -82,23 +83,47 @@ const Page = () => {
     <Spin spinning={loading}>
       <Layout mainStyle={{ display: 'flex', width: '100%', margin: '0 auto' }}>
         <Canvas theme={theme} {...config} />
-        <AntdLayout.Sider
-          collapsed={configPanelCollapse}
-          theme="light"
-          width={360}
-          collapsible
-          trigger={null}
-        >
-          <RightOutlined
-            className="sider-trigger"
-            onClick={() => setConfigPanelCollapse(old => !old)}
-          />
-          <ConfigPanel
-            config={{ ...config, theme }}
-            onChange={onConfigChange}
-            onThemeChange={onThemeChange}
-          />
-        </AntdLayout.Sider>
+        {
+          // 判断是否为移动端
+          getDevice() === 'pc' ? (
+            <AntdLayout.Sider
+              collapsed={configPanelCollapse}
+              theme="light"
+              width={360}
+              collapsible
+              trigger={null}
+            >
+              <RightOutlined
+                className="sider-trigger"
+                onClick={() => setConfigPanelCollapse(old => !old)}
+              />
+              <ConfigPanel
+                config={{ ...config, theme }}
+                onChange={onConfigChange}
+                onThemeChange={onThemeChange}
+              />
+            </AntdLayout.Sider>
+          ) : (
+            <Drawer
+              visible={configPanelCollapse}
+              forceRender
+              placement="bottom"
+              closable={false}
+              className="mobile-sider"
+              onClose={() => setConfigPanelCollapse(false)}
+            >
+              <UpOutlined
+                className="sider-trigger"
+                onClick={() => setConfigPanelCollapse(old => !old)}
+              />
+              <ConfigPanel
+                config={{ ...config, theme }}
+                onChange={onConfigChange}
+                onThemeChange={onThemeChange}
+              />
+            </Drawer>
+          )
+        }
       </Layout>
     </Spin>
   );
