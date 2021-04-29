@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/layout.tsx"],"names":["LayoutPage"],"mappings":"2FAAA,gCAMeA,UAJI,WACjB,OAAO","file":"component---src-pages-layout-tsx-08f71c1da9aac2289b93.js","sourcesContent":["import React from 'react';\n\nconst LayoutPage = () => {\n  return <div></div>;\n};\n\nexport default LayoutPage;\n"],"sourceRoot":""}
