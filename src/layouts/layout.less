@@ -75,10 +75,6 @@ body {
       white-space: nowrap;
     }
 
-    .website-help-content {
-      color: rgba(0, 0, 0, 0.65);
-      letter-spacing: 0.4em;
-    }
   }
 
   header {
@@ -121,4 +117,14 @@ body {
 // 在这里复写一下 antd 样式
 [class*='ant-popover-placement'] > .ant-popover-content > .ant-popover-arrow {
   border-color: #fff !important;
+}
+
+.website-help-content {
+  color: rgba(0, 0, 0, 0.65);
+  // letter-spacing: 0.4em;
+}
+@media (max-width: 560px) {
+  .website-help-content {
+    width: 100%;
+  }
 }
