@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import '../base/i18n';
 
 interface SEOProps {
   description?: string;
