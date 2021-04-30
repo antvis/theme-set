@@ -1,5 +1,5 @@
 export const en_US = {
-  主题配置: 'Theme Config',
+  主题配置: 'Theme',
   Jan: 'Jan',
   Feb: 'Feb',
   March: 'March',
@@ -27,6 +27,7 @@ export const en_US = {
   Sat: 'Sat',
   Sun: 'Sun',
   导入: 'Import',
+  导出: 'Export',
   导出: 'Export',
   上传配置已应用: 'Upload configuration is applied',
   '上传文件有误，请重新上传':

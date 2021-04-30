@@ -9,6 +9,9 @@ export const LanguageSwitcher = ({ className }) => {
   const onClick = () => {
     i18n.changeLanguage(language === 'zh_CN' ? 'en_US' : 'zh_CN', () => {
       setLanguage(i18n.language);
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('language', i18n.language);
+      }
     });
   };
 
