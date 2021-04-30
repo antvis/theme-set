@@ -65,7 +65,9 @@ export const ConfigPanel: React.FC<Props> = props => {
             showUploadList={false}
             beforeUpload={uploadConfig}
           >
-            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>{t('导入')}</Button>
+            <Button icon={<PlusOutlined />} className={cx(styles.btn)}>
+              {t('导入')}
+            </Button>
           </Upload>
 
           <Button
@@ -84,7 +86,7 @@ export const ConfigPanel: React.FC<Props> = props => {
             className={cx(styles.copyBtn, styles.btn)}
             onClick={() => copyToClipboard(JSON.stringify(config))}
           >
-            复制
+            {t('复制')}
           </Button>
         </div>
       </div>
