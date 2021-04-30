@@ -10,10 +10,6 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
-  const changeTheme = (checked: boolean) => {
-    document.body.dataset['theme'] = checked ? 'dark' : 'light';
-  };
-
   return (
     <header className="site-header">
       <div className="site-title">
@@ -23,20 +19,6 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
             className="actions"
             style={{ position: 'absolute', right: '24px' }}
           >
-            <LanguageSwitcher />
-            <Popover
-              content="客人，来个 star 呗 😉"
-              placement="topRight"
-              arrowPointAtCenter
-            >
-              <a
-                href={githubUrl}
-                style={{ textDecoration: 'none' }}
-                target="_blank"
-              >
-                <GithubFilled className="github-icon action-link" />
-              </a>
-            </Popover>
             <Popover
               content={
                 <div className="website-help-content">
@@ -69,9 +51,28 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
               overlayStyle={{ width: getDevice() === 'pc' ? '560px' : '100%' }}
               arrowPointAtCenter
             >
-              <QuestionCircleOutlined
-                style={{ marginLeft: '8px', cursor: 'pointer' }}
-              />
+              <span className="header-action">
+                <QuestionCircleOutlined
+                  style={{ marginRight: '4px', cursor: 'pointer' }}
+                />
+                About
+              </span>
+            </Popover>
+
+            <LanguageSwitcher className="header-action" />
+
+            <Popover
+              content="客人，来个 star 呗 😉"
+              placement="topRight"
+              arrowPointAtCenter
+            >
+              <a
+                href={githubUrl}
+                style={{ textDecoration: 'none' }}
+                target="_blank"
+              >
+                <GithubFilled className="header-action github-icon action-link" />
+              </a>
             </Popover>
           </div>
         </div>

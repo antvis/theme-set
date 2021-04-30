@@ -1,9 +1,9 @@
-import { Button } from 'antd';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import i18n from '../../../base/i18n';
 import styles from './index.module.less';
 
-export const LanguageSwitcher = () => {
+export const LanguageSwitcher = ({ className }) => {
   const [language, setLanguage] = useState(i18n.language);
 
   const onClick = () => {
@@ -13,8 +13,14 @@ export const LanguageSwitcher = () => {
   };
 
   return (
-    <Button className={styles.languageSwitcher} onClick={onClick} size="small">
-      {language === 'zh_CN' ? 'En' : '中'}
-    </Button>
+    <div className={cx(styles.languageSwitcher, className)} onClick={onClick}>
+      <span className={cx({ [styles.unselected]: language !== 'zh_CN' })}>
+        中
+      </span>
+      <span className={styles.divider}>/</span>
+      <span className={cx({ [styles.unselected]: language === 'zh_CN' })}>
+        En
+      </span>
+    </div>
   );
 };
