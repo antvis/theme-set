@@ -1,4 +1,4 @@
-<img src="https://gw.alipayobjects.com/zos/antfincdn/R8sN%24GNdh6/language.svg" width="18"> 简体中文 | [English](./README.en-US.md) 
+<img src="https://gw.alipayobjects.com/zos/antfincdn/R8sN%24GNdh6/language.svg" width="18"> 简体中文 | [English](./README.en-US.md)
 
 <h1 align="center">
 <b>ThemeSet</b>
@@ -10,11 +10,61 @@
   <a href="https://github.com/antvis/g2plot">G2Plot</a>
 </p>
 
-AntV ThemeSet 是一款在线主题构建工具，致力于帮助使用者快速直观定制自己的主题配置文件，并在 [G2](https://g2.antv.vision)（一套面向常规统计图表，以数据驱动的高交互可视化图形语法。）、[G2Plot](https://g2plot.antv.vision)（开箱即用的图表库) 中使用自定义主题。
+AntV ThemeSet 是一款在线主题构建工具，致力于帮助使用者（工程师或设计师）快速直观定制自己的主题配置文件
 
-AntV 官方提供了默认的主题色板以及抽象出一套通用的主题 token 属性，同时支持导入、导出主题配置文件，除此你还可以直接对导出的主题配置文件进行修改，然后直接在 G2、G2Plot 中直接使用 registerTheme API 注册使用。
+## 💡 如何使用
 
-## ⌨️ 本地开发
+G2 提供了自定义主题机制以允许用户切换、定义图表主题。利用 ThemeSet 工具，工程师或者设计师可以在线设计图表通用主题规范，然后导出或复制主题配置，直接使用 `registerTheme` API 进行主题定制。
+
+** G2 中使用**。详见：[自定义主题 | G2](https://g2.antv.vision/zh/docs/api/advanced/register-theme)
+
+```ts
+import { registerTheme } from '@antv/g2';
+
+// 方式 1:
+registerTheme('newTheme', {
+  // 导出或复制出来的主题配置
+});
+chart.theme('newTheme');
+
+// 方式 2:
+chart.theme({
+  // 导出或复制出来的主题配置
+});
+```
+
+** G2Plot 中使用**。详见：[图表主题 | G2Plot](https://g2plot.antv.vision/zh/docs/api/options/theme)
+
+```ts
+import { G2 } from '@antv/g2plot';
+
+// 方式 1:
+G2.registerTheme('newTheme', {
+  // 导出或复制出来的主题配置
+});
+const plot = new Line({
+  // ... 折线图的其他配置
+  theme: 'newTheme',
+});
+// 或者
+plot.update({ theme: 'newTheme' });
+
+// 方式 2:
+const plot = new Line({
+  // ... 折线图的其他配置
+  theme: {
+    // 导出或复制出来的主题配置
+  },
+});
+// 或者
+plot.update({
+  theme: {
+    // 导出或复制出来的主题配置
+  },
+});
+```
+
+## ⌨️ 参与贡献
 
 ```bash
 # 克隆仓库

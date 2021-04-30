@@ -22,21 +22,38 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
             <Popover
               content={
                 <div className="website-help-content">
-                  <p>G2 提供了自定义主题机制以允许用户切换、定义图表主题。</p>
                   <p>
                     AntV ThemeSet
-                    致力于提供一个在线工具，帮助使用者快速直观定制自己的主题配置文件，并在
-                    <a href="https://github.com/antvis/g2">G2</a>、
-                    <a href="https://github.com/antvis/g2plot">G2Plot </a>
-                    中使用自定义主题。
+                    致力于提供一个在线工具，帮助使用者快速直观定制自己的主题配置文件。
+                  </p>
+                  <h3 style={{ opacity: 0.85 }}>💡 如何使用</h3>
+                  <p>
+                    G2 提供了自定义主题机制以允许用户切换、定义图表主题。利用
+                    ThemeSet
+                    工具，工程师或者设计师可以在线设计图表通用主题规范，然后导出或复制主题配置，直接使用
+                    <b style={{ padding: '0 4px' }}>registerTheme</b>API
+                    进行主题定制。
                   </p>
                   <p>
-                    AntV 官方提供了默认的主题色板以及抽象出一套通用的主题 token
-                    属性，同时支持导入、导出主题配置文件，除此你还可以直接对导出的主题配置文件进行修改，然后直接在
-                    G2、G2Plot 中直接使用 registerTheme API 注册使用。
+                    详细使用文档见：
+                    <a
+                      href="https://g2.antv.vision/zh/docs/api/advanced/register-theme"
+                      target="_blank"
+                    >
+                      自定义主题 | G2
+                    </a>
+                    ，
+                    <a
+                      href="https://g2plot.antv.vision/zh/docs/api/options/theme"
+                      target="_blank"
+                    >
+                      图表主题 | G2Plot
+                    </a>
                   </p>
+                  <h3 style={{ opacity: 0.85 }}>🙇‍♀️ 使用反馈</h3>
                   <div>
-                    💡 Ideas 或 Q & A 前往
+                    官方提供了默认的主题色板以及抽象出一套通用的主题 token
+                    属性，有任何其他 Ideas 或需要帮助的地方，请前往
                     <a
                       href="https://github.com/antvis/theme-set/issues"
                       style={{ margin: '0 4px' }}
@@ -48,7 +65,7 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl }) => {
                 </div>
               }
               placement="topRight"
-              overlayStyle={{ width: getDevice() === 'pc' ? '560px' : '100%' }}
+              overlayStyle={{ width: getDevice() === 'pc' ? '600px' : '100%' }}
               arrowPointAtCenter
             >
               <span className="header-action">
