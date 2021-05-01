@@ -16,7 +16,7 @@ AntV ThemeSet 是一款在线主题构建工具，致力于帮助使用者（工
 
 G2 提供了自定义主题机制以允许用户切换、定义图表主题。利用 ThemeSet 工具，工程师或者设计师可以在线设计图表通用主题规范，然后导出或复制主题配置，直接使用 `registerTheme` API 进行主题定制。
 
-** G2 中使用**。详见：[自定义主题 | G2](https://g2.antv.vision/zh/docs/api/advanced/register-theme)
+**G2 中使用**。详见：[自定义主题 | G2](https://g2.antv.vision/zh/docs/api/advanced/register-theme)
 
 ```ts
 import { registerTheme } from '@antv/g2';
@@ -33,7 +33,7 @@ chart.theme({
 });
 ```
 
-** G2Plot 中使用**。详见：[图表主题 | G2Plot](https://g2plot.antv.vision/zh/docs/api/options/theme)
+**G2Plot 中使用**。详见：[图表主题 | G2Plot](https://g2plot.antv.vision/zh/docs/api/options/theme)
 
 ```ts
 import { G2 } from '@antv/g2plot';
