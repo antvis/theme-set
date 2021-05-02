@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import i18n from '../../../base/i18n';
+import i18n from '../../../utils/i18n';
 import styles from './index.module.less';
 
 export const LanguageSwitcher = ({ className }) => {

@@ -39,7 +39,7 @@
     "classnames": "^2.3.1",
     "gatsby": "^2.26.1",
     "gatsby-plugin-antd": "^2.2.0",
-    "gatsby-plugin-google-analytics": "^3.4.0",
+    "gatsby-plugin-google-gtag": "^3.4.0",
     "gatsby-plugin-less": "^4.6.0",
     "gatsby-plugin-manifest": "^3.3.0",
     "husky": "^6.0.0",

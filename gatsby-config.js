@@ -12,10 +12,11 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      // https://developers.google.com/analytics/devguides/collection/gtagjs?hl=zh-cn
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: 'G-70FE65R1DD',
+        trackingIds: ['G-70FE65R1DD'],
       },
     },
     {
