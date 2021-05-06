@@ -24,6 +24,8 @@ body {
 }
 
 .mobile-sider {
+  height: unset !important;
+
   .sider-trigger {
     position: fixed;
     top: -26px - @footer-height;
@@ -34,8 +36,15 @@ body {
   }
 
   // 移动端下重新 drawer 样式
-  .ant-drawer-content {
-    overflow: unset;
+  .ant-drawer-mask {
+    display: none;
+  }
+  .ant-drawer-content-wrapper {
+    height: 50vh !important;
+  
+    .ant-drawer-content {
+      overflow: unset;
+    }
   }
   // 重写 drawer 开启时的样式
   &.ant-drawer-open {
