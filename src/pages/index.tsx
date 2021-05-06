@@ -108,7 +108,7 @@ const Page = () => {
               visible={configPanelCollapse}
               forceRender
               placement="bottom"
-              closable={false}
+              closable
               className="mobile-sider"
               onClose={() => setConfigPanelCollapse(false)}
             >
