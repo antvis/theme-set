@@ -1,6 +1,6 @@
 {
   "name": "@antv/theme-set",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "visiky <736929286@qq.com>",
   "scripts": {
     "start": "gatsby develop",
