@@ -52,8 +52,8 @@ export const ConfigPanel: React.FC<Props> = props => {
         try {
           if (reader.result) {
             // @ts-ignore
-            const newConfig: ConfigProps = JSON.parse(reader.result);
-            const { styleSheet, ...rest } = newConfig.theme;
+            const newConfig: ConfigProps['theme'] = JSON.parse(reader.result);
+            const { styleSheet, ...rest } = newConfig;
             onThemeChange({
               defaultColor: styleSheet?.brandColor,
               colors10: styleSheet?.paletteQualitative10 || [],
