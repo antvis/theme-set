@@ -32,6 +32,19 @@ export const ConfigPanel: React.FC<Props> = props => {
     return G2ThemeTokenConfig;
   }, []);
 
+  const processThemeObject = (config: object): object => {
+    const themeObject: any = _.get(config, 'theme');
+    const { defaultColor, colors10, colors20, ...rest } = themeObject;
+    return {
+      ...rest,
+      styleSheet: {
+        brandColor: defaultColor,
+        paletteQualitative10: colors10,
+        paletteQualitative20: colors20,
+      },
+    };
+  };
+
   const uploadConfig = (file: RcFile) => {
     if (window.FileReader) {
       const reader = new FileReader();
@@ -39,8 +52,14 @@ export const ConfigPanel: React.FC<Props> = props => {
         try {
           if (reader.result) {
             // @ts-ignore
-            const newConfig: ConfigProps = JSON.parse(reader.result);
-            onThemeChange(newConfig.theme);
+            const newConfig: ConfigProps['theme'] = JSON.parse(reader.result);
+            const { styleSheet, ...rest } = newConfig;
+            onThemeChange({
+              defaultColor: styleSheet?.brandColor,
+              colors10: styleSheet?.paletteQualitative10 || [],
+              colors20: styleSheet?.paletteQualitative20 || [],
+              ...rest,
+            });
             onChange(_.omit(newConfig, 'theme'));
           }
           message.success(t('上传配置已应用'));
@@ -75,7 +94,7 @@ export const ConfigPanel: React.FC<Props> = props => {
             type="primary"
             className={cx(styles.exportBtn, styles.btn)}
             onClick={() => {
-              exportDataToLocal(config, 'g2-theme.json');
+              exportDataToLocal(processThemeObject(config), 'g2-theme.json');
             }}
           >
             {t('导出')}
@@ -84,7 +103,9 @@ export const ConfigPanel: React.FC<Props> = props => {
             icon={<CopyOutlined />}
             type="primary"
             className={cx(styles.copyBtn, styles.btn)}
-            onClick={() => copyToClipboard(JSON.stringify(config))}
+            onClick={() =>
+              copyToClipboard(JSON.stringify(processThemeObject(config)))
+            }
           >
             {t('复制')}
           </Button>
